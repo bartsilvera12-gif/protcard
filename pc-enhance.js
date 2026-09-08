@@ -92,6 +92,23 @@
     });
   }
 
+  /* ---------- Hero slideshow: crossfade every ~6s --------------------- */
+  function bindHeroSlides() {
+    document.querySelectorAll('.pc-hero-slides').forEach((wrap) => {
+      if (wrap.__pcSlides) return;
+      wrap.__pcSlides = true;
+      const slides = Array.from(wrap.querySelectorAll('.pc-hero-slide'));
+      if (slides.length < 2) return;
+      let i = 0;
+      const tick = () => {
+        slides[i].classList.remove('is-active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+      };
+      wrap.__pcSlidesTimer = window.setInterval(tick, 6000);
+    });
+  }
+
   /* ---------- FAQ accordion: sync data-pc-open → .is-open ------------- */
   function syncFaq() {
     document.querySelectorAll('.pc-faq__row').forEach((row) => {

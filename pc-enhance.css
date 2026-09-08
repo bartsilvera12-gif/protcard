@@ -1,33 +1,67 @@
 /* PROT CARD — enhancements: mobile fixes, animated buttons, card hover,
    slide-in, coverflow marca carousel, accordion, sección full-bleed. */
 
-/* ------ Animated gradient (red) button ------------------------------- */
+/* ------ Animated gradient button — port of 21st.dev gradient-button
+   using CSS @property (Chromium/Safari 16.4+, Firefox 128+). Adapted to
+   the PROT CARD red palette. ------------------------------------------ */
+@property --pcg-pos-x{syntax:'<percentage>';initial-value:11.14%;inherits:false}
+@property --pcg-pos-y{syntax:'<percentage>';initial-value:140%;inherits:false}
+@property --pcg-spread-x{syntax:'<percentage>';initial-value:150%;inherits:false}
+@property --pcg-spread-y{syntax:'<percentage>';initial-value:180.06%;inherits:false}
+@property --pcg-color-1{syntax:'<color>';initial-value:#000;inherits:false}
+@property --pcg-color-2{syntax:'<color>';initial-value:#1a0004;inherits:false}
+@property --pcg-color-3{syntax:'<color>';initial-value:#4e1010;inherits:false}
+@property --pcg-color-4{syntax:'<color>';initial-value:#8E030C;inherits:false}
+@property --pcg-color-5{syntax:'<color>';initial-value:#E30613;inherits:false}
+@property --pcg-border-angle{syntax:'<angle>';initial-value:20deg;inherits:true}
+@property --pcg-border-color-1{syntax:'<color>';initial-value:hsla(354,90%,60%,0.25);inherits:true}
+@property --pcg-border-color-2{syntax:'<color>';initial-value:hsla(354,90%,45%,0.85);inherits:true}
+@property --pcg-stop-1{syntax:'<percentage>';initial-value:37.35%;inherits:false}
+@property --pcg-stop-2{syntax:'<percentage>';initial-value:61.36%;inherits:false}
+@property --pcg-stop-3{syntax:'<percentage>';initial-value:78.42%;inherits:false}
+@property --pcg-stop-4{syntax:'<percentage>';initial-value:89.52%;inherits:false}
+@property --pcg-stop-5{syntax:'<percentage>';initial-value:100%;inherits:false}
+
 .pc-btn-grad{
-  position:relative;isolation:isolate;overflow:hidden;
-  background:linear-gradient(120deg,#8E030C 0%,#E30613 45%,#B4040F 60%,#E30613 100%) !important;
-  background-size:200% 100% !important;
-  color:#fff !important;border:0 !important;
-  box-shadow:0 8px 24px -8px rgba(227,6,19,.55),inset 0 -1px 0 rgba(0,0,0,.18);
-  transition:box-shadow .25s ease,transform .2s ease,filter .2s ease;
+  position:relative;appearance:none;cursor:pointer;
+  color:#fff !important;border:0 !important;text-decoration:none;
+  background:radial-gradient(
+    var(--pcg-spread-x) var(--pcg-spread-y) at var(--pcg-pos-x) var(--pcg-pos-y),
+    var(--pcg-color-1) var(--pcg-stop-1),
+    var(--pcg-color-2) var(--pcg-stop-2),
+    var(--pcg-color-3) var(--pcg-stop-3),
+    var(--pcg-color-4) var(--pcg-stop-4),
+    var(--pcg-color-5) var(--pcg-stop-5)
+  ) !important;
+  transition:
+    --pcg-pos-x .5s, --pcg-pos-y .5s,
+    --pcg-spread-x .5s, --pcg-spread-y .5s,
+    --pcg-color-1 .5s, --pcg-color-2 .5s, --pcg-color-3 .5s, --pcg-color-4 .5s, --pcg-color-5 .5s,
+    --pcg-border-angle .5s, --pcg-border-color-1 .5s, --pcg-border-color-2 .5s,
+    --pcg-stop-1 .5s, --pcg-stop-2 .5s, --pcg-stop-3 .5s, --pcg-stop-4 .5s, --pcg-stop-5 .5s,
+    transform .2s ease, box-shadow .3s ease;
+  box-shadow:0 8px 22px -8px rgba(227,6,19,.55);
 }
 .pc-btn-grad::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
-  background-size:250% 100%;background-position:120% 0;
-  transition:background-position .55s ease;
-}
-.pc-btn-grad::after{
-  content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;pointer-events:none;
-  background:conic-gradient(from 0deg,#E30613,#8E030C,#E30613,#B4040F,#E30613);
-  opacity:0;filter:blur(14px);transition:opacity .3s ease;
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(var(--pcg-border-angle),var(--pcg-border-color-1),var(--pcg-border-color-2));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+          mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
 }
 .pc-btn-grad:hover:not(:disabled){
-  transform:translateY(-2px);filter:brightness(1.05);
-  box-shadow:0 14px 34px -8px rgba(227,6,19,.7),inset 0 -1px 0 rgba(0,0,0,.18);
+  --pcg-pos-x:0%; --pcg-pos-y:91.51%;
+  --pcg-spread-x:120.24%; --pcg-spread-y:103.18%;
+  --pcg-color-1:#ffb0bd; --pcg-color-2:#ff5566; --pcg-color-3:#E30613; --pcg-color-4:#8E030C; --pcg-color-5:#000;
+  --pcg-border-angle:190deg;
+  --pcg-border-color-1:hsla(354,95%,90%,0.15);
+  --pcg-border-color-2:hsla(354,90%,90%,0.7);
+  --pcg-stop-1:0%; --pcg-stop-2:8.8%; --pcg-stop-3:21.44%; --pcg-stop-4:71.34%; --pcg-stop-5:85.76%;
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px -10px rgba(227,6,19,.7);
 }
-.pc-btn-grad:hover:not(:disabled)::before{background-position:-30% 0}
-.pc-btn-grad:hover:not(:disabled)::after{opacity:.55}
 .pc-btn-grad:active{transform:translateY(0)}
+.pc-btn-grad:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
 
 /* Apply gradient look to the custom dropdown button when it has this modifier */
 .pcs.pcs--dark .pcs__btn,
@@ -67,6 +101,23 @@
     linear-gradient(135deg,#0d0d0e 0%,#1a0709 40%,#0a0a0b 100%);
 }
 /* grid pattern removed per request */
+
+/* ------ Hero slideshow ---------------------------------------------- */
+.pc-hero-slides{isolation:isolate}
+.pc-hero-slide{
+  position:absolute;left:0;right:0;top:-34%;
+  height:168%;width:100%;object-fit:cover;
+  opacity:0;transform:scale(1.06);
+  transition:opacity 1.4s ease, transform 8s ease;
+  will-change:opacity,transform;
+  filter:contrast(1.05) saturate(1.05);
+  z-index:1;
+}
+.pc-hero-slide.is-active{opacity:1;transform:scale(1)}
+@media (prefers-reduced-motion: reduce){
+  .pc-hero-slide{transition:opacity .3s ease}
+  .pc-hero-slide.is-active{transform:none}
+}
 .pc-hero-bg::after{
   content:"";position:absolute;inset:-40%;z-index:0;pointer-events:none;
   background:conic-gradient(from 180deg at 50% 50%,transparent 0deg,rgba(227,6,19,.22) 80deg,transparent 160deg,rgba(227,6,19,.15) 240deg,transparent 340deg);
