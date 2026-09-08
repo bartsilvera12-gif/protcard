@@ -194,26 +194,54 @@
 .pc-slide--scale{transform:scale(1.08);transform-origin:center}
 .pc-slide--scale.pc-in{transform:scale(1)}
 
-/* ------ Marcas coverflow-lite carousel ------------------------------- */
+/* ------ Marcas coverflow: logos only, prev/next, infinite --------- */
+.pc-cover-wrap{position:relative;margin-top:24px}
 .pc-cover{
   display:flex;gap:22px;
-  overflow-x:auto;scroll-snap-type:x mandatory;
-  padding:36px 8vw 44px;margin:0 -24px;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding:24px calc(50% - 130px) 32px;
   perspective:1400px;
   scrollbar-width:none;-ms-overflow-style:none;
 }
 .pc-cover::-webkit-scrollbar{display:none}
 .pc-cover__card{
-  flex:0 0 min(78vw, 340px);
+  flex:0 0 260px;height:160px;
   scroll-snap-align:center;
-  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,filter .4s ease;
-  transform:scale(.9) rotateY(0deg);filter:brightness(.75) saturate(.9);
+  display:flex;align-items:center;justify-content:center;
+  background:#fff;border:1px solid rgba(20,20,20,.12);border-radius:6px;
+  cursor:pointer;padding:0 28px;
+  transform-style:preserve-3d;
+  transform:scale(.85) rotateY(0deg);filter:grayscale(.4) brightness(.9);
+  transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .4s ease,box-shadow .4s ease,border-color .3s ease;
   will-change:transform;
 }
-.pc-cover__card:hover{transform:scale(.94);filter:brightness(.85)}
-.pc-cover__card.is-focus{transform:scale(1) rotateY(0deg);filter:brightness(1) saturate(1);box-shadow:0 30px 60px -30px rgba(20,20,20,.5)}
-.pc-cover__card.is-left{transform:translateX(20px) scale(.9) rotateY(18deg);filter:brightness(.7) saturate(.9)}
-.pc-cover__card.is-right{transform:translateX(-20px) scale(.9) rotateY(-18deg);filter:brightness(.7) saturate(.9)}
+.pc-cover__card img{max-width:100%;max-height:80px;width:auto;height:auto;object-fit:contain;pointer-events:none}
+.pc-cover__card:hover{filter:grayscale(0) brightness(1)}
+.pc-cover__card.is-focus{transform:scale(1) rotateY(0deg);filter:none;border-color:#E30613;box-shadow:0 24px 48px -22px rgba(227,6,19,.4),0 8px 20px -12px rgba(20,20,20,.2)}
+.pc-cover__card.is-left{transform:translateX(24px) scale(.85) rotateY(18deg);filter:grayscale(.6) brightness(.85)}
+.pc-cover__card.is-right{transform:translateX(-24px) scale(.85) rotateY(-18deg);filter:grayscale(.6) brightness(.85)}
+.pc-cover-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:46px;height:46px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;color:#141414;
+  border:1px solid rgba(20,20,20,.14);
+  box-shadow:0 10px 24px -10px rgba(20,20,20,.25);
+  cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.pc-cover-nav:hover{background:#E30613;color:#fff;border-color:#E30613;transform:translateY(-50%) scale(1.05)}
+.pc-cover-nav:active{transform:translateY(-50%) scale(.95)}
+.pc-cover-nav--prev{left:8px}
+.pc-cover-nav--next{right:8px}
+@media (max-width: 900px){
+  .pc-cover__card{flex-basis:220px;height:140px}
+  .pc-cover__card img{max-height:64px}
+  .pc-cover{padding:20px calc(50% - 110px) 26px}
+  .pc-cover-nav{width:40px;height:40px}
+  .pc-cover-nav--prev{left:4px}
+  .pc-cover-nav--next{right:4px}
+}
 
 /* ------ FAQ accordion smooth ----------------------------------------- */
 .pc-faq{border-top:1px solid rgba(20,20,20,.14)}

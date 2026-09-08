@@ -60,35 +60,135 @@
     });
   }
 
-  /* ---------- Coverflow focus (.pc-cover) ----------------------------- */
+  /* ---------- Coverflow infinite + prev/next --------------------------
+     Clones the original DC-rendered cards N times so the scroll can
+     wrap seamlessly. When scroll reaches the last set, we jump back to
+     the middle set with no transition — reader perceives an infinite
+     loop. Prev/Next buttons move by one card width. -------------------- */
+  const COV_COPIES = 5;              // total copies (center + 2 each side)
   function bindCoverflow() {
-    document.querySelectorAll('.pc-cover').forEach((wrap) => {
-      if (wrap.__pcCov) return;
+    document.querySelectorAll('.pc-cover-wrap').forEach((wrap) => {
+      const track = wrap.querySelector('.pc-cover');
+      if (!track) return;
+      if (wrap.__pcCov && track.__pcCovOriginals === track.children.length) return;
       wrap.__pcCov = true;
-      const cards = () => Array.from(wrap.querySelectorAll('.pc-cover__card'));
+
+      // Only clone once we have real content (not placeholders during DC hydration)
+      const originals = Array.from(track.children).filter((c) => c.classList && c.classList.contains('pc-cover__card'));
+      if (originals.length < 2) return;
+      // If already cloned, leave alone
+      if (track.dataset.pcCloned === '1') { /* rebind observers only */ }
+      else {
+        track.dataset.pcCloned = '1';
+        track.__pcCovOriginals = originals.length;
+        const originalCount = originals.length;
+        // Clear and rebuild with COPIES copies
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < COV_COPIES; i++) {
+          for (const el of originals) {
+            const clone = el.cloneNode(true);
+            clone.dataset.pcCovIdx = String(i * originalCount + originals.indexOf(el));
+            // Bind original click via dispatching on the source (DC's onclick is on originals)
+            const srcIdx = originals.indexOf(el);
+            clone.addEventListener('click', (e) => {
+              e.preventDefault();
+              const source = Array.from(track.children).filter((c) => c.classList && c.classList.contains('pc-cover__card'))[srcIdx];
+              if (source && source !== clone) source.click();
+            });
+            frag.appendChild(clone);
+          }
+        }
+        track.innerHTML = '';
+        track.appendChild(frag);
+      }
+
+      const cards = () => Array.from(track.querySelectorAll('.pc-cover__card'));
+      const originalCount = track.__pcCovOriginals || originals.length;
+
+      const centerOn = (card, smooth = true) => {
+        if (!card) return;
+        const wr = track.getBoundingClientRect();
+        const cr = card.getBoundingClientRect();
+        const delta = (cr.left + cr.width / 2) - (wr.left + wr.width / 2);
+        const target = track.scrollLeft + delta;
+        if (smooth) track.scrollTo({ left: target, behavior: 'smooth' });
+        else { track.style.scrollBehavior = 'auto'; track.scrollLeft = target; track.style.scrollBehavior = 'smooth'; }
+      };
+
       const update = () => {
         const cs = cards(); if (!cs.length) return;
-        const wr = wrap.getBoundingClientRect();
+        const wr = track.getBoundingClientRect();
         const cx = wr.left + wr.width / 2;
-        let best = cs[0], bestD = Infinity;
-        for (const c of cs) {
-          const r = c.getBoundingClientRect();
+        let best = cs[0], bestD = Infinity, bestIdx = 0;
+        for (let i = 0; i < cs.length; i++) {
+          const r = cs[i].getBoundingClientRect();
           const d = Math.abs(r.left + r.width / 2 - cx);
-          if (d < bestD) { bestD = d; best = c; }
+          if (d < bestD) { bestD = d; best = cs[i]; bestIdx = i; }
         }
         cs.forEach((c) => c.classList.remove('is-focus', 'is-left', 'is-right'));
-        const idx = cs.indexOf(best);
         best.classList.add('is-focus');
-        if (cs[idx - 1]) cs[idx - 1].classList.add('is-left');
-        if (cs[idx + 1]) cs[idx + 1].classList.add('is-right');
+        if (cs[bestIdx - 1]) cs[bestIdx - 1].classList.add('is-left');
+        if (cs[bestIdx + 1]) cs[bestIdx + 1].classList.add('is-right');
       };
-      wrap.addEventListener('scroll', () => {
-        window.requestAnimationFrame(update);
-      }, { passive: true });
-      window.addEventListener('resize', update);
-      window.requestAnimationFrame(update);
-      // Initial: center the focused card
-      window.setTimeout(update, 100);
+
+      const wrapIfNeeded = () => {
+        const cs = cards(); if (!cs.length) return;
+        const wr = track.getBoundingClientRect();
+        const cx = wr.left + wr.width / 2;
+        // Find focused index
+        let focusIdx = 0, bestD = Infinity;
+        for (let i = 0; i < cs.length; i++) {
+          const r = cs[i].getBoundingClientRect();
+          const d = Math.abs(r.left + r.width / 2 - cx);
+          if (d < bestD) { bestD = d; focusIdx = i; }
+        }
+        const set = Math.floor(focusIdx / originalCount);
+        const centerSet = Math.floor(COV_COPIES / 2);
+        if (set !== centerSet) {
+          const targetCard = cs[focusIdx - (set - centerSet) * originalCount];
+          if (targetCard) centerOn(targetCard, false);
+        }
+      };
+
+      // Center on the middle-set first card on init
+      const initCenter = () => {
+        const cs = cards();
+        const centerSet = Math.floor(COV_COPIES / 2);
+        const target = cs[centerSet * originalCount];
+        if (target) centerOn(target, false);
+        update();
+      };
+
+      // Observers/listeners
+      if (!track.__pcCovBound) {
+        track.__pcCovBound = true;
+        let scrollTO;
+        track.addEventListener('scroll', () => {
+          window.requestAnimationFrame(update);
+          window.clearTimeout(scrollTO);
+          scrollTO = window.setTimeout(wrapIfNeeded, 180);
+        }, { passive: true });
+        window.addEventListener('resize', () => { update(); });
+
+        const step = (dir) => {
+          const cs = cards();
+          const wr = track.getBoundingClientRect();
+          const cx = wr.left + wr.width / 2;
+          let focusIdx = 0, bestD = Infinity;
+          for (let i = 0; i < cs.length; i++) {
+            const r = cs[i].getBoundingClientRect();
+            const d = Math.abs(r.left + r.width / 2 - cx);
+            if (d < bestD) { bestD = d; focusIdx = i; }
+          }
+          const next = cs[focusIdx + dir];
+          if (next) centerOn(next, true);
+        };
+        wrap.querySelector('.pc-cover-nav--prev')?.addEventListener('click', () => step(-1));
+        wrap.querySelector('.pc-cover-nav--next')?.addEventListener('click', () => step(1));
+      }
+
+      // Wait a frame so layout settles before centering
+      window.requestAnimationFrame(() => window.requestAnimationFrame(initCenter));
     });
   }
 
