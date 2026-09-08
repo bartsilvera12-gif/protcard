@@ -6,7 +6,8 @@
     { "source": "/cubrecartes/ficha", "destination": "/index.html" },
     { "source": "/como-elegir", "destination": "/index.html" },
     { "source": "/nosotros", "destination": "/index.html" },
-    { "source": "/contacto", "destination": "/index.html" }
+    { "source": "/contacto", "destination": "/index.html" },
+    { "source": "/admin", "destination": "/admin/index.html" }
   ],
   "headers": [
     {

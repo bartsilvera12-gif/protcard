@@ -6,9 +6,11 @@
 <title>PROT CARD — Fabricación mayorista de cubrecárteres</title>
 <meta name="description" content="Fabricamos cubrecárteres por modelo desde Colonia Río Verde, Paraguay. Precios mayoristas para talleres, casas de repuestos y revendedores en todo el país.">
 <link rel="stylesheet" href="./pc-enhance.css">
+<script src="./pc-supabase-config.js"></script>
 <script src="./support.js"></script>
 <script src="./pc-dropdown.js" defer></script>
 <script src="./pc-enhance.js" defer></script>
+<script src="./pc-supabase.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -649,15 +651,15 @@ select,input,button{font-family:inherit}
         <div data-pc-tiles style="max-width:1360px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:24px 26px 24px 0;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease" style-hover="background:rgba(255,255,255,.05)">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">WhatsApp</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">+595 971 813 847</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">{{ waDisplay }}</div>
           </a>
-          <a href="mailto:loewenjohny2002@gmail.com" style="padding:24px 26px;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease;word-break:break-all" style-hover="background:rgba(255,255,255,.05)">
+          <a href="{{ emailHref }}" style="padding:24px 26px;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease;word-break:break-all" style-hover="background:rgba(255,255,255,.05)">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">Correo</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">loewenjohny2002@gmail.com</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">{{ emailAddr }}</div>
           </a>
-          <a href="https://www.instagram.com/protcard_" target="_blank" rel="noopener" style="padding:24px 26px;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease" style-hover="background:rgba(255,255,255,.05)">
+          <a href="{{ igUrl }}" target="_blank" rel="noopener" style="padding:24px 26px;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease" style-hover="background:rgba(255,255,255,.05)">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">Instagram</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">@protcard_</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">{{ igHandle }}</div>
           </a>
           <div style="padding:24px 0 24px 26px">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">Ubicación</div>
@@ -720,10 +722,10 @@ select,input,button{font-family:inherit}
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>WhatsApp
           </a>
-          <a href="https://www.instagram.com/protcard_" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
+          <a href="{{ igUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg>Instagram
           </a>
-          <a href="https://www.tiktok.com/@johny.loewen" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
+          <a href="{{ tiktokUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2.2h-3.1v13.1a2.6 2.6 0 1 1-2.1-2.6v-3.2a5.8 5.8 0 1 0 5.2 5.8V8.9a7.7 7.7 0 0 0 4.4 1.4V7.2a4.6 4.6 0 0 1-4.4-5Z"></path></svg>TikTok
           </a>
         </div>
@@ -749,15 +751,15 @@ select,input,button{font-family:inherit}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
-const CAT = {
+let CAT = {
   Toyota: ["Hilux", "Fortuner"],
   Ford: ["Ranger"],
   Chevrolet: ["S10"],
   Nissan: ["Frontier"],
   "Otra marca": ["No está en la lista"]
 };
-const ANIOS = ["2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"];
-const PROD = [
+let ANIOS = ["2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"];
+let PROD = [
   {img:"assets/img/p-gr-rojo.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux GR", compat:"Hilux · años a confirmar", alt:"Cubrecárter rojo con inscripción GR para Toyota Hilux"},
   {img:"assets/img/p-trd.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux TRD", compat:"Hilux · años a confirmar", alt:"Cubrecárter rojo con inscripción TRD"},
   {img:"assets/img/p-hilux-negro.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux", compat:"Hilux · años a confirmar", alt:"Cubrecárter negro con inscripción HILUX"},
@@ -780,6 +782,16 @@ const FAQS = [
 ];
 const FICHA_KEYS = ["Material","Espesor","Peso","Terminación","Puntos de montaje","Compatibilidad","Código de producto","Observaciones"];
 
+// Called by pc-supabase.js after it fetches live data.
+window.__pcRefreshData = function () {
+  const d = window.PC_DATA; if (!d) return;
+  if (d.CAT && Object.keys(d.CAT).length) CAT = { ...d.CAT, "Otra marca": ["No está en la lista"] };
+  if (Array.isArray(d.PROD)) PROD = d.PROD;
+  if (Array.isArray(d.ANIOS) && d.ANIOS.length) ANIOS = d.ANIOS;
+  const c = window.__pcComponent;
+  if (c && c.setState) c.setState({ _liveVer: (c.state && c.state._liveVer || 0) + 1 });
+};
+
 const PC_ROUTES = {
   inicio: "/", catalogo: "/cubrecartes", ficha: "/cubrecartes/ficha",
   elegir: "/como-elegir", nosotros: "/nosotros", contacto: "/contacto"
@@ -800,6 +812,8 @@ class Component extends DCLogic {
       if (p !== this.state.page) this.setState({page:p});
     };
     window.addEventListener("popstate", this._onPop);
+    window.__pcComponent = this;
+    if (window.PC_DATA && window.__pcRefreshData) window.__pcRefreshData();
     this._reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     this._tick = () => {
       const vh = window.innerHeight || 800;
@@ -842,8 +856,11 @@ class Component extends DCLogic {
   go(p){ return (e)=>{ if(e && e.preventDefault) e.preventDefault(); const path = PC_ROUTES[p] || "/"; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({page:p}); window.scrollTo(0,0); }; }
 
   wa(){
+    const settings = (window.PC_DATA && window.PC_DATA.settings) || {};
+    const number = settings.wa_number || "595971813847";
+    const tpl = settings.wa_default_msg || "Hola PROT CARD, necesito un cubrecárter para {vehiculo}.";
     const v = this.state.marca ? `mi ${this.state.marca} ${this.state.modelo||""} ${this.state.anio||""}`.trim() : "mi vehículo";
-    return "https://wa.me/595971813847?text=" + encodeURIComponent(`Hola PROT CARD, necesito un cubrecárter para ${v}.`);
+    return "https://wa.me/" + number + "?text=" + encodeURIComponent(tpl.replace("{vehiculo}", v));
   }
 
   renderVals(){
@@ -883,6 +900,12 @@ class Component extends DCLogic {
       navLink: "padding:10px 14px;color:#141414;text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s ease",
       headerInner: "position:relative;max-width:1360px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;transition:min-height .3s ease;min-height:" + (s.scrolled ? "58px" : "74px"),
       waLink: this.wa(),
+      waDisplay: (() => { const s=(window.PC_DATA&&window.PC_DATA.settings)||{}; const n=s.wa_number||"595971813847"; return "+" + n.replace(/^(\d{3})(\d{3})(\d{3})(\d{3}).*/, "$1 $2 $3 $4").trim(); })(),
+      emailAddr: ((window.PC_DATA&&window.PC_DATA.settings&&window.PC_DATA.settings.email)||"loewenjohny2002@gmail.com"),
+      emailHref: "mailto:" + ((window.PC_DATA&&window.PC_DATA.settings&&window.PC_DATA.settings.email)||"loewenjohny2002@gmail.com"),
+      igUrl: ((window.PC_DATA&&window.PC_DATA.settings&&window.PC_DATA.settings.instagram_url)||"https://www.instagram.com/protcard_"),
+      igHandle: (() => { const u=((window.PC_DATA&&window.PC_DATA.settings&&window.PC_DATA.settings.instagram_url)||"https://www.instagram.com/protcard_"); const m=u.match(/instagram\.com\/([^\/?#]+)/); return m?"@"+m[1]:"@protcard_"; })(),
+      tiktokUrl: ((window.PC_DATA&&window.PC_DATA.settings&&window.PC_DATA.settings.tiktok_url)||"https://www.tiktok.com/@johny.loewen"),
       egg: s.egg,
       eggClick: () => { const n = (this._eggN || 0) + 1; this._eggN = n; if(n >= 5) this.setState({egg: !s.egg}), this._eggN = 0; },
       marcas, modelos, anios: ANIOS,
