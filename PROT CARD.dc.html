@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-9770d33c-fdaa-47de-9012-d4d2f815fba7/styles.css">
+<script src="_ds/industry-9770d33c-fdaa-47de-9012-d4d2f815fba7/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pc-red:#E30613; --pc-red-700:#B4040F; --pc-graf:#373736; --pc-ink:#141414;
+  --pc-paper:#F2F2F3; --pc-line:rgba(20,20,20,.16); --pc-line-dark:rgba(255,255,255,.18);
+  --color-accent:#E30613; --color-accent-600:#B4040F; --color-accent-700:#8E030C;
+  --color-text:#141414; --color-bg:#F2F2F3;
+}
+body{margin:0;background:#F2F2F3;color:#141414;font-family:"Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Barlow Condensed",system-ui,sans-serif;letter-spacing:-.01em}
+a{color:#B4040F;text-underline-offset:3px}
+a:hover{color:#E30613}
+select,input,button{font-family:inherit}
+@keyframes pcRise{from{transform:translateY(26px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes pcFade{from{opacity:0}to{opacity:1}}
+@keyframes pcZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes pcSlide{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes pcWalk{0%{transform:translateX(-70px) scaleX(1)}49%{transform:translateX(96vw) scaleX(1)}50%{transform:translateX(96vw) scaleX(-1)}99%{transform:translateX(-70px) scaleX(-1)}100%{transform:translateX(-70px) scaleX(1)}}
+@keyframes pcClip{from{clip-path:polygon(100% 0,100% 0,100% 100%,100% 100%)}to{clip-path:polygon(28% 0,100% 0,100% 100%,0% 100%)}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;animation-iteration-count:1 !important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F2F2F3">
+
+  <header style="{{ headerStyle }}">
+    <div style="{{ headerInner }}">
+      <a href="#" onClick="{{ goInicio }}" style="display:block;flex:none"><img src="{{ logoSrc }}" alt="PROT CARD" style="height:34px;width:auto;transition:opacity .3s ease"></a>
+      <nav style="{{ navStyle }}">
+        <a href="#" onClick="{{ goInicio }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Inicio</a>
+        <a href="#" onClick="{{ goCat }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Cubrecárteres</a>
+        <a href="#" onClick="{{ goElegir }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Cómo elegir</a>
+        <a href="#" onClick="{{ goNos }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Nosotros</a>
+        <a href="#" onClick="{{ goCont }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Contacto</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px;flex:none">
+        <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#E30613;color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:11px 16px;border-radius:2px" style-hover="background:#B4040F">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ isInicio }}" hint-placeholder-val="{{ true }}">
+  <main>
+
+    <sc-if value="{{ heroA }}" hint-placeholder-val="{{ true }}">
+    <section style="position:relative;background:#141414;color:#F2F2F3;overflow:hidden">
+      <div style="display:flex;flex-wrap:wrap;align-items:stretch;width:100%">
+      <div data-parallax="-90" style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px);will-change:transform">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(26px,4vw,44px);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,242,243,.65);animation:pcRise .5s ease .1s both">
+            <span style="width:34px;height:2px;background:#E30613"></span>Cubrecárteres fabricados por modelo · Colonia Río Verde
+          </div>
+          <h1 style="font-size:clamp(40px,5.4vw,74px);line-height:.98;margin:0;color:#fff;max-width:16ch;animation:pcRise .55s ease .25s both">
+            El camino no siempre avisa.<br>
+            <span style="color:#E30613">Tu motor puede estar preparado.</span>
+          </h1>
+          <div style="height:4px;width:84px;background:#E30613;margin:clamp(20px,2.4vw,30px) 0;animation:pcRise .55s ease .4s both"></div>
+          <p style="margin:0 0 32px;max-width:46ch;font-size:17px;line-height:1.55;color:rgba(242,242,243,.75);animation:pcRise .55s ease .5s both">Cubrecárteres diseñados para proteger la parte inferior de tu vehículo frente a golpes, piedras y caminos exigentes.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;animation:pcRise .55s ease .62s both">
+            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Encontrar mi cubrecárter</button>
+            <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:16px 26px;border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,border-color .2s ease,transform .2s ease" style-hover="background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-2px)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1 1 380px;min-width:0;min-height:clamp(300px,42vw,620px);position:relative;overflow:hidden;animation:pcClip 1.2s cubic-bezier(.08,.82,.17,1) .15s both">
+        <img data-parallax="320" src="assets/img/hero-hilux-underbody.jpg" alt="Frente inferior de una Toyota Hilux con cubrecárter PROT CARD instalado" style="position:absolute;left:0;right:0;top:-34%;height:168%;width:100%;object-fit:cover;will-change:transform">
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,0) 45%)"></div>
+      </div>
+      </div>
+      <div style="position:relative;max-width:1360px;margin:0 auto;padding:22px 24px 0">
+        <div id="pc-finder" style="border-top:1px solid rgba(255,255,255,.18)"></div>
+      </div>
+      <div style="position:relative;max-width:1360px;margin:0 auto;padding:0 24px 0">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-left:1px solid rgba(255,255,255,.18)">
+          <div style="padding:20px 18px;border-right:1px solid rgba(255,255,255,.18)">
+            <label for="pcMarcaA" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.6);margin-bottom:8px">Marca</label>
+            <select id="pcMarcaA" value="{{ marca }}" onChange="{{ onMarca }}" style="width:100%;background:transparent;color:#fff;border:0;border-bottom:1px solid rgba(255,255,255,.35);padding:6px 0;font-family:'Barlow Condensed',sans-serif;font-size:19px;letter-spacing:.03em;outline:none">
+              <option value="">Seleccionar</option>
+              <sc-for list="{{ marcas }}" as="m" hint-placeholder-count="4"><option value="{{ m }}">{{ m }}</option></sc-for>
+            </select>
+          </div>
+          <div style="padding:20px 18px;border-right:1px solid rgba(255,255,255,.18)">
+            <label for="pcModeloA" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.6);margin-bottom:8px">Modelo</label>
+            <select id="pcModeloA" value="{{ modelo }}" onChange="{{ onModelo }}" disabled="{{ noMarca }}" style="width:100%;background:transparent;color:#fff;border:0;border-bottom:1px solid rgba(255,255,255,.35);padding:6px 0;font-family:'Barlow Condensed',sans-serif;font-size:19px;letter-spacing:.03em;outline:none">
+              <option value="">Seleccionar</option>
+              <sc-for list="{{ modelos }}" as="m" hint-placeholder-count="2"><option value="{{ m }}">{{ m }}</option></sc-for>
+            </select>
+          </div>
+          <div style="padding:20px 18px;border-right:1px solid rgba(255,255,255,.18)">
+            <label for="pcAnioA" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.6);margin-bottom:8px">Año</label>
+            <select id="pcAnioA" value="{{ anio }}" onChange="{{ onAnio }}" disabled="{{ noModelo }}" style="width:100%;background:transparent;color:#fff;border:0;border-bottom:1px solid rgba(255,255,255,.35);padding:6px 0;font-family:'Barlow Condensed',sans-serif;font-size:19px;letter-spacing:.03em;outline:none">
+              <option value="">Seleccionar</option>
+              <sc-for list="{{ anios }}" as="a" hint-placeholder-count="3"><option value="{{ a }}">{{ a }}</option></sc-for>
+            </select>
+          </div>
+          <button onClick="{{ buscar }}" style="border:0;background:#E30613;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:20px 18px" style-hover="background:#B4040F">Buscar protector compatible</button>
+        </div>
+      </div>
+      <div style="position:relative;max-width:1360px;margin:0 auto;padding:0 24px 56px">
+        <sc-if value="{{ resMatch }}" hint-placeholder-val="{{ false }}">
+          <div style="border-left:2px solid #E30613;background:rgba(227,6,19,.1);padding:18px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:16px">
+            <div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff">Tenemos protección compatible con tu vehículo.</div>
+              <div style="font-size:14px;color:rgba(242,242,243,.7);margin-top:2px">{{ vehLabel }} · versión y año a confirmar con PROT CARD</div>
+            </div>
+            <button onClick="{{ goCat }}" style="background:#fff;color:#141414;border:0;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#e0e0e0">Ver cubrecárteres</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ resNoMatch }}" hint-placeholder-val="{{ false }}">
+          <div style="border-left:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.07);padding:18px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:16px">
+            <div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff">Todavía no encontramos una coincidencia exacta.</div>
+              <div style="font-size:14px;color:rgba(242,242,243,.7);margin-top:2px">Fabricamos a medida. Podemos verificarlo con vos.</div>
+            </div>
+            <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Consultá con PROT CARD</a>
+        </div>
+        </sc-if>
+      </div>
+    </section>
+    </sc-if>
+
+
+    <div style="position:relative">
+
+    <section style="max-width:1360px;margin:0 auto;padding:88px 24px 40px">
+      <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:18ch;margin:0">Lo que no ves también necesita protección.</h2>
+      <p data-reveal="1" style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:16px 0 0">El cubrecárter cubre el frente inferior del vehículo: la zona del cárter y los componentes que quedan expuestos al camino. Marcamos únicamente lo que la pieza cubre.</p>
+      <div style="display:inline-grid;grid-template-columns:1fr 1fr;position:relative;margin:28px 0 0;border:1px solid #141414;background:#F2F2F3;padding:3px">
+        <span style="{{ togIndicator }}"></span>
+        <button onClick="{{ setSin }}" style="{{ togSin }}">Sin protector</button>
+        <button onClick="{{ setCon }}" style="{{ togCon }}">Con PROT CARD</button>
+      </div>
+      <figure data-reveal="1" style="position:relative;margin:24px 0 0;border:1px solid rgba(20,20,20,.16);background:#141414">
+        <div style="overflow:hidden;height:clamp(280px,46vw,620px);position:relative">
+          <div data-parallax="300" style="position:relative;width:100%;height:170%;margin-top:-35%;will-change:transform">
+            <img src="assets/img/underbody-chevy.jpg" alt="Vista inferior del frente de una Chevrolet S10 con el cubrecárter rojo montado" style="width:100%;height:100%;object-fit:cover;display:block">
+            <sc-if value="{{ conProt }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;left:29%;top:58%;width:45%;height:12.5%;border:2px solid #E30613;background:rgba(227,6,19,.28);clip-path:polygon(0 0,100% 0,89% 100%,9% 100%)"></div>
+              <div style="position:absolute;left:29%;top:58%;transform:translateY(-100%);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:#E30613;padding:4px 9px">Zona cubierta por la pieza</div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="position:absolute;left:14px;bottom:14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75)">Chevrolet S10 · frente inferior</div>
+      </figure>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));border-top:1px solid rgba(20,20,20,.16);margin-top:28px">
+        <div style="padding:20px 20px 20px 0;border-right:1px solid rgba(20,20,20,.16)">
+          <h4 style="font-size:20px;margin:0 0 4px">Cárter</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">La pieza que da nombre al producto: el punto más bajo y más golpeado.</p>
+        </div>
+        <div style="padding:20px;border-right:1px solid rgba(20,20,20,.16)">
+          <h4 style="font-size:20px;margin:0 0 4px">Frente inferior del motor</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Lo que recibe piedras y ripio antes que cualquier otra cosa.</p>
+        </div>
+        <div style="padding:20px">
+          <h4 style="font-size:20px;margin:0 0 4px">Alcance real</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Cada pieza cubre lo que su geometría permite. Confirmamos el alcance por modelo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1360px;margin:0 auto;padding:56px 24px 88px">
+      <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:16ch;margin:0 0 40px">Una barrera entre el camino y tu vehículo.</h2>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;align-items:stretch;border-top:1px solid rgba(20,20,20,.16)">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:28px 28px 28px 0;border-right:1px solid rgba(20,20,20,.16)">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Fabricación propia</div>
+            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cortamos, plegamos y pintamos las piezas en nuestro taller de Colonia Río Verde.</p>
+          </div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Ajuste por modelo</div>
+            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cada protector se fabrica siguiendo la geometría del vehículo al que va destinado.</p>
+          </div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Terminación</div>
+            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Pieza pintada, con el nombre del modelo calado en la chapa.</p>
+          </div>
+        </div>
+        <div style="grid-column:span 2;min-width:0;background:#fff;border-right:1px solid rgba(20,20,20,.16);display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden">
+          <img data-parallax="120" src="assets/img/p-gr-rojo.jpg" alt="Cubrecárter PROT CARD calado con la inscripción GR" style="width:100%;height:100%;max-height:460px;min-height:320px;object-fit:cover">
+        </div>
+        <div style="padding:28px 0 28px 28px;display:flex;flex-direction:column;gap:20px;justify-content:center">
+          <div style="border-left:2px solid #141414;padding-left:14px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Material</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#9a9a9a">Pendiente de confirmar</div>
+          </div>
+          <div style="border-left:2px solid #141414;padding-left:14px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Espesor</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#9a9a9a">Pendiente de confirmar</div>
+          </div>
+          <div style="border-left:2px solid #141414;padding-left:14px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Puntos de montaje</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#9a9a9a">Pendiente de confirmar</div>
+          </div>
+          <p style="margin:0;font-size:13px;color:#9a9a9a">Estos campos quedan preparados en el diseño. Se completan cuando PROT CARD confirme los datos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#141414;color:#F2F2F3">
+      <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div style="min-height:420px;position:relative;overflow:hidden">
+          <img data-parallax="300" src="assets/img/z71-elevador.jpg" alt="Camioneta en el elevador con el cubrecárter montado" style="position:absolute;left:0;right:0;top:-26%;width:100%;height:152%;object-fit:cover;will-change:transform">
+        </div>
+        <div data-reveal="1" style="padding:72px 40px;display:flex;flex-direction:column;justify-content:center">
+          <div style="display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(242,242,243,.6)">
+            <span style="width:28px;height:2px;background:#E30613"></span>Preparado para el camino
+          </div>
+          <h2 style="font-size:clamp(28px,3.6vw,48px);line-height:1.04;margin:16px 0 0;color:#fff;max-width:18ch">Asfalto, ripio, obra o camino rural. Protegé lo que va debajo.</h2>
+          <p style="margin:16px 0 28px;font-size:17px;color:rgba(242,242,243,.75);max-width:48ch">La mayoría de los golpes en la parte inferior no se ven hasta que ya pasaron. El protector trabaja antes.</p>
+          <div>
+            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:15px 26px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Encontrar mi protector</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1360px;margin:0 auto;padding:88px 24px 0">
+      <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between;margin-bottom:28px">
+        <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:14ch">Nuestras marcas</h2>
+        <p style="margin:0;color:#4a4a4a;font-size:16px;max-width:38ch">Fabricamos protectores para estas marcas. Entrá y mirá las piezas de cada una.</p>
+      </div>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border:1px solid rgba(20,20,20,.16);background:rgba(20,20,20,.16);gap:1px">
+        <sc-for list="{{ marcaCards }}" as="m" hint-placeholder-count="4">
+          <button onClick="{{ m.go }}" title="{{ m.nombre }}" style="position:relative;overflow:hidden;cursor:pointer;background:#fff;border:0;padding:40px 28px;display:flex;align-items:center;justify-content:center;min-height:150px;transition:background .3s ease" style-hover="background:#F2F2F3">
+            <span style="position:absolute;left:0;right:0;bottom:0;height:3px;background:#E30613;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scaleX(1)"></span>
+            <img src="{{ m.logo }}" alt="{{ m.alt }}" style="width:100%;max-width:160px;height:auto;object-fit:contain;transition:transform .35s cubic-bezier(.2,.6,.2,1)" style-hover="transform:scale(1.06)">
+          </button>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1360px;margin:0 auto;padding:72px 24px 88px">
+      <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between;margin-bottom:32px">
+        <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:16ch">Protección hecha para tu vehículo</h2>
+        <button onClick="{{ goCat }}" style="border:1px solid rgba(20,20,20,.3);background:transparent;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Ver todos los cubrecárteres</button>
+      </div>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
+        <sc-for list="{{ destacados }}" as="p" hint-placeholder-count="4">
+          <article style="position:relative;background:#141414;color:#F2F2F3;display:flex;flex-direction:column;border:1px solid rgba(20,20,20,.9);transition:transform .35s cubic-bezier(.2,.6,.2,1),box-shadow .35s ease;overflow:hidden" style-hover="transform:translateY(-6px);box-shadow:0 22px 48px rgba(20,20,20,.28)">
+            <div style="position:relative;overflow:hidden;background:#0E0E0E">
+              <img src="{{ p.img }}" alt="{{ p.alt }}" style="width:100%;height:230px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.6,.2,1),opacity .3s ease;opacity:.94" style-hover="transform:scale(1.07);opacity:1">
+              <div style="position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(180deg,rgba(20,20,20,0),rgba(20,20,20,.9))"></div>
+              <span style="position:absolute;left:0;top:0;background:#E30613;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px">{{ p.marca }}</span>
+            </div>
+            <div style="padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1">
+              <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
+              <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
+              <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio a definir</span>
+                <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:13px;color:#9a9a9a">Piezas reales fotografiadas en el taller. Nombres comerciales, precios y años se cargan cuando PROT CARD los defina.</p>
+    </section>
+
+    <section style="border-top:1px solid rgba(20,20,20,.16);border-bottom:1px solid rgba(20,20,20,.16);background:#E9E9EA">
+      <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div style="padding:36px 28px 36px 24px;border-right:1px solid rgba(20,20,20,.16);transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
+          <h4 style="margin:0 0 6px;font-size:21px">Protección física</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Una barrera adicional frente a impactos inferiores.</p>
+        </div>
+        <div style="padding:36px 28px;border-right:1px solid rgba(20,20,20,.16);transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
+          <h4 style="margin:0 0 6px;font-size:21px">Ajuste</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Soluciones orientadas a modelos específicos.</p>
+        </div>
+        <div style="padding:36px 28px;border-right:1px solid rgba(20,20,20,.16);transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
+          <h4 style="margin:0 0 6px;font-size:21px">Consulta especializada</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Te ayudamos a verificar compatibilidad.</p>
+        </div>
+        <div style="padding:36px 24px 36px 28px;transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
+          <h4 style="margin:0 0 6px;font-size:21px">Compra clara</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Sabé qué protector corresponde antes de comprar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1360px;margin:0 auto;padding:88px 24px">
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start">
+        <div>
+          <h2 style="font-size:clamp(28px,3.6vw,46px);line-height:1.04;margin:0;max-width:18ch">¿No sabés cuál corresponde a tu vehículo?</h2>
+          <p style="margin:14px 0 26px;font-size:17px;color:#4a4a4a;max-width:46ch">Escribinos con la marca, el modelo y el año. Te decimos qué pieza corresponde y si hay que fabricarla.</p>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#E30613;color:#fff;text-decoration:none;padding:16px 26px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section style="position:relative;overflow:hidden;background:#141414;color:#F2F2F3">
+      <div role="img" aria-label="Camionetas con cubrecárter PROT CARD instalado" style="position:absolute;inset:0;background-image:url('assets/img/toyotas-pair.jpg');background-size:cover;background-position:center 40%;background-attachment:fixed;background-repeat:no-repeat"></div>
+      <div style="position:absolute;inset:0;background:rgba(12,12,12,.72)"></div>
+      <div data-reveal="1" style="position:relative;max-width:1360px;margin:0 auto;padding:clamp(90px,12vw,160px) 24px;text-align:center">
+        <h2 style="font-size:clamp(30px,4.4vw,60px);line-height:1.02;margin:0 auto;max-width:20ch;color:#fff">Tu vehículo ya hace el trabajo pesado. Protegé lo que va debajo.</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px">
+          <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Encontrar mi cubrecárter</button>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:16px 28px;border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,border-color .2s ease,transform .2s ease" style-hover="background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)">Hablar con PROT CARD</a>
+        </div>
+      </div>
+    </section>
+
+    <div style="position:sticky;bottom:20px;height:0;z-index:80;display:flex;justify-content:flex-end;pointer-events:none">
+      <a href="{{ waLink }}" target="_blank" rel="noopener" style="pointer-events:auto;transform:translateY(-100%);margin-right:20px;display:inline-flex;align-items:center;gap:10px;background:#E30613;color:#fff;text-decoration:none;padding:13px 18px;border-radius:2px;box-shadow:0 10px 28px rgba(20,20,20,.34);font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;transition:background .2s ease,box-shadow .2s ease" style-hover="background:#B4040F;box-shadow:0 14px 34px rgba(20,20,20,.42)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
+        Consultá compatibilidad
+      </a>
+    </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCat }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <div style="background:#141414;color:#fff">
+      <div style="max-width:1360px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)">Tu vehículo</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px">{{ vehLabelCat }}</span>
+        </div>
+        <button onClick="{{ cambiarVehiculo }}" style="border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;padding:9px 16px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(255,255,255,.12)">Cambiar vehículo</button>
+      </div>
+    </div>
+    <div style="max-width:1360px;margin:0 auto;padding:48px 24px 88px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">/cubrecartes</div>
+      <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:8px 0 0">Cubrecárteres</h1>
+      <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:12px 0 0">Piezas fabricadas por PROT CARD. Filtrá por vehículo para ver solo lo que corresponde.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:1px solid rgba(20,20,20,.16);margin:32px 0 0;background:#fff">
+        <div style="padding:16px 18px;border-right:1px solid rgba(20,20,20,.16)">
+          <label for="pcFMarca" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:6px">Marca</label>
+          <select id="pcFMarca" value="{{ marca }}" onChange="{{ onMarca }}" style="width:100%;background:transparent;border:0;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
+            <option value="">Todas</option>
+            <sc-for list="{{ marcas }}" as="m" hint-placeholder-count="4"><option value="{{ m }}">{{ m }}</option></sc-for>
+          </select>
+        </div>
+        <div style="padding:16px 18px;border-right:1px solid rgba(20,20,20,.16)">
+          <label for="pcFModelo" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:6px">Modelo</label>
+          <select id="pcFModelo" value="{{ modelo }}" onChange="{{ onModelo }}" disabled="{{ noMarca }}" style="width:100%;background:transparent;border:0;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
+            <option value="">Todos</option>
+            <sc-for list="{{ modelos }}" as="m" hint-placeholder-count="2"><option value="{{ m }}">{{ m }}</option></sc-for>
+          </select>
+        </div>
+        <div style="padding:16px 18px;border-right:1px solid rgba(20,20,20,.16)">
+          <label for="pcFAnio" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:6px">Año</label>
+          <select id="pcFAnio" value="{{ anio }}" onChange="{{ onAnio }}" disabled="{{ noModelo }}" style="width:100%;background:transparent;border:0;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
+            <option value="">Todos</option>
+            <sc-for list="{{ anios }}" as="a" hint-placeholder-count="3"><option value="{{ a }}">{{ a }}</option></sc-for>
+          </select>
+        </div>
+        <div style="padding:16px 18px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:8px">Tipo de vehículo</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ tipos }}" as="t" hint-placeholder-count="3">
+              <button onClick="{{ t.set }}" style="{{ t.style }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin:22px 0 14px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#6b6b6b">{{ conteo }}</div>
+        <button onClick="{{ limpiar }}" style="border:0;background:transparent;color:#B4040F;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:4px 0">Limpiar filtros</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
+        <sc-for list="{{ filtrados }}" as="p" hint-placeholder-count="8">
+          <article style="position:relative;background:#141414;color:#F2F2F3;display:flex;flex-direction:column;border:1px solid rgba(20,20,20,.9);transition:transform .35s cubic-bezier(.2,.6,.2,1),box-shadow .35s ease;overflow:hidden" style-hover="transform:translateY(-6px);box-shadow:0 22px 48px rgba(20,20,20,.28)">
+            <div style="position:relative;overflow:hidden;background:#0E0E0E">
+              <img src="{{ p.img }}" alt="{{ p.alt }}" style="width:100%;height:230px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.6,.2,1),opacity .3s ease;opacity:.94" style-hover="transform:scale(1.07);opacity:1">
+              <div style="position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(180deg,rgba(20,20,20,0),rgba(20,20,20,.9))"></div>
+              <span style="position:absolute;left:0;top:0;background:#E30613;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px">{{ p.marca }}</span>
+              <span style="position:absolute;right:10px;top:10px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);padding:2px 8px">{{ p.tipo }}</span>
+            </div>
+            <div style="padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1">
+              <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
+              <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
+              <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio a definir</span>
+                <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ sinResultados }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid rgba(20,20,20,.16);border-top:0;background:#fff;padding:48px 28px;text-align:center">
+          <h3 style="margin:0 0 8px;font-size:26px">No encontramos una coincidencia exacta.</h3>
+          <p style="margin:0 0 22px;color:#4a4a4a">Podemos verificarlo manualmente y, si hace falta, fabricar la pieza.</p>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-block;background:#E30613;color:#fff;text-decoration:none;padding:14px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Consultar a PROT CARD</a>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isFicha }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width:1360px;margin:0 auto;padding:40px 24px 88px">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:22px">
+      <a href="#" onClick="{{ goCat }}" style="color:#6b6b6b;text-decoration:none">Cubrecárteres</a> / Toyota Hilux
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:start">
+      <div>
+        <div style="background:#fff;border:1px solid rgba(20,20,20,.16)">
+          <img src="{{ fichaImg }}" alt="Cubrecárter PROT CARD para Toyota Hilux" style="width:100%;height:clamp(280px,38vw,480px);object-fit:contain;display:block;background:#fff">
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">
+          <sc-for list="{{ galeria }}" as="g" hint-placeholder-count="4">
+            <button onClick="{{ g.set }}" style="{{ g.style }}"><img src="{{ g.img }}" alt="{{ g.alt }}" style="width:100%;height:78px;object-fit:cover;display:block"></button>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Toyota</div>
+        <h1 style="font-size:clamp(30px,3.8vw,50px);line-height:1.03;margin:6px 0 0">Cubrecárter Toyota Hilux</h1>
+        <p style="margin:12px 0 0;color:#4a4a4a;font-size:17px;max-width:48ch">Protector inferior fabricado por PROT CARD para el frente inferior de la Hilux, con el nombre del modelo calado en la chapa.</p>
+
+        <div style="margin:26px 0 0;border:1px solid rgba(20,20,20,.16);background:#fff">
+          <div style="padding:18px 20px;border-bottom:1px solid rgba(20,20,20,.14)">
+            <h3 style="margin:0;font-size:22px">¿Es compatible con mi vehículo?</h3>
+          </div>
+          <div style="padding:18px 20px">
+            <sc-if value="{{ fichaCompat }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:10px;color:#B4040F;font-family:'Barlow Condensed',sans-serif;font-size:20px">
+                <span style="display:inline-flex;width:22px;height:22px;background:#E30613;color:#fff;align-items:center;justify-content:center">✓</span>
+                Compatible con {{ vehLabel }}
+              </div>
+              <div style="font-size:14px;color:#6b6b6b;margin-top:6px">Año y versión exactos se confirman con PROT CARD.</div>
+            </sc-if>
+            <sc-if value="{{ fichaSinVeh }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#141414">Seleccioná tu vehículo para verificar</span>
+                <button onClick="{{ goInicio }}" style="border:1px solid rgba(20,20,20,.3);background:transparent;padding:9px 16px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Elegir vehículo</button>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 0">
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:15px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Consultar disponibilidad</a>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:15px 24px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Consultar por WhatsApp</a>
+        </div>
+        <div style="margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:17px;color:#9a9a9a">Precio a definir · disponibilidad por WhatsApp</div>
+
+        <div style="margin:34px 0 0;border-top:2px solid #141414">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#373736;padding:14px 0">Ficha técnica</div>
+          <sc-for list="{{ ficha }}" as="f" hint-placeholder-count="8">
+            <div style="display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-top:1px solid rgba(20,20,20,.14);font-size:15px">
+              <span style="color:#4a4a4a">{{ f.k }}</span>
+              <span style="{{ f.style }}">{{ f.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <section style="margin-top:72px;border-top:1px solid rgba(20,20,20,.16);padding-top:48px">
+      <h2 style="font-size:clamp(26px,3.4vw,44px);margin:0;max-width:20ch">Diseñado para encajar donde corresponde.</h2>
+      <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:12px 0 28px">Espacio preparado para el esquema de montaje, las fotos de la instalación y las instrucciones en PDF cuando PROT CARD las provea.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(20,20,20,.16);border:1px solid rgba(20,20,20,.16)">
+        <div style="background:#fff"><img src="assets/img/hero-hilux-underbody.jpg" alt="Hilux con el protector instalado, vista frontal inferior" style="width:100%;height:230px;object-fit:cover"></div>
+        <div style="background:#fff"><img src="assets/img/underbody-fortuner.jpg" alt="Vista inferior del frente de un vehículo" style="width:100%;height:230px;object-fit:cover"></div>
+        <div style="background:#F2F2F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px;text-align:center">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a">Espacio reservado</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;color:#6b6b6b">Esquema de montaje</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isElegir }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width:1360px;margin:0 auto;padding:56px 24px 88px">
+    <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:0;max-width:16ch">Elegí por vehículo, no a prueba y error.</h1>
+    <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:14px 0 0">Tres decisiones y sabés qué pieza corresponde.</p>
+    <figure style="margin:32px 0 0;border:1px solid rgba(20,20,20,.16);overflow:hidden;height:clamp(200px,28vw,340px);position:relative">
+      <img data-parallax="150" src="assets/img/underbody-z71.jpg" alt="Vista inferior de una camioneta con el protector montado" style="position:absolute;left:0;right:0;top:-16%;width:100%;height:132%;object-fit:cover;display:block;will-change:transform">
+      <figcaption style="position:absolute;left:0;bottom:0;background:#141414;color:#F2F2F3;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px">Pieza montada bajo el frente del vehículo</figcaption>
+    </figure>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:44px;border-top:2px solid #141414">
+      <div style="padding:28px 28px 28px 0;border-right:1px solid rgba(20,20,20,.16)">
+        <h3 style="margin:0 0 10px;font-size:26px">¿Qué manejás?</h3>
+        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Marca, modelo y año. Con eso alcanza para empezar.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <select value="{{ marca }}" onChange="{{ onMarca }}" aria-label="Marca" style="width:100%;background:#fff;border:1px solid rgba(20,20,20,.2);padding:11px 12px;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
+            <option value="">Marca</option>
+            <sc-for list="{{ marcas }}" as="m" hint-placeholder-count="4"><option value="{{ m }}">{{ m }}</option></sc-for>
+          </select>
+          <select value="{{ modelo }}" onChange="{{ onModelo }}" disabled="{{ noMarca }}" aria-label="Modelo" style="width:100%;background:#fff;border:1px solid rgba(20,20,20,.2);padding:11px 12px;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
+            <option value="">Modelo</option>
+            <sc-for list="{{ modelos }}" as="m" hint-placeholder-count="2"><option value="{{ m }}">{{ m }}</option></sc-for>
+          </select>
+          <select value="{{ anio }}" onChange="{{ onAnio }}" disabled="{{ noModelo }}" aria-label="Año" style="width:100%;background:#fff;border:1px solid rgba(20,20,20,.2);padding:11px 12px;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
+            <option value="">Año</option>
+            <sc-for list="{{ anios }}" as="a" hint-placeholder-count="3"><option value="{{ a }}">{{ a }}</option></sc-for>
+          </select>
+        </div>
+      </div>
+      <div style="padding:28px;border-right:1px solid rgba(20,20,20,.16);display:flex;flex-direction:column">
+        <h3 style="margin:0 0 10px;font-size:26px">Confirmamos compatibilidad</h3>
+        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">El resultado aparece acá mismo, sin buscar entre códigos.</p>
+        <div style="flex:1;border:1px solid rgba(20,20,20,.16);background:#fff;padding:20px;display:flex;flex-direction:column;justify-content:center;min-height:170px">
+          <sc-if value="{{ elegirVacio }}" hint-placeholder-val="{{ true }}">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#9a9a9a">Esperando tu vehículo…</div>
+          </sc-if>
+          <sc-if value="{{ elegirOk }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:10px"><span style="display:inline-flex;width:22px;height:22px;background:#E30613;color:#fff;align-items:center;justify-content:center">✓</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Tenemos protección compatible</span></div>
+            <div style="font-size:15px;color:#4a4a4a;margin-top:8px">{{ vehLabel }}</div>
+            <div style="font-size:13px;color:#9a9a9a;margin-top:4px">Año y versión se confirman al consultar.</div>
+          </sc-if>
+          <sc-if value="{{ elegirNo }}" hint-placeholder-val="{{ false }}">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Todavía no hay coincidencia exacta</div>
+            <div style="font-size:15px;color:#4a4a4a;margin-top:8px">Fabricamos a medida. Escribinos y lo vemos con vos.</div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="padding:28px 0 28px 28px;display:flex;flex-direction:column">
+        <h3 style="margin:0 0 10px;font-size:26px">Elegís tu protector</h3>
+        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Ves solo las piezas que corresponden a ese vehículo.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:auto">
+          <button onClick="{{ goCat }}" style="background:#E30613;color:#fff;border:0;padding:15px 22px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Ver cubrecárteres</button>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="text-align:center;padding:15px 22px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isNos }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="max-width:1360px;margin:0 auto;padding:56px 24px 40px">
+      <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:0;max-width:16ch">Especialistas en proteger lo que va debajo.</h1>
+      <p style="max-width:60ch;color:#4a4a4a;font-size:18px;margin:16px 0 0">PROT CARD fabrica protectores inferiores para camionetas y vehículos de uso diario. Trabajamos desde Colonia Río Verde, Paraguay, y enviamos a todo el país.</p>
+    </section>
+    <section style="max-width:1360px;margin:0 auto;padding:0 24px 40px">
+      <figure style="margin:0;border:1px solid rgba(20,20,20,.16)">
+        <img src="assets/img/produccion-piso.jpg" alt="Piezas terminadas en el piso del taller de PROT CARD" style="width:100%;height:clamp(240px,40vw,520px);object-fit:cover;display:block">
+        <figcaption style="padding:10px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#6b6b6b;background:#fff">Producción del día · taller PROT CARD</figcaption>
+      </figure>
+    </section>
+    <section style="max-width:1360px;margin:0 auto;padding:0 24px 88px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:2px solid #141414">
+        <div style="padding:26px 26px 26px 0;border-right:1px solid rgba(20,20,20,.16)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Dónde estamos</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">Colonia Río Verde, Paraguay</div>
+        </div>
+        <div style="padding:26px;border-right:1px solid rgba(20,20,20,.16)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Qué hacemos</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">Cubrecárteres para camionetas</div>
+        </div>
+        <div style="padding:26px;border-right:1px solid rgba(20,20,20,.16)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Envíos</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">A todo el país</div>
+        </div>
+        <div style="padding:26px 0 26px 26px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Instalación</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px;color:#9a9a9a">A confirmar</div>
+        </div>
+      </div>
+      <p style="margin:18px 0 0;font-size:13px;color:#9a9a9a">Los datos de origen, experiencia y fabricación se completan cuando PROT CARD los provea.</p>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCont }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="background:#141414;color:#F2F2F3;position:relative;overflow:hidden">
+      <div style="max-width:1360px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,64px);align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,242,243,.6)">
+            <span style="width:34px;height:2px;background:#E30613"></span>Contacto directo con el taller
+          </div>
+          <h1 style="font-size:clamp(34px,4.6vw,62px);line-height:.98;margin:18px 0 0;color:#fff;max-width:13ch">Contanos qué vehículo tenés.</h1>
+          <p style="color:rgba(242,242,243,.7);font-size:17px;margin:16px 0 0;max-width:42ch">Marca, modelo y año. Con eso te decimos qué pieza corresponde o si hay que fabricarla.</p>
+        </div>
+        <div style="position:relative;overflow:hidden;min-height:clamp(220px,26vw,320px);border:1px solid rgba(255,255,255,.2)">
+          <img data-parallax="160" src="assets/img/produccion-piso.jpg" alt="Piezas terminadas en el taller de PROT CARD" style="position:absolute;left:0;right:0;top:-22%;width:100%;height:144%;object-fit:cover;will-change:transform">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,.2),rgba(20,20,20,.85))"></div>
+          <div style="position:absolute;left:24px;right:24px;bottom:24px">
+            <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#E30613;color:#fff;text-decoration:none;padding:15px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.14)">
+        <div style="max-width:1360px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:24px 26px 24px 0;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease" style-hover="background:rgba(255,255,255,.05)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">WhatsApp</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">+595 971 813 847</div>
+          </a>
+          <a href="mailto:loewenjohny2002@gmail.com" style="padding:24px 26px;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease;word-break:break-all" style-hover="background:rgba(255,255,255,.05)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">Correo</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">loewenjohny2002@gmail.com</div>
+          </a>
+          <a href="https://www.instagram.com/protcard_" target="_blank" rel="noopener" style="padding:24px 26px;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease" style-hover="background:rgba(255,255,255,.05)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">Instagram</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">@protcard_</div>
+          </a>
+          <div style="padding:24px 0 24px 26px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">Ubicación</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">Colonia Río Verde, Paraguay</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1360px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,4vw,56px);align-items:start">
+        <div>
+          <h2 style="font-size:clamp(28px,3.6vw,46px);margin:0;line-height:1.02;max-width:12ch">Preguntas frecuentes</h2>
+          <p style="color:#4a4a4a;font-size:16px;margin:14px 0 0;max-width:34ch">Si tu duda no está acá, escribinos: contestamos por WhatsApp.</p>
+        </div>
+        <div style="grid-column:span 2;min-width:0">
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
+            <div style="{{ f.rowStyle }}">
+              <button onClick="{{ f.toggle }}" style="width:100%;display:flex;justify-content:space-between;gap:18px;align-items:center;text-align:left;background:transparent;border:0;padding:18px 18px 18px 20px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:21px;color:#141414;transition:color .2s ease" style-hover="color:#B4040F">
+                <span>{{ f.q }}</span>
+                <span style="{{ f.iconStyle }}">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </span>
+              </button>
+              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;padding:0 20px 20px;color:#4a4a4a;font-size:16px;max-width:60ch;animation:pcRise .3s ease both">{{ f.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <footer id="pc-footer" style="background:#141414;color:#F2F2F3">
+    <div style="max-width:1360px;margin:0 auto;padding:64px 24px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px">
+      <div>
+        <img src="assets/logo-oscuro.png" alt="PROT CARD" style="height:38px;width:auto">
+        <p style="margin:18px 0 0;color:rgba(242,242,243,.7);font-size:15px;max-width:28ch">Protección inferior para tu vehículo.</p>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5);margin-bottom:12px">Productos</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
+          <a href="#" onClick="{{ goCat }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Cubrecárteres</a>
+          <a href="#" onClick="{{ goElegir }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Compatibilidad</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5);margin-bottom:12px">Ayuda</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
+          <a href="#" onClick="{{ goElegir }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Cómo elegir</a>
+          <a href="#" onClick="{{ goCont }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Preguntas frecuentes</a>
+          <a href="#" onClick="{{ goCont }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Envíos</a>
+          <a href="#" onClick="{{ goCont }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Contacto</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5);margin-bottom:12px">PROT CARD</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
+          <a href="#" onClick="{{ goNos }}" style="color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">Nosotros</a>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>WhatsApp
+          </a>
+          <a href="https://www.instagram.com/protcard_" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg>Instagram
+          </a>
+          <a href="https://www.tiktok.com/@johny.loewen" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#F2F2F3;text-decoration:none;transition:color .2s ease" style-hover="color:#E30613">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2.2h-3.1v13.1a2.6 2.6 0 1 1-2.1-2.6v-3.2a5.8 5.8 0 1 0 5.2 5.8V8.9a7.7 7.7 0 0 0 4.4 1.4V7.2a4.6 4.6 0 0 1-4.4-5Z"></path></svg>TikTok
+          </a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.14);position:relative;overflow:hidden">
+      <div style="max-width:1360px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px;color:rgba(242,242,243,.55)">
+        <span onClick="{{ eggClick }}" style="cursor:default;user-select:none">© PROT CARD</span>
+        <sc-if value="{{ egg }}" hint-placeholder-val="{{ false }}">
+          <img src="assets/starman.gif" alt="" style="position:absolute;left:0;bottom:6px;height:56px;width:auto;pointer-events:none;animation:pcWalk 14s linear infinite">
+        </sc-if>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 24px">
+          <a href="#" style="color:rgba(242,242,243,.55);text-decoration:none;transition:color .2s ease" style-hover="color:#F2F2F3">Términos y condiciones</a>
+          <a href="#" style="color:rgba(242,242,243,.55);text-decoration:none;transition:color .2s ease" style-hover="color:#F2F2F3">Política de privacidad</a>
+          <span>Desarrollado por <a href="https://neura.com.py" target="_blank" rel="noopener" style="color:#F2F2F3;text-decoration:none;border-bottom:1px solid rgba(242,242,243,.35);transition:color .2s ease,border-color .2s ease" style-hover="color:#E30613;border-color:#E30613">Neura</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const CAT = {
+  Toyota: ["Hilux", "Fortuner"],
+  Ford: ["Ranger"],
+  Chevrolet: ["S10"],
+  Nissan: ["Frontier"],
+  "Otra marca": ["No está en la lista"]
+};
+const ANIOS = ["2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"];
+const PROD = [
+  {img:"assets/img/p-gr-rojo.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux GR", compat:"Hilux · años a confirmar", alt:"Cubrecárter rojo con inscripción GR para Toyota Hilux"},
+  {img:"assets/img/p-trd.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux TRD", compat:"Hilux · años a confirmar", alt:"Cubrecárter rojo con inscripción TRD"},
+  {img:"assets/img/p-hilux-negro.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux", compat:"Hilux · años a confirmar", alt:"Cubrecárter negro con inscripción HILUX"},
+  {img:"assets/img/p-fortuner.jpg", marca:"Toyota", modelo:"Fortuner", tipo:"SUV", nombre:"Cubrecárter Fortuner", compat:"Fortuner · años a confirmar", alt:"Cubrecárter rojo con inscripción FORTUNER"},
+  {img:"assets/img/p-ranger.jpg", marca:"Ford", modelo:"Ranger", tipo:"Pickup", nombre:"Cubrecárter Ranger", compat:"Ranger · años a confirmar", alt:"Cubrecárter negro con inscripción RANGER"},
+  {img:"assets/img/p-ford-rojo.jpg", marca:"Ford", modelo:"Ranger", tipo:"Pickup", nombre:"Cubrecárter Ford", compat:"Ranger · años a confirmar", alt:"Cubrecárter rojo con inscripción FORD"},
+  {img:"assets/img/p-s10-gris.jpg", marca:"Chevrolet", modelo:"S10", tipo:"Pickup", nombre:"Cubrecárter S10", compat:"S10 · años a confirmar", alt:"Cubrecárter gris con inscripción S10"},
+  {img:"assets/img/p-s10-highcountry.jpg", marca:"Chevrolet", modelo:"S10", tipo:"Pickup", nombre:"Cubrecárter S10 High Country", compat:"S10 High Country · años a confirmar", alt:"Cubrecárter negro con inscripción High Country"},
+  {img:"assets/img/p-nissan.jpg", marca:"Nissan", modelo:"Frontier", tipo:"Pickup", nombre:"Cubrecárter Nissan", compat:"Frontier · años a confirmar", alt:"Cubrecárter negro con inscripción NISSAN"},
+  {img:"assets/img/p-travo.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux Travo", compat:"Hilux · años a confirmar", alt:"Cubrecárter negro con inscripción TRAVO"}
+];
+const FAQS = [
+  {q:"¿Cómo sé qué cubrecárter corresponde a mi vehículo?", a:"Elegí marca, modelo y año en el buscador. Si tu vehículo no aparece, escribinos y lo verificamos."},
+  {q:"¿Importa el año del vehículo?", a:"Sí. Un mismo modelo puede cambiar de geometría entre años, por eso confirmamos el año antes de fabricar o entregar."},
+  {q:"¿Un mismo modelo puede usar protectores diferentes?", a:"Puede ocurrir según la versión. Lo confirmamos con vos por WhatsApp antes de la compra."},
+  {q:"¿Realizan instalación?", a:"Dato a confirmar por PROT CARD."},
+  {q:"¿Hacen envíos?", a:"Sí, enviamos a todo el país."},
+  {q:"¿Cómo consulto disponibilidad?", a:"Por WhatsApp al +595 971 813 847."},
+  {q:"¿Qué información debo enviarles por WhatsApp?", a:"Marca, modelo y año del vehículo. Si sabés la versión o el motor, mejor."}
+];
+const FICHA_KEYS = ["Material","Espesor","Peso","Terminación","Puntos de montaje","Compatibilidad","Código de producto","Observaciones"];
+
+class Component extends DCLogic {
+  state = { page:"inicio", hero:"a", marca:"", modelo:"", anio:"", res:"", conProt:true, tipo:"Todos", fichaImg:"assets/img/p-gr-rojo.jpg", faqOpen:-1, egg:false, scrolled:false };
+
+  componentDidMount(){
+    this._reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this._tick = () => {
+      const vh = window.innerHeight || 800;
+      const sc = (window.scrollY || (document.scrollingElement ? document.scrollingElement.scrollTop : 0)) > 90;
+      if(sc !== this.state.scrolled) this.setState({scrolled: sc});
+      if(this._reduce) return;
+      document.querySelectorAll("[data-fixedbg]").forEach(el => {
+        const host = el.parentElement;
+        if(!host) return;
+        const t = host.getBoundingClientRect().top;
+        el.style.height = vh + "px";
+        el.style.transform = "translateY(" + (-t).toFixed(1) + "px)";
+      });
+      document.querySelectorAll("[data-parallax]").forEach(el => {
+        const r = el.getBoundingClientRect();
+        if(r.bottom < -200 || r.top > vh + 200) return;
+        const speed = parseFloat(el.getAttribute("data-parallax")) || 0;
+        const prog = (vh - r.top) / (vh + r.height);
+        el.style.transform = "translate3d(0," + ((prog - 0.5) * speed).toFixed(2) + "px,0)";
+      });
+      document.querySelectorAll("[data-reveal]:not([data-pc-shown])").forEach((el, i) => {
+        if(el.getBoundingClientRect().top < vh * 0.92){
+          el.setAttribute("data-pc-shown", "1");
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        } else if(!el.hasAttribute("data-pc-hidden")){
+          el.setAttribute("data-pc-hidden", "1");
+          el.style.opacity = "0";
+          el.style.transform = "translateY(22px)";
+          el.style.transition = "opacity .65s cubic-bezier(.2,.6,.2,1) " + (i % 3) * 60 + "ms, transform .65s cubic-bezier(.2,.6,.2,1) " + (i % 3) * 60 + "ms";
+        }
+      });
+    };
+    const raf = () => { this._tick(); this._raf = window.requestAnimationFrame(raf); };
+    raf();
+    this._loop = window.setInterval(this._tick, 60);
+  }
+  componentWillUnmount(){ window.cancelAnimationFrame(this._raf); window.clearInterval(this._loop); }
+
+  go(p){ return (e)=>{ if(e && e.preventDefault) e.preventDefault(); this.setState({page:p}); window.scrollTo(0,0); }; }
+
+  wa(){
+    const v = this.state.marca ? `mi ${this.state.marca} ${this.state.modelo||""} ${this.state.anio||""}`.trim() : "mi vehículo";
+    return "https://wa.me/595971813847?text=" + encodeURIComponent(`Hola PROT CARD, necesito un cubrecárter para ${v}.`);
+  }
+
+  renderVals(){
+    const s = this.state;
+    const marcas = Object.keys(CAT);
+    const modelos = s.marca ? CAT[s.marca] : [];
+    const hayPieza = s.marca && s.marca !== "Otra marca";
+    const vehLabel = [s.marca, s.modelo, s.anio].filter(Boolean).join(" · ");
+    const tipos = ["Todos","Pickup","SUV"].map(t => ({
+      label: t,
+      set: () => this.setState({tipo:t}),
+      style: `border:1px solid ${s.tipo===t?"#E30613":"rgba(20,20,20,.25)"};background:${s.tipo===t?"#E30613":"transparent"};color:${s.tipo===t?"#fff":"#141414"};padding:7px 13px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px`
+    }));
+    const filtrados = PROD.filter(p =>
+      (!s.marca || s.marca === "Otra marca" || p.marca === s.marca) &&
+      (!s.modelo || s.modelo === "No está en la lista" || p.modelo === s.modelo) &&
+      (s.tipo === "Todos" || p.tipo === s.tipo)
+    );
+    const galeria = [
+      {img:"assets/img/p-gr-rojo.jpg", alt:"Cubrecárter GR pintado en rojo"},
+      {img:"assets/img/p-hilux-negro.jpg", alt:"Cubrecárter Hilux pintado en negro"},
+      {img:"assets/img/p-gr-negro.jpg", alt:"Cubrecárter GR pintado en negro"},
+      {img:"assets/img/p-hilux-gris.jpg", alt:"Cubrecárter Hilux en gris"}
+    ].map(g => ({...g, set: () => this.setState({fichaImg:g.img}),
+      style:`padding:0;border:1px solid ${s.fichaImg===g.img?"#E30613":"rgba(20,20,20,.18)"};background:#fff;cursor:pointer;display:block`}));
+
+    return {
+      isInicio: s.page==="inicio", isCat: s.page==="catalogo", isFicha: s.page==="ficha",
+      isElegir: s.page==="elegir", isNos: s.page==="nosotros", isCont: s.page==="contacto",
+      goInicio:this.go("inicio"), goCat:this.go("catalogo"), goFicha:this.go("ficha"),
+      goElegir:this.go("elegir"), goNos:this.go("nosotros"), goCont:this.go("contacto"),
+      heroA: true,
+      headerStyle: "position:sticky;top:0;z-index:60;transition:background .35s ease,border-color .35s ease;" + (s.scrolled ? "background:transparent;border-bottom:1px solid transparent" : "background:#F2F2F3;border-bottom:1px solid rgba(20,20,20,.16)"),
+      headerStyle: "position:sticky;top:0;z-index:60;background:#F2F2F3;border-bottom:1px solid rgba(20,20,20,.16)",
+      logoSrc: "assets/logo-claro.png",
+      navStyle: "display:flex;flex:1;flex-wrap:wrap;gap:4px 2px;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.06em;text-transform:uppercase",
+      navLink: "padding:10px 14px;color:#141414;text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s ease",
+      headerInner: "position:relative;max-width:1360px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;transition:min-height .3s ease;min-height:" + (s.scrolled ? "58px" : "74px"),
+      waLink: this.wa(),
+      egg: s.egg,
+      eggClick: () => { const n = (this._eggN || 0) + 1; this._eggN = n; if(n >= 5) this.setState({egg: !s.egg}), this._eggN = 0; },
+      marcas, modelos, anios: ANIOS,
+      marca: s.marca, modelo: s.modelo, anio: s.anio,
+      noMarca: !s.marca, noModelo: !s.modelo,
+      onMarca: (e) => this.setState({marca:e.target.value, modelo:"", anio:"", res:""}),
+      onModelo: (e) => this.setState({modelo:e.target.value, anio:"", res:""}),
+      onAnio: (e) => this.setState({anio:e.target.value, res:""}),
+      buscar: () => this.setState({res: hayPieza && s.modelo ? "match" : "nomatch"}),
+      resMatch: s.res==="match", resNoMatch: s.res==="nomatch",
+      vehLabel: vehLabel || "Tu vehículo",
+      vehLabelCat: vehLabel || "Sin seleccionar",
+      cambiarVehiculo: () => { this.setState({marca:"", modelo:"", anio:"", res:"", page:"inicio"}); window.scrollTo(0,0); },
+      scrollFinder: () => { const el = document.getElementById("pc-finder"); if(el) el.scrollIntoView ? window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 90) : null; },
+      conProt: s.conProt, setSin: () => this.setState({conProt:false}), setCon: () => this.setState({conProt:true}),
+      togIndicator: "position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:#E30613;transition:transform .34s cubic-bezier(.2,.75,.2,1);transform:translateX(" + (s.conProt ? "100%" : "0%") + ")",
+      togSin: "position:relative;z-index:1;border:0;background:transparent;padding:13px 26px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.11em;text-transform:uppercase;cursor:pointer;transition:color .28s ease;color:" + (s.conProt ? "#141414" : "#fff"),
+      togCon: "position:relative;z-index:1;border:0;background:transparent;padding:13px 26px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.11em;text-transform:uppercase;cursor:pointer;transition:color .28s ease;color:" + (s.conProt ? "#fff" : "#141414"),
+      destacados: PROD.slice(0,4),
+      marcaCards: ["Toyota","Ford","Chevrolet","Nissan"].map(mk => {
+        const items = PROD.filter(p => p.marca === mk);
+        const logos = {Toyota:"assets/marcas/n2-toyota.png", Ford:"assets/marcas/n-ford.png", Chevrolet:"assets/marcas/n-chevrolet.png", Nissan:"assets/marcas/n-nissan.png"};
+        const fotos = {Toyota:"assets/img/p-gr-rojo.jpg", Ford:"assets/img/p-ranger.jpg", Chevrolet:"assets/img/p-s10-highcountry.jpg", Nissan:"assets/img/p-nissan.jpg"};
+        return {
+          logo: logos[mk] || "",
+          foto: fotos[mk],
+          fotoAlt: "Cubrecárter PROT CARD para " + mk,
+          alt: "Logo " + mk,
+          nombre: mk,
+          modelos: [...new Set(items.map(p => p.modelo))].join(" · "),
+          conteo: items.length === 1 ? "1 pieza" : items.length + " piezas",
+          go: () => { this.setState({marca: mk, modelo:"", anio:"", tipo:"Todos", page:"catalogo"}); window.scrollTo(0,0); }
+        };
+      }),
+      tipos, filtrados,
+      conteo: filtrados.length === 1 ? "1 pieza" : filtrados.length + " piezas",
+      sinResultados: filtrados.length === 0,
+      limpiar: () => this.setState({marca:"", modelo:"", anio:"", tipo:"Todos", res:""}),
+      fichaImg: s.fichaImg, galeria,
+      fichaCompat: hayPieza && !!s.modelo, fichaSinVeh: !(hayPieza && !!s.modelo),
+      ficha: FICHA_KEYS.map(k => ({
+        k,
+        v: k === "Compatibilidad" ? "Toyota Hilux · años a confirmar" : (k === "Observaciones" ? "Nombre del modelo calado en la chapa" : "A confirmar"),
+        style: (k === "Compatibilidad" || k === "Observaciones") ? "color:#141414;text-align:right" : "color:#9a9a9a;text-align:right"
+      })),
+      elegirVacio: !s.modelo, elegirOk: !!s.modelo && hayPieza, elegirNo: !!s.modelo && !hayPieza,
+      faqs: FAQS.map((f,i) => ({
+        ...f,
+        open: s.faqOpen===i,
+        rowStyle: "border-bottom:1px solid rgba(20,20,20,.16);border-left:3px solid " + (s.faqOpen===i ? "#E30613" : "transparent") + ";background:" + (s.faqOpen===i ? "#E9E9EA" : "transparent") + ";transition:border-color .25s ease,background .25s ease",
+        iconStyle: "flex:none;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:1px solid " + (s.faqOpen===i ? "#E30613" : "rgba(20,20,20,.3)") + ";color:" + (s.faqOpen===i ? "#fff" : "#141414") + ";background:" + (s.faqOpen===i ? "#E30613" : "transparent") + ";transform:rotate(" + (s.faqOpen===i ? "135deg" : "0deg") + ");transition:transform .3s cubic-bezier(.2,.7,.2,1),background .25s ease,border-color .25s ease,color .25s ease",
+        toggle: () => this.setState({faqOpen: s.faqOpen===i ? -1 : i})
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
