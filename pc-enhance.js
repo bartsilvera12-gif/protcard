@@ -192,6 +192,36 @@
     });
   }
 
+  /* ---------- Hide fab over hero and footer --------------------------- */
+  function bindFabVisibility() {
+    const fab = document.querySelector('.pc-fab-wrap');
+    if (!fab || fab.__pcFabBound) return;
+    fab.__pcFabBound = true;
+    const check = () => {
+      const vh = window.innerHeight || 800;
+      const hero = document.querySelector('.pc-hero-bg');
+      const footer = document.getElementById('pc-footer');
+      let hide = false;
+      // Hide while the hero still fills most of the viewport
+      if (hero) {
+        const r = hero.getBoundingClientRect();
+        if (r.bottom > vh * 0.55) hide = true;
+      }
+      // Hide when the footer starts entering the viewport
+      if (footer) {
+        const r = footer.getBoundingClientRect();
+        if (r.top < vh - 40) hide = true;
+      }
+      fab.classList.toggle('is-hidden', hide);
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    check();
+    // Re-run once DC finishes hydrating (hero/footer nodes may not exist yet)
+    window.setTimeout(check, 300);
+    window.setTimeout(check, 1200);
+  }
+
   /* ---------- Hero slideshow: crossfade every ~6s --------------------- */
   function bindHeroSlides() {
     document.querySelectorAll('.pc-hero-slides').forEach((wrap) => {
@@ -231,6 +261,8 @@
     watchReveal();
     bindCardGlow();
     bindCoverflow();
+    bindHeroSlides();
+    bindFabVisibility();
     syncFaq();
     // Re-scan periodically to catch DC re-renders (sc-if unmounts, page changes)
     new MutationObserver(() => {
@@ -238,6 +270,8 @@
       watchReveal();
       bindCardGlow();
       bindCoverflow();
+      bindHeroSlides();
+      bindFabVisibility();
       syncFaq();
     }).observe(document.documentElement, { childList: true, subtree: true });
   }
