@@ -44,7 +44,7 @@ select,input,button{font-family:inherit}
       <nav style="{{ navStyle }}">
         <a href="#" onClick="{{ goInicio }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Inicio</a>
         <a href="#" onClick="{{ goCat }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Cubrecárteres</a>
-        <a href="#" onClick="{{ goElegir }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Cómo elegir</a>
+        <a href="#" onClick="{{ goElegir }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Cómo comprar</a>
         <a href="#" onClick="{{ goNos }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Nosotros</a>
         <a href="#" onClick="{{ goCont }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Contacto</a>
       </nav>
@@ -66,19 +66,19 @@ select,input,button{font-family:inherit}
       <div data-parallax="-90" style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px);will-change:transform">
         <div>
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(26px,4vw,44px);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,242,243,.65);animation:pcRise .5s ease .1s both">
-            <span style="width:34px;height:2px;background:#E30613"></span>Cubrecárteres fabricados por modelo · Colonia Río Verde
+            <span style="width:34px;height:2px;background:#E30613"></span>Fabricación mayorista de cubrecárteres · Colonia Río Verde
           </div>
           <h1 style="font-size:clamp(40px,5.4vw,74px);line-height:.98;margin:0;color:#fff;max-width:16ch;animation:pcRise .55s ease .25s both">
-            El camino no siempre avisa.<br>
-            <span style="color:#E30613">Tu motor puede estar preparado.</span>
+            Cubrecárteres para revender.<br>
+            <span style="color:#E30613">Fabricamos, vos abastecés.</span>
           </h1>
           <div style="height:4px;width:84px;background:#E30613;margin:clamp(20px,2.4vw,30px) 0;animation:pcRise .55s ease .4s both"></div>
-          <p style="margin:0 0 32px;max-width:46ch;font-size:17px;line-height:1.55;color:rgba(242,242,243,.75);animation:pcRise .55s ease .5s both">Cubrecárteres diseñados para proteger la parte inferior de tu vehículo frente a golpes, piedras y caminos exigentes.</p>
+          <p style="margin:0 0 32px;max-width:46ch;font-size:17px;line-height:1.55;color:rgba(242,242,243,.75);animation:pcRise .55s ease .5s both">Cubrecárteres fabricados por modelo, con precios mayoristas para talleres, casas de repuestos y revendedores en todo el país.</p>
           <div style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;animation:pcRise .55s ease .62s both">
-            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Encontrar mi cubrecárter</button>
+            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Ver catálogo mayorista</button>
             <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:16px 26px;border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,border-color .2s ease,transform .2s ease" style-hover="background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-2px)">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
-              Consultar por WhatsApp
+              Pedir lista mayorista
             </a>
           </div>
         </div>
@@ -114,26 +114,26 @@ select,input,button{font-family:inherit}
               <sc-for list="{{ anios }}" as="a" hint-placeholder-count="3"><option value="{{ a }}">{{ a }}</option></sc-for>
             </select>
           </div>
-          <button onClick="{{ buscar }}" style="border:0;background:#E30613;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:20px 18px" style-hover="background:#B4040F">Buscar protector compatible</button>
+          <button onClick="{{ buscar }}" style="border:0;background:#E30613;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:20px 18px" style-hover="background:#B4040F">Consultar stock mayorista</button>
         </div>
       </div>
       <div style="position:relative;max-width:1360px;margin:0 auto;padding:0 24px 56px">
         <sc-if value="{{ resMatch }}" hint-placeholder-val="{{ false }}">
           <div style="border-left:2px solid #E30613;background:rgba(227,6,19,.1);padding:18px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:16px">
             <div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff">Tenemos protección compatible con tu vehículo.</div>
-              <div style="font-size:14px;color:rgba(242,242,243,.7);margin-top:2px">{{ vehLabel }} · versión y año a confirmar con PROT CARD</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff">Pieza disponible para pedidos mayoristas.</div>
+              <div style="font-size:14px;color:rgba(242,242,243,.7);margin-top:2px">{{ vehLabel }} · cantidades y precio se cierran con PROT CARD</div>
             </div>
-            <button onClick="{{ goCat }}" style="background:#fff;color:#141414;border:0;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#e0e0e0">Ver cubrecárteres</button>
+            <button onClick="{{ goCat }}" style="background:#fff;color:#141414;border:0;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#e0e0e0">Ver catálogo mayorista</button>
           </div>
         </sc-if>
         <sc-if value="{{ resNoMatch }}" hint-placeholder-val="{{ false }}">
           <div style="border-left:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.07);padding:18px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:16px">
             <div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff">Todavía no encontramos una coincidencia exacta.</div>
-              <div style="font-size:14px;color:rgba(242,242,243,.7);margin-top:2px">Fabricamos a medida. Podemos verificarlo con vos.</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff">Todavía no producimos esa pieza.</div>
+              <div style="font-size:14px;color:rgba(242,242,243,.7);margin-top:2px">Fabricamos a pedido a partir de cierto volumen. Coordinemos.</div>
             </div>
-            <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Consultá con PROT CARD</a>
+            <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Coordinar fabricación</a>
         </div>
         </sc-if>
       </div>
@@ -144,8 +144,8 @@ select,input,button{font-family:inherit}
     <div style="position:relative">
 
     <section style="max-width:1360px;margin:0 auto;padding:88px 24px 40px">
-      <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:18ch;margin:0">Lo que no ves también necesita protección.</h2>
-      <p data-reveal="1" style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:16px 0 0">El cubrecárter cubre el frente inferior del vehículo: la zona del cárter y los componentes que quedan expuestos al camino. Marcamos únicamente lo que la pieza cubre.</p>
+      <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:18ch;margin:0">Una línea completa para stockear en tu negocio.</h2>
+      <p data-reveal="1" style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:16px 0 0">Cubrecárteres para las camionetas más vendidas del mercado paraguayo. Producimos por lote y coordinamos entregas semanales al canal mayorista.</p>
       <div style="display:inline-grid;grid-template-columns:1fr 1fr;position:relative;margin:28px 0 0;border:1px solid #141414;background:#F2F2F3;padding:3px">
         <span style="{{ togIndicator }}"></span>
         <button onClick="{{ setSin }}" style="{{ togSin }}">Sin protector</button>
@@ -166,34 +166,34 @@ select,input,button{font-family:inherit}
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));border-top:1px solid rgba(20,20,20,.16);margin-top:28px">
         <div style="padding:20px 20px 20px 0;border-right:1px solid rgba(20,20,20,.16)">
           <h4 style="font-size:20px;margin:0 0 4px">Cárter</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">La pieza que da nombre al producto: el punto más bajo y más golpeado.</p>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Producto core del catálogo mayorista. Rotación probada en todo el país.</p>
         </div>
         <div style="padding:20px;border-right:1px solid rgba(20,20,20,.16)">
           <h4 style="font-size:20px;margin:0 0 4px">Frente inferior del motor</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Lo que recibe piedras y ripio antes que cualquier otra cosa.</p>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">El argumento de venta más fuerte que le podés dar a tu cliente.</p>
         </div>
         <div style="padding:20px">
-          <h4 style="font-size:20px;margin:0 0 4px">Alcance real</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Cada pieza cubre lo que su geometría permite. Confirmamos el alcance por modelo.</p>
+          <h4 style="font-size:20px;margin:0 0 4px">Producto real</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Cada pieza calzada por modelo. Nada de universales que no encajan.</p>
         </div>
       </div>
     </section>
 
     <section style="max-width:1360px;margin:0 auto;padding:56px 24px 88px">
-      <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:16ch;margin:0 0 40px">Una barrera entre el camino y tu vehículo.</h2>
+      <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:16ch;margin:0 0 40px">Producción propia. Precio de fábrica.</h2>
       <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;align-items:stretch;border-top:1px solid rgba(20,20,20,.16)">
         <div style="display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:28px 28px 28px 0;border-right:1px solid rgba(20,20,20,.16)">
           <div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Fabricación propia</div>
-            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cortamos, plegamos y pintamos las piezas en nuestro taller de Colonia Río Verde.</p>
+            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cortamos, plegamos y pintamos en nuestro taller. Sin intermediarios: precio mayorista de fábrica.</p>
           </div>
           <div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Ajuste por modelo</div>
-            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cada protector se fabrica siguiendo la geometría del vehículo al que va destinado.</p>
+            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cada pieza calzada por modelo. Le entregás a tu cliente algo que sí encaja.</p>
           </div>
           <div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Terminación</div>
-            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Pieza pintada, con el nombre del modelo calado en la chapa.</p>
+            <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Pieza pintada, con el modelo calado. Producto terminado listo para percha.</p>
           </div>
         </div>
         <div style="grid-column:span 2;min-width:0;background:#fff;border-right:1px solid rgba(20,20,20,.16);display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden">
@@ -226,10 +226,10 @@ select,input,button{font-family:inherit}
           <div style="display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(242,242,243,.6)">
             <span style="width:28px;height:2px;background:#E30613"></span>Preparado para el camino
           </div>
-          <h2 style="font-size:clamp(28px,3.6vw,48px);line-height:1.04;margin:16px 0 0;color:#fff;max-width:18ch">Asfalto, ripio, obra o camino rural. Protegé lo que va debajo.</h2>
-          <p style="margin:16px 0 28px;font-size:17px;color:rgba(242,242,243,.75);max-width:48ch">La mayoría de los golpes en la parte inferior no se ven hasta que ya pasaron. El protector trabaja antes.</p>
+          <h2 style="font-size:clamp(28px,3.6vw,48px);line-height:1.04;margin:16px 0 0;color:#fff;max-width:18ch">Un producto que se vende solo en zona de ripio, obra y ruta.</h2>
+          <p style="margin:16px 0 28px;font-size:17px;color:rgba(242,242,243,.75);max-width:48ch">La demanda existe en cada taller y casa de repuestos del interior. Nosotros producimos, vos capturás el margen.</p>
           <div>
-            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:15px 26px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Encontrar mi protector</button>
+            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:15px 26px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Ver lista mayorista</button>
           </div>
         </div>
       </div>
@@ -237,8 +237,8 @@ select,input,button{font-family:inherit}
 
     <section style="max-width:1360px;margin:0 auto;padding:88px 24px 0">
       <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between;margin-bottom:28px">
-        <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:14ch">Nuestras marcas</h2>
-        <p style="margin:0;color:#4a4a4a;font-size:16px;max-width:38ch">Fabricamos protectores para estas marcas. Entrá y mirá las piezas de cada una.</p>
+        <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:14ch">Marcas en catálogo</h2>
+        <p style="margin:0;color:#4a4a4a;font-size:16px;max-width:38ch">Cuatro marcas en producción. Todo el stock disponible para pedidos mayoristas.</p>
       </div>
       <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border:1px solid rgba(20,20,20,.16);background:rgba(20,20,20,.16);gap:1px">
         <sc-for list="{{ marcaCards }}" as="m" hint-placeholder-count="4">
@@ -252,8 +252,8 @@ select,input,button{font-family:inherit}
 
     <section style="max-width:1360px;margin:0 auto;padding:72px 24px 88px">
       <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between;margin-bottom:32px">
-        <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:16ch">Protección hecha para tu vehículo</h2>
-        <button onClick="{{ goCat }}" style="border:1px solid rgba(20,20,20,.3);background:transparent;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Ver todos los cubrecárteres</button>
+        <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:16ch">Piezas más pedidas por revendedores</h2>
+        <button onClick="{{ goCat }}" style="border:1px solid rgba(20,20,20,.3);background:transparent;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Ver catálogo completo</button>
       </div>
       <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
         <sc-for list="{{ destacados }}" as="p" hint-placeholder-count="4">
@@ -267,7 +267,7 @@ select,input,button{font-family:inherit}
               <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio a definir</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio mayorista bajo consulta</span>
                 <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
                 </button>
@@ -276,26 +276,26 @@ select,input,button{font-family:inherit}
           </article>
         </sc-for>
       </div>
-      <p style="margin:16px 0 0;font-size:13px;color:#9a9a9a">Piezas reales fotografiadas en el taller. Nombres comerciales, precios y años se cargan cuando PROT CARD los defina.</p>
+      <p style="margin:16px 0 0;font-size:13px;color:#9a9a9a">Piezas reales fotografiadas en el taller. Códigos, precios mayoristas y años se comparten al abrir cuenta.</p>
     </section>
 
     <section style="border-top:1px solid rgba(20,20,20,.16);border-bottom:1px solid rgba(20,20,20,.16);background:#E9E9EA">
       <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
         <div style="padding:36px 28px 36px 24px;border-right:1px solid rgba(20,20,20,.16);transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
-          <h4 style="margin:0 0 6px;font-size:21px">Protección física</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Una barrera adicional frente a impactos inferiores.</p>
+          <h4 style="margin:0 0 6px;font-size:21px">Producto probado</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Fabricado, instalado y andando en toda la ruta paraguaya.</p>
         </div>
         <div style="padding:36px 28px;border-right:1px solid rgba(20,20,20,.16);transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
-          <h4 style="margin:0 0 6px;font-size:21px">Ajuste</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Soluciones orientadas a modelos específicos.</p>
+          <h4 style="margin:0 0 6px;font-size:21px">Producción por modelo</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Sin sobrantes ni piezas universales que no calzan.</p>
         </div>
         <div style="padding:36px 28px;border-right:1px solid rgba(20,20,20,.16);transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
-          <h4 style="margin:0 0 6px;font-size:21px">Consulta especializada</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Te ayudamos a verificar compatibilidad.</p>
+          <h4 style="margin:0 0 6px;font-size:21px">Soporte al revendedor</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Resolvemos dudas técnicas, incluso las de tu cliente final.</p>
         </div>
         <div style="padding:36px 24px 36px 28px;transition:background .25s ease,box-shadow .25s ease" style-hover="background:#F2F2F3;box-shadow:inset 0 -3px 0 #E30613">
-          <h4 style="margin:0 0 6px;font-size:21px">Compra clara</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Sabé qué protector corresponde antes de comprar.</p>
+          <h4 style="margin:0 0 6px;font-size:21px">Reposición ágil</h4>
+          <p style="margin:0;font-size:15px;color:#4a4a4a">Coordinamos lotes semanales según tu movimiento.</p>
         </div>
       </div>
     </section>
@@ -303,11 +303,11 @@ select,input,button{font-family:inherit}
     <section style="max-width:1360px;margin:0 auto;padding:88px 24px">
       <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start">
         <div>
-          <h2 style="font-size:clamp(28px,3.6vw,46px);line-height:1.04;margin:0;max-width:18ch">¿No sabés cuál corresponde a tu vehículo?</h2>
-          <p style="margin:14px 0 26px;font-size:17px;color:#4a4a4a;max-width:46ch">Escribinos con la marca, el modelo y el año. Te decimos qué pieza corresponde y si hay que fabricarla.</p>
+          <h2 style="font-size:clamp(28px,3.6vw,46px);line-height:1.04;margin:0;max-width:18ch">¿Querés cotizar por volumen?</h2>
+          <p style="margin:14px 0 26px;font-size:17px;color:#4a4a4a;max-width:46ch">Escribinos con las marcas y cantidades que necesitás. Te armamos la lista con precios mayoristas y tiempos de entrega.</p>
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#E30613;color:#fff;text-decoration:none;padding:16px 26px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
-            Consultar por WhatsApp
+            Pedir lista mayorista
           </a>
         </div>
       </div>
@@ -317,10 +317,10 @@ select,input,button{font-family:inherit}
       <div role="img" aria-label="Camionetas con cubrecárter PROT CARD instalado" style="position:absolute;inset:0;background-image:url('assets/img/toyotas-pair.jpg');background-size:cover;background-position:center 40%;background-attachment:fixed;background-repeat:no-repeat"></div>
       <div style="position:absolute;inset:0;background:rgba(12,12,12,.72)"></div>
       <div data-reveal="1" style="position:relative;max-width:1360px;margin:0 auto;padding:clamp(90px,12vw,160px) 24px;text-align:center">
-        <h2 style="font-size:clamp(30px,4.4vw,60px);line-height:1.02;margin:0 auto;max-width:20ch;color:#fff">Tu vehículo ya hace el trabajo pesado. Protegé lo que va debajo.</h2>
+        <h2 style="font-size:clamp(30px,4.4vw,60px);line-height:1.02;margin:0 auto;max-width:20ch;color:#fff">Cada camioneta que se vende hoy es un cubrecárter que vas a vender mañana.</h2>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px">
-          <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Encontrar mi cubrecárter</button>
-          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:16px 28px;border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,border-color .2s ease,transform .2s ease" style-hover="background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)">Hablar con PROT CARD</a>
+          <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Ver catálogo mayorista</button>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:16px 28px;border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,border-color .2s ease,transform .2s ease" style-hover="background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)">Abrir cuenta mayorista</a>
         </div>
       </div>
     </section>
@@ -328,7 +328,7 @@ select,input,button{font-family:inherit}
     <div style="position:sticky;bottom:20px;height:0;z-index:80;display:flex;justify-content:flex-end;pointer-events:none">
       <a href="{{ waLink }}" target="_blank" rel="noopener" style="pointer-events:auto;transform:translateY(-100%);margin-right:20px;display:inline-flex;align-items:center;gap:10px;background:#E30613;color:#fff;text-decoration:none;padding:13px 18px;border-radius:2px;box-shadow:0 10px 28px rgba(20,20,20,.34);font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;transition:background .2s ease,box-shadow .2s ease" style-hover="background:#B4040F;box-shadow:0 14px 34px rgba(20,20,20,.42)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
-        Consultá compatibilidad
+        Pedir precios mayoristas
       </a>
     </div>
     </div>
@@ -340,7 +340,7 @@ select,input,button{font-family:inherit}
     <div style="background:#141414;color:#fff">
       <div style="max-width:1360px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
         <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)">Tu vehículo</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)">Vehículo objetivo</span>
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px">{{ vehLabelCat }}</span>
         </div>
         <button onClick="{{ cambiarVehiculo }}" style="border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;padding:9px 16px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(255,255,255,.12)">Cambiar vehículo</button>
@@ -349,7 +349,7 @@ select,input,button{font-family:inherit}
     <div style="max-width:1360px;margin:0 auto;padding:48px 24px 88px">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">/cubrecartes</div>
       <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:8px 0 0">Cubrecárteres</h1>
-      <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:12px 0 0">Piezas fabricadas por PROT CARD. Filtrá por vehículo para ver solo lo que corresponde.</p>
+      <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:12px 0 0">Catálogo mayorista de PROT CARD. Filtrá por vehículo para armar tu pedido.</p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:1px solid rgba(20,20,20,.16);margin:32px 0 0;background:#fff">
         <div style="padding:16px 18px;border-right:1px solid rgba(20,20,20,.16)">
@@ -401,7 +401,7 @@ select,input,button{font-family:inherit}
               <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio a definir</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio mayorista bajo consulta</span>
                 <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
                 </button>
@@ -413,9 +413,9 @@ select,input,button{font-family:inherit}
 
       <sc-if value="{{ sinResultados }}" hint-placeholder-val="{{ false }}">
         <div style="border:1px solid rgba(20,20,20,.16);border-top:0;background:#fff;padding:48px 28px;text-align:center">
-          <h3 style="margin:0 0 8px;font-size:26px">No encontramos una coincidencia exacta.</h3>
-          <p style="margin:0 0 22px;color:#4a4a4a">Podemos verificarlo manualmente y, si hace falta, fabricar la pieza.</p>
-          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-block;background:#E30613;color:#fff;text-decoration:none;padding:14px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Consultar a PROT CARD</a>
+          <h3 style="margin:0 0 8px;font-size:26px">No tenemos esa pieza en catálogo todavía.</h3>
+          <p style="margin:0 0 22px;color:#4a4a4a">Fabricamos a pedido a partir de cierto volumen. Coordinemos con vos.</p>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-block;background:#E30613;color:#fff;text-decoration:none;padding:14px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Coordinar fabricación</a>
         </div>
       </sc-if>
     </div>
@@ -441,11 +441,11 @@ select,input,button{font-family:inherit}
       <div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Toyota</div>
         <h1 style="font-size:clamp(30px,3.8vw,50px);line-height:1.03;margin:6px 0 0">Cubrecárter Toyota Hilux</h1>
-        <p style="margin:12px 0 0;color:#4a4a4a;font-size:17px;max-width:48ch">Protector inferior fabricado por PROT CARD para el frente inferior de la Hilux, con el nombre del modelo calado en la chapa.</p>
+        <p style="margin:12px 0 0;color:#4a4a4a;font-size:17px;max-width:48ch">Cubrecárter Toyota Hilux fabricado por PROT CARD. Disponible en la línea mayorista, con pintura y calado del modelo listos para percha.</p>
 
         <div style="margin:26px 0 0;border:1px solid rgba(20,20,20,.16);background:#fff">
           <div style="padding:18px 20px;border-bottom:1px solid rgba(20,20,20,.14)">
-            <h3 style="margin:0;font-size:22px">¿Es compatible con mi vehículo?</h3>
+            <h3 style="margin:0;font-size:22px">¿Necesitás cotizar esta pieza?</h3>
           </div>
           <div style="padding:18px 20px">
             <sc-if value="{{ fichaCompat }}" hint-placeholder-val="{{ false }}">
@@ -453,11 +453,11 @@ select,input,button{font-family:inherit}
                 <span style="display:inline-flex;width:22px;height:22px;background:#E30613;color:#fff;align-items:center;justify-content:center">✓</span>
                 Compatible con {{ vehLabel }}
               </div>
-              <div style="font-size:14px;color:#6b6b6b;margin-top:6px">Año y versión exactos se confirman con PROT CARD.</div>
+              <div style="font-size:14px;color:#6b6b6b;margin-top:6px">Precio unitario mayorista según cantidad. Se confirma con PROT CARD.</div>
             </sc-if>
             <sc-if value="{{ fichaSinVeh }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#141414">Seleccioná tu vehículo para verificar</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#141414">Elegí un vehículo del catálogo</span>
                 <button onClick="{{ goInicio }}" style="border:1px solid rgba(20,20,20,.3);background:transparent;padding:9px 16px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Elegir vehículo</button>
               </div>
             </sc-if>
@@ -465,10 +465,10 @@ select,input,button{font-family:inherit}
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 0">
-          <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:15px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Consultar disponibilidad</a>
-          <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:15px 24px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Consultar por WhatsApp</a>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:15px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Pedir precio mayorista</a>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:15px 24px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Pedir lista mayorista</a>
         </div>
-        <div style="margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:17px;color:#9a9a9a">Precio a definir · disponibilidad por WhatsApp</div>
+        <div style="margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:17px;color:#9a9a9a">Precio mayorista bajo consulta · pedidos por WhatsApp</div>
 
         <div style="margin:34px 0 0;border-top:2px solid #141414">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#373736;padding:14px 0">Ficha técnica</div>
@@ -483,8 +483,8 @@ select,input,button{font-family:inherit}
     </div>
 
     <section style="margin-top:72px;border-top:1px solid rgba(20,20,20,.16);padding-top:48px">
-      <h2 style="font-size:clamp(26px,3.4vw,44px);margin:0;max-width:20ch">Diseñado para encajar donde corresponde.</h2>
-      <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:12px 0 28px">Espacio preparado para el esquema de montaje, las fotos de la instalación y las instrucciones en PDF cuando PROT CARD las provea.</p>
+      <h2 style="font-size:clamp(26px,3.4vw,44px);margin:0;max-width:20ch">Un producto que le llega terminado a tu cliente.</h2>
+      <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:12px 0 28px">Espacio para esquemas de montaje, fotos de instalación y hoja técnica que el revendedor puede compartir con su cliente final.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(20,20,20,.16);border:1px solid rgba(20,20,20,.16)">
         <div style="background:#fff"><img src="assets/img/hero-hilux-underbody.jpg" alt="Hilux con el protector instalado, vista frontal inferior" style="width:100%;height:230px;object-fit:cover"></div>
         <div style="background:#fff"><img src="assets/img/underbody-fortuner.jpg" alt="Vista inferior del frente de un vehículo" style="width:100%;height:230px;object-fit:cover"></div>
@@ -499,16 +499,16 @@ select,input,button{font-family:inherit}
 
   <sc-if value="{{ isElegir }}" hint-placeholder-val="{{ false }}">
   <main style="max-width:1360px;margin:0 auto;padding:56px 24px 88px">
-    <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:0;max-width:16ch">Elegí por vehículo, no a prueba y error.</h1>
-    <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:14px 0 0">Tres decisiones y sabés qué pieza corresponde.</p>
+    <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:0;max-width:16ch">Comprar mayorista en tres pasos.</h1>
+    <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:14px 0 0">Filtrás por vehículo, nos decís cantidades, coordinamos entrega. Sin vueltas.</p>
     <figure style="margin:32px 0 0;border:1px solid rgba(20,20,20,.16);overflow:hidden;height:clamp(200px,28vw,340px);position:relative">
       <img data-parallax="150" src="assets/img/underbody-z71.jpg" alt="Vista inferior de una camioneta con el protector montado" style="position:absolute;left:0;right:0;top:-16%;width:100%;height:132%;object-fit:cover;display:block;will-change:transform">
       <figcaption style="position:absolute;left:0;bottom:0;background:#141414;color:#F2F2F3;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px">Pieza montada bajo el frente del vehículo</figcaption>
     </figure>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:44px;border-top:2px solid #141414">
       <div style="padding:28px 28px 28px 0;border-right:1px solid rgba(20,20,20,.16)">
-        <h3 style="margin:0 0 10px;font-size:26px">¿Qué manejás?</h3>
-        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Marca, modelo y año. Con eso alcanza para empezar.</p>
+        <h3 style="margin:0 0 10px;font-size:26px">¿Qué modelos vendés?</h3>
+        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Marca y modelo alcanza. Te decimos qué piezas están en catálogo.</p>
         <div style="display:flex;flex-direction:column;gap:12px">
           <select value="{{ marca }}" onChange="{{ onMarca }}" aria-label="Marca" style="width:100%;background:#fff;border:1px solid rgba(20,20,20,.2);padding:11px 12px;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
             <option value="">Marca</option>
@@ -525,29 +525,29 @@ select,input,button{font-family:inherit}
         </div>
       </div>
       <div style="padding:28px;border-right:1px solid rgba(20,20,20,.16);display:flex;flex-direction:column">
-        <h3 style="margin:0 0 10px;font-size:26px">Confirmamos compatibilidad</h3>
-        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">El resultado aparece acá mismo, sin buscar entre códigos.</p>
+        <h3 style="margin:0 0 10px;font-size:26px">Cotización mayorista</h3>
+        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Te devolvemos precio unitario según cantidad y tiempo de entrega.</p>
         <div style="flex:1;border:1px solid rgba(20,20,20,.16);background:#fff;padding:20px;display:flex;flex-direction:column;justify-content:center;min-height:170px">
           <sc-if value="{{ elegirVacio }}" hint-placeholder-val="{{ true }}">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#9a9a9a">Esperando tu vehículo…</div>
           </sc-if>
           <sc-if value="{{ elegirOk }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;align-items:center;gap:10px"><span style="display:inline-flex;width:22px;height:22px;background:#E30613;color:#fff;align-items:center;justify-content:center">✓</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Tenemos protección compatible</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="display:inline-flex;width:22px;height:22px;background:#E30613;color:#fff;align-items:center;justify-content:center">✓</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Pieza disponible en mayorista</span></div>
             <div style="font-size:15px;color:#4a4a4a;margin-top:8px">{{ vehLabel }}</div>
-            <div style="font-size:13px;color:#9a9a9a;margin-top:4px">Año y versión se confirman al consultar.</div>
+            <div style="font-size:13px;color:#9a9a9a;margin-top:4px">Cantidad y precio se cierran por WhatsApp.</div>
           </sc-if>
           <sc-if value="{{ elegirNo }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Todavía no hay coincidencia exacta</div>
-            <div style="font-size:15px;color:#4a4a4a;margin-top:8px">Fabricamos a medida. Escribinos y lo vemos con vos.</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px">Todavía no está en catálogo</div>
+            <div style="font-size:15px;color:#4a4a4a;margin-top:8px">Fabricamos a pedido con volumen mínimo. Escribinos.</div>
           </sc-if>
         </div>
       </div>
       <div style="padding:28px 0 28px 28px;display:flex;flex-direction:column">
-        <h3 style="margin:0 0 10px;font-size:26px">Elegís tu protector</h3>
-        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Ves solo las piezas que corresponden a ese vehículo.</p>
+        <h3 style="margin:0 0 10px;font-size:26px">Coordinamos entrega</h3>
+        <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Enviamos a todo el país. Fijamos frecuencia según tu movimiento.</p>
         <div style="display:flex;flex-direction:column;gap:12px;margin-top:auto">
-          <button onClick="{{ goCat }}" style="background:#E30613;color:#fff;border:0;padding:15px 22px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Ver cubrecárteres</button>
-          <a href="{{ waLink }}" target="_blank" rel="noopener" style="text-align:center;padding:15px 22px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Consultar por WhatsApp</a>
+          <button onClick="{{ goCat }}" style="background:#E30613;color:#fff;border:0;padding:15px 22px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Ver catálogo mayorista</button>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="text-align:center;padding:15px 22px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Pedir lista mayorista</a>
         </div>
       </div>
     </div>
@@ -557,8 +557,8 @@ select,input,button{font-family:inherit}
   <sc-if value="{{ isNos }}" hint-placeholder-val="{{ false }}">
   <main>
     <section style="max-width:1360px;margin:0 auto;padding:56px 24px 40px">
-      <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:0;max-width:16ch">Especialistas en proteger lo que va debajo.</h1>
-      <p style="max-width:60ch;color:#4a4a4a;font-size:18px;margin:16px 0 0">PROT CARD fabrica protectores inferiores para camionetas y vehículos de uso diario. Trabajamos desde Colonia Río Verde, Paraguay, y enviamos a todo el país.</p>
+      <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:0;max-width:16ch">Fabricantes mayoristas de cubrecárteres.</h1>
+      <p style="max-width:60ch;color:#4a4a4a;font-size:18px;margin:16px 0 0">PROT CARD fabrica cubrecárteres para camionetas desde Colonia Río Verde, Paraguay. Vendemos exclusivamente al canal mayorista: talleres, casas de repuestos y revendedores en todo el país.</p>
     </section>
     <section style="max-width:1360px;margin:0 auto;padding:0 24px 40px">
       <figure style="margin:0;border:1px solid rgba(20,20,20,.16)">
@@ -574,18 +574,18 @@ select,input,button{font-family:inherit}
         </div>
         <div style="padding:26px;border-right:1px solid rgba(20,20,20,.16)">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Qué hacemos</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">Cubrecárteres para camionetas</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">Cubrecárteres para revendedores</div>
         </div>
         <div style="padding:26px;border-right:1px solid rgba(20,20,20,.16)">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Envíos</div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">A todo el país</div>
         </div>
         <div style="padding:26px 0 26px 26px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Instalación</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px;color:#9a9a9a">A confirmar</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Canal</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">100% mayorista</div>
         </div>
       </div>
-      <p style="margin:18px 0 0;font-size:13px;color:#9a9a9a">Los datos de origen, experiencia y fabricación se completan cuando PROT CARD los provea.</p>
+      <p style="margin:18px 0 0;font-size:13px;color:#9a9a9a">Los datos de capacidad productiva y cronograma de entregas se comparten al abrir cuenta mayorista.</p>
     </section>
   </main>
   </sc-if>
@@ -596,10 +596,10 @@ select,input,button{font-family:inherit}
       <div style="max-width:1360px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,64px);align-items:end">
         <div>
           <div style="display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,242,243,.6)">
-            <span style="width:34px;height:2px;background:#E30613"></span>Contacto directo con el taller
+            <span style="width:34px;height:2px;background:#E30613"></span>Canal mayorista · contacto directo
           </div>
-          <h1 style="font-size:clamp(34px,4.6vw,62px);line-height:.98;margin:18px 0 0;color:#fff;max-width:13ch">Contanos qué vehículo tenés.</h1>
-          <p style="color:rgba(242,242,243,.7);font-size:17px;margin:16px 0 0;max-width:42ch">Marca, modelo y año. Con eso te decimos qué pieza corresponde o si hay que fabricarla.</p>
+          <h1 style="font-size:clamp(34px,4.6vw,62px);line-height:.98;margin:18px 0 0;color:#fff;max-width:13ch">Contanos qué necesitás pedir.</h1>
+          <p style="color:rgba(242,242,243,.7);font-size:17px;margin:16px 0 0;max-width:42ch">Marcas, modelos y cantidades estimadas. Con eso te armamos la cotización mayorista.</p>
         </div>
         <div style="position:relative;overflow:hidden;min-height:clamp(220px,26vw,320px);border:1px solid rgba(255,255,255,.2)">
           <img data-parallax="160" src="assets/img/produccion-piso.jpg" alt="Piezas terminadas en el taller de PROT CARD" style="position:absolute;left:0;right:0;top:-22%;width:100%;height:144%;object-fit:cover;will-change:transform">
@@ -638,7 +638,7 @@ select,input,button{font-family:inherit}
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,4vw,56px);align-items:start">
         <div>
           <h2 style="font-size:clamp(28px,3.6vw,46px);margin:0;line-height:1.02;max-width:12ch">Preguntas frecuentes</h2>
-          <p style="color:#4a4a4a;font-size:16px;margin:14px 0 0;max-width:34ch">Si tu duda no está acá, escribinos: contestamos por WhatsApp.</p>
+          <p style="color:#4a4a4a;font-size:16px;margin:14px 0 0;max-width:34ch">Si tu duda no está acá, escribinos por WhatsApp y coordinamos.</p>
         </div>
         <div style="grid-column:span 2;min-width:0">
           <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
@@ -664,19 +664,19 @@ select,input,button{font-family:inherit}
     <div style="max-width:1360px;margin:0 auto;padding:64px 24px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px">
       <div>
         <img src="assets/logo-oscuro.png" alt="PROT CARD" style="height:38px;width:auto">
-        <p style="margin:18px 0 0;color:rgba(242,242,243,.7);font-size:15px;max-width:28ch">Protección inferior para tu vehículo.</p>
+        <p style="margin:18px 0 0;color:rgba(242,242,243,.7);font-size:15px;max-width:28ch">Fabricación mayorista de cubrecárteres. Colonia Río Verde, Paraguay.</p>
       </div>
       <div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5);margin-bottom:12px">Productos</div>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
           <a href="#" onClick="{{ goCat }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Cubrecárteres</a>
-          <a href="#" onClick="{{ goElegir }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Compatibilidad</a>
+          <a href="#" onClick="{{ goElegir }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Cotización mayorista</a>
         </div>
       </div>
       <div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5);margin-bottom:12px">Ayuda</div>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
-          <a href="#" onClick="{{ goElegir }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Cómo elegir</a>
+          <a href="#" onClick="{{ goElegir }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Cómo comprar</a>
           <a href="#" onClick="{{ goCont }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Preguntas frecuentes</a>
           <a href="#" onClick="{{ goCont }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Envíos</a>
           <a href="#" onClick="{{ goCont }}" style="color:#F2F2F3;text-decoration:none" style-hover="color:#E30613">Contacto</a>
@@ -739,13 +739,13 @@ const PROD = [
   {img:"assets/img/p-travo.jpg", marca:"Toyota", modelo:"Hilux", tipo:"Pickup", nombre:"Cubrecárter Hilux Travo", compat:"Hilux · años a confirmar", alt:"Cubrecárter negro con inscripción TRAVO"}
 ];
 const FAQS = [
-  {q:"¿Cómo sé qué cubrecárter corresponde a mi vehículo?", a:"Elegí marca, modelo y año en el buscador. Si tu vehículo no aparece, escribinos y lo verificamos."},
-  {q:"¿Importa el año del vehículo?", a:"Sí. Un mismo modelo puede cambiar de geometría entre años, por eso confirmamos el año antes de fabricar o entregar."},
-  {q:"¿Un mismo modelo puede usar protectores diferentes?", a:"Puede ocurrir según la versión. Lo confirmamos con vos por WhatsApp antes de la compra."},
-  {q:"¿Realizan instalación?", a:"Dato a confirmar por PROT CARD."},
-  {q:"¿Hacen envíos?", a:"Sí, enviamos a todo el país."},
-  {q:"¿Cómo consulto disponibilidad?", a:"Por WhatsApp al +595 971 813 847."},
-  {q:"¿Qué información debo enviarles por WhatsApp?", a:"Marca, modelo y año del vehículo. Si sabés la versión o el motor, mejor."}
+  {q:"¿Manejan condiciones mayoristas?", a:"Sí. Trabajamos exclusivamente con talleres, casas de repuestos y revendedores. Los precios y las condiciones se coordinan por WhatsApp según el volumen."},
+  {q:"¿Cuál es la cantidad mínima de pedido?", a:"Trabajamos por lote. La cantidad mínima se coordina caso a caso según el modelo y la frecuencia de reposición."},
+  {q:"¿Cómo son los precios mayoristas?", a:"El precio unitario baja según la cantidad. Te pasamos la lista actualizada al abrir cuenta mayorista."},
+  {q:"¿Fabrican piezas para modelos que no están en catálogo?", a:"Sí, a partir de cierto volumen. Coordinamos la ficha técnica y los tiempos con vos."},
+  {q:"¿Hacen envíos?", a:"Sí, enviamos a todo el país. Coordinamos el flete según el volumen y la zona."},
+  {q:"¿Cómo abro una cuenta mayorista?", a:"Escribinos por WhatsApp al +595 971 813 847 con los datos de tu negocio y armamos la primera cotización."},
+  {q:"¿Qué información necesitan para cotizar?", a:"Nombre del negocio, ubicación, marcas y modelos que trabajás, y cantidades estimadas por mes."}
 ];
 const FICHA_KEYS = ["Material","Espesor","Peso","Terminación","Puntos de montaje","Compatibilidad","Código de producto","Observaciones"];
 
