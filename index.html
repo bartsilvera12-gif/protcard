@@ -26,18 +26,22 @@ a{color:#B4040F;text-underline-offset:3px}
 a:hover{color:#E30613}
 select,input,button{font-family:inherit}
 /* --- PROT CARD select styling --------------------------------------- */
-select{
-  -webkit-appearance:none;-moz-appearance:none;appearance:none;
-  background-repeat:no-repeat;background-position:right 10px center;background-size:14px 14px;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%23E30613' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  padding-right:34px !important;cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease;
+html body select{
+  -webkit-appearance:none !important;-moz-appearance:none !important;appearance:none !important;
+  background-repeat:no-repeat !important;
+  background-position:right 12px center !important;
+  background-size:14px 14px !important;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%23E30613' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  padding-right:34px !important;cursor:pointer;
+  transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
 }
-select:hover:not(:disabled){border-color:#E30613 !important}
-select:focus-visible{outline:none;border-color:#E30613 !important;box-shadow:0 0 0 3px rgba(227,6,19,.18)}
-select:disabled{cursor:not-allowed;opacity:.55}
+html body select:hover:not(:disabled){border-color:#E30613 !important}
+html body select:focus-visible{outline:none;border-color:#E30613 !important;box-shadow:0 0 0 3px rgba(227,6,19,.18)}
+html body select:disabled{cursor:not-allowed;opacity:.55}
 /* Dark selects (hero over dark bg) use a white chevron */
-select[id^="pcMarcaA"],select[id^="pcModeloA"],select[id^="pcAnioA"]{
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>")
+html body select#pcMarcaA,html body select#pcModeloA,html body select#pcAnioA{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  background-position:right 4px center !important;
 }
 select[id^="pcMarcaA"]:hover:not(:disabled),
 select[id^="pcModeloA"]:hover:not(:disabled),
