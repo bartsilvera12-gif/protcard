@@ -66,16 +66,7 @@
     radial-gradient(ellipse 70% 60% at 80% 80%, rgba(142,3,12,.55), transparent 65%),
     linear-gradient(135deg,#0d0d0e 0%,#1a0709 40%,#0a0a0b 100%);
 }
-.pc-hero-bg::before{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size:56px 56px, 56px 56px;
-  mask-image:radial-gradient(ellipse at center, #000 30%, transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse at center, #000 30%, transparent 75%);
-  animation:pcHeroGrid 22s linear infinite;
-}
+/* grid pattern removed per request */
 .pc-hero-bg::after{
   content:"";position:absolute;inset:-40%;z-index:0;pointer-events:none;
   background:conic-gradient(from 180deg at 50% 50%,transparent 0deg,rgba(227,6,19,.22) 80deg,transparent 160deg,rgba(227,6,19,.15) 240deg,transparent 340deg);
