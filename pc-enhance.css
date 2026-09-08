@@ -113,6 +113,32 @@
   [data-pc-hero-img]{min-height:calc(100vh - 74px) !important}
 }
 
+/* ------ Hero road with scroll-driven car ---------------------------- */
+.pc-hero-road{
+  position:relative;
+  width:min(280px, 62%);height:32px;
+  --pc-car-x:0px;
+}
+.pc-hero-road__line{
+  position:absolute;left:0;right:0;bottom:4px;height:3px;
+  background:linear-gradient(90deg,#E30613 0%,#8E030C 100%);
+  border-radius:2px;
+}
+.pc-hero-road__line::after{
+  content:"";position:absolute;left:0;right:0;top:6px;height:1px;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 8px, transparent 8px 16px);
+}
+.pc-hero-road__car{
+  position:absolute;left:0;bottom:-1px;width:52px;height:24px;
+  transform:translate3d(var(--pc-car-x,0px),0,0);
+  transition:transform .18s cubic-bezier(.2,.7,.2,1);
+  filter:drop-shadow(0 4px 8px rgba(227,6,19,.45));
+  will-change:transform;
+}
+@media (prefers-reduced-motion: reduce){
+  .pc-hero-road__car{transition:none}
+}
+
 /* ------ Hero slideshow ---------------------------------------------- */
 .pc-hero-slides{isolation:isolate}
 .pc-hero-slide{

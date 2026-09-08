@@ -192,6 +192,36 @@
     });
   }
 
+  /* ---------- Hero car: slide right as the user scrolls the hero ------ */
+  function bindHeroCar() {
+    const road = document.querySelector('.pc-hero-road');
+    if (!road || road.__pcCar) return;
+    road.__pcCar = true;
+    const car = road.querySelector('.pc-hero-road__car');
+    if (!car) return;
+    const hero = document.querySelector('.pc-hero-bg') || document.querySelector('[data-pc-hero-flex]');
+    const update = () => {
+      const rw = road.getBoundingClientRect().width;
+      const cw = car.getBoundingClientRect().width;
+      const max = Math.max(0, rw - cw);
+      let f = 0;
+      const vh = window.innerHeight || 800;
+      if (hero) {
+        const hr = hero.getBoundingClientRect();
+        const span = Math.max(1, hr.height - vh * 0.4);
+        f = Math.min(1, Math.max(0, -hr.top / span));
+      } else {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        f = Math.min(1, y / (vh * 0.7));
+      }
+      road.style.setProperty('--pc-car-x', (f * max).toFixed(1) + 'px');
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    window.setTimeout(update, 200);
+  }
+
   /* ---------- Hide fab over hero and footer --------------------------- */
   function bindFabVisibility() {
     const fab = document.querySelector('.pc-fab-wrap');
@@ -262,6 +292,7 @@
     bindCardGlow();
     bindCoverflow();
     bindHeroSlides();
+    bindHeroCar();
     bindFabVisibility();
     syncFaq();
     // Re-scan periodically to catch DC re-renders (sc-if unmounts, page changes)
@@ -271,6 +302,7 @@
       bindCardGlow();
       bindCoverflow();
       bindHeroSlides();
+      bindHeroCar();
       bindFabVisibility();
       syncFaq();
     }).observe(document.documentElement, { childList: true, subtree: true });
