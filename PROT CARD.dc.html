@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROT CARD — Fabricación mayorista de cubrecárteres</title>
+<meta name="description" content="Fabricamos cubrecárteres por modelo desde Colonia Río Verde, Paraguay. Precios mayoristas para talleres, casas de repuestos y revendedores en todo el país.">
+<link rel="stylesheet" href="./pc-enhance.css">
 <script src="./support.js"></script>
 <script src="./pc-dropdown.js" defer></script>
+<script src="./pc-enhance.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -41,7 +45,7 @@ select,input,button{font-family:inherit}
   <header style="{{ headerStyle }}">
     <div style="{{ headerInner }}">
       <a href="#" onClick="{{ goInicio }}" style="display:block;flex:none"><img src="{{ logoSrc }}" alt="PROT CARD" style="height:34px;width:auto;transition:opacity .3s ease"></a>
-      <nav style="{{ navStyle }}">
+      <nav data-pc-nav style="{{ navStyle }}">
         <a href="#" onClick="{{ goInicio }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Inicio</a>
         <a href="#" onClick="{{ goCat }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Cubrecárteres</a>
         <a href="#" onClick="{{ goElegir }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Cómo comprar</a>
@@ -49,7 +53,7 @@ select,input,button{font-family:inherit}
         <a href="#" onClick="{{ goCont }}" style="{{ navLink }}" style-hover="color:#E30613;-webkit-text-stroke-color:#E30613">Contacto</a>
       </nav>
       <div style="display:flex;align-items:center;gap:10px;flex:none">
-        <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#E30613;color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:11px 16px;border-radius:2px" style-hover="background:#B4040F">
+        <a data-pc-wa-header href="{{ waLink }}" target="_blank" rel="noopener" class="pc-btn-grad" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:11px 18px;border-radius:2px">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
           WhatsApp
         </a>
@@ -61,21 +65,21 @@ select,input,button{font-family:inherit}
   <main>
 
     <sc-if value="{{ heroA }}" hint-placeholder-val="{{ true }}">
-    <section style="position:relative;background:#141414;color:#F2F2F3;overflow:hidden">
-      <div style="display:flex;flex-wrap:wrap;align-items:stretch;width:100%">
-      <div data-parallax="-90" style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px);will-change:transform">
+    <section class="pc-hero-bg" style="color:#F2F2F3">
+      <div data-pc-hero-flex style="display:flex;flex-wrap:wrap;align-items:stretch;width:100%">
+      <div data-pc-hero-text data-parallax="-90" style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px);will-change:transform">
         <div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(26px,4vw,44px);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,242,243,.65);animation:pcRise .5s ease .1s both">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(26px,4vw,44px);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,242,243,.7);animation:pcRise .5s ease .1s both">
             <span style="width:34px;height:2px;background:#E30613"></span>Fabricación mayorista de cubrecárteres · Colonia Río Verde
           </div>
-          <h1 style="font-size:clamp(40px,5.4vw,74px);line-height:.98;margin:0;color:#fff;max-width:16ch;animation:pcRise .55s ease .25s both">
+          <h1 data-pc-hero-h1 style="font-size:clamp(40px,5.4vw,74px);line-height:.98;margin:0;color:#fff;max-width:16ch;animation:pcRise .55s ease .25s both">
             Cubrecárteres para revender.<br>
             <span style="color:#E30613">Fabricamos, vos abastecés.</span>
           </h1>
           <div style="height:4px;width:84px;background:#E30613;margin:clamp(20px,2.4vw,30px) 0;animation:pcRise .55s ease .4s both"></div>
-          <p style="margin:0 0 32px;max-width:46ch;font-size:17px;line-height:1.55;color:rgba(242,242,243,.75);animation:pcRise .55s ease .5s both">Cubrecárteres fabricados por modelo, con precios mayoristas para talleres, casas de repuestos y revendedores en todo el país.</p>
+          <p style="margin:0 0 32px;max-width:46ch;font-size:17px;line-height:1.55;color:rgba(242,242,243,.8);animation:pcRise .55s ease .5s both">Cubrecárteres fabricados por modelo, con precios mayoristas para talleres, casas de repuestos y revendedores en todo el país.</p>
           <div style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;animation:pcRise .55s ease .62s both">
-            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Ver catálogo mayorista</button>
+            <button onClick="{{ scrollFinder }}" class="pc-btn-grad" style="padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:3px">Ver catálogo mayorista</button>
             <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:16px 26px;border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,border-color .2s ease,transform .2s ease" style-hover="background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-2px)">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
               Pedir lista mayorista
@@ -83,16 +87,16 @@ select,input,button{font-family:inherit}
           </div>
         </div>
       </div>
-      <div style="flex:1 1 380px;min-width:0;min-height:clamp(300px,42vw,620px);position:relative;overflow:hidden;animation:pcClip 1.2s cubic-bezier(.08,.82,.17,1) .15s both">
-        <img data-parallax="320" src="assets/img/hero-hilux-underbody.jpg" alt="Frente inferior de una Toyota Hilux con cubrecárter PROT CARD instalado" style="position:absolute;left:0;right:0;top:-34%;height:168%;width:100%;object-fit:cover;will-change:transform">
-        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,0) 45%)"></div>
+      <div data-pc-hero-img style="flex:1 1 380px;min-width:0;min-height:clamp(300px,42vw,620px);position:relative;overflow:hidden;animation:pcClip 1.2s cubic-bezier(.08,.82,.17,1) .15s both">
+        <img data-parallax="320" src="assets/img/underbody-fortuner.jpg" alt="Frente inferior con cubrecárter PROT CARD instalado" style="position:absolute;left:0;right:0;top:-34%;height:168%;width:100%;object-fit:cover;will-change:transform;filter:contrast(1.05) saturate(1.05)">
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,20,20,.62) 0%,rgba(20,20,20,0) 45%),linear-gradient(180deg,rgba(20,20,20,.15) 0%,rgba(20,20,20,.55) 100%)"></div>
       </div>
       </div>
       <div style="position:relative;max-width:1360px;margin:0 auto;padding:22px 24px 0">
         <div id="pc-finder" style="border-top:1px solid rgba(255,255,255,.18)"></div>
       </div>
       <div style="position:relative;max-width:1360px;margin:0 auto;padding:0 24px 0">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-left:1px solid rgba(255,255,255,.18)">
+        <div data-pc-finder-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-left:1px solid rgba(255,255,255,.18)">
           <div style="padding:20px 18px;border-right:1px solid rgba(255,255,255,.18)">
             <label for="pcMarcaA" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.6);margin-bottom:8px">Marca</label>
             <select id="pcMarcaA" value="{{ marca }}" onChange="{{ onMarca }}" style="width:100%;background:transparent;color:#fff;border:0;border-bottom:1px solid rgba(255,255,255,.35);padding:6px 0;font-family:'Barlow Condensed',sans-serif;font-size:19px;letter-spacing:.03em;outline:none">
@@ -114,7 +118,7 @@ select,input,button{font-family:inherit}
               <sc-for list="{{ anios }}" as="a" hint-placeholder-count="3"><option value="{{ a }}">{{ a }}</option></sc-for>
             </select>
           </div>
-          <button onClick="{{ buscar }}" style="border:0;background:#E30613;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:20px 18px" style-hover="background:#B4040F">Consultar stock mayorista</button>
+          <button onClick="{{ buscar }}" class="pc-btn-grad" style="font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:20px 18px;border-radius:0">Consultar stock mayorista</button>
         </div>
       </div>
       <div style="position:relative;max-width:1360px;margin:0 auto;padding:0 24px 56px">
@@ -133,7 +137,7 @@ select,input,button{font-family:inherit}
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff">Todavía no producimos esa pieza.</div>
               <div style="font-size:14px;color:rgba(242,242,243,.7);margin-top:2px">Fabricamos a pedido a partir de cierto volumen. Coordinemos.</div>
             </div>
-            <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Coordinar fabricación</a>
+            <a href="{{ waLink }}" target="_blank" rel="noopener" class="pc-btn-grad" style="text-decoration:none;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;border-radius:3px">Coordinar fabricación</a>
         </div>
         </sc-if>
       </div>
@@ -143,38 +147,35 @@ select,input,button{font-family:inherit}
 
     <div style="position:relative">
 
-    <section style="max-width:1360px;margin:0 auto;padding:88px 24px 40px">
-      <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:18ch;margin:0">Una línea completa para stockear en tu negocio.</h2>
-      <p data-reveal="1" style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:16px 0 0">Cubrecárteres para las camionetas más vendidas del mercado paraguayo. Producimos por lote y coordinamos entregas semanales al canal mayorista.</p>
-      <div style="display:inline-grid;grid-template-columns:1fr 1fr;position:relative;margin:28px 0 0;border:1px solid #141414;background:#F2F2F3;padding:3px">
-        <span style="{{ togIndicator }}"></span>
-        <button onClick="{{ setSin }}" style="{{ togSin }}">Sin protector</button>
-        <button onClick="{{ setCon }}" style="{{ togCon }}">Con PROT CARD</button>
-      </div>
-      <figure data-reveal="1" style="position:relative;margin:24px 0 0;border:1px solid rgba(20,20,20,.16);background:#141414">
-        <div style="overflow:hidden;height:clamp(280px,46vw,620px);position:relative">
-          <div data-parallax="300" style="position:relative;width:100%;height:170%;margin-top:-35%;will-change:transform">
-            <img src="assets/img/underbody-chevy.jpg" alt="Vista inferior del frente de una Chevrolet S10 con el cubrecárter rojo montado" style="width:100%;height:100%;object-fit:cover;display:block">
-            <sc-if value="{{ conProt }}" hint-placeholder-val="{{ true }}">
-              <div style="position:absolute;left:29%;top:58%;width:45%;height:12.5%;border:2px solid #E30613;background:rgba(227,6,19,.28);clip-path:polygon(0 0,100% 0,89% 100%,9% 100%)"></div>
-              <div style="position:absolute;left:29%;top:58%;transform:translateY(-100%);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:#E30613;padding:4px 9px">Zona cubierta por la pieza</div>
-            </sc-if>
+    <section class="pc-bleed" style="min-height:clamp(560px,80vh,760px)">
+      <div class="pc-bleed__bg pc-slide pc-slide--scale" style="background-image:url('assets/img/underbody-chevy.jpg')"></div>
+      <div class="pc-bleed__scrim"></div>
+      <div class="pc-bleed__inner" style="max-width:1360px;margin:0 auto;padding:clamp(72px,10vw,140px) 24px 56px">
+        <h2 class="pc-bleed__title pc-slide pc-slide--up" style="font-size:clamp(32px,5vw,64px);line-height:1;max-width:18ch;margin:0">Una línea completa para stockear en tu negocio.</h2>
+        <p class="pc-slide pc-slide--up" style="max-width:56ch;font-size:17px;margin:18px 0 0;opacity:.85">Cubrecárteres para las camionetas más vendidas del mercado paraguayo. Producimos por lote y coordinamos entregas semanales al canal mayorista.</p>
+        <div class="pc-tog-wrap" style="display:inline-grid;grid-template-columns:1fr 1fr;position:relative;margin:32px 0 0;border:1px solid rgba(255,255,255,.4);background:rgba(20,20,20,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:3px">
+          <span style="{{ togIndicator }}"></span>
+          <button onClick="{{ setSin }}" style="{{ togSin }}">Sin protector</button>
+          <button onClick="{{ setCon }}" style="{{ togCon }}">Con PROT CARD</button>
+        </div>
+        <sc-if value="{{ conProt }}" hint-placeholder-val="{{ true }}">
+          <div class="pc-slide pc-slide--up" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:8px 14px;background:rgba(227,6,19,.85);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase">
+            <span style="width:8px;height:8px;background:#fff;border-radius:50%"></span>Zona cubierta por la pieza
           </div>
-        </div>
-        <div style="position:absolute;left:14px;bottom:14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75)">Chevrolet S10 · frente inferior</div>
-      </figure>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));border-top:1px solid rgba(20,20,20,.16);margin-top:28px">
-        <div style="padding:20px 20px 20px 0;border-right:1px solid rgba(20,20,20,.16)">
-          <h4 style="font-size:20px;margin:0 0 4px">Cárter</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Producto core del catálogo mayorista. Rotación probada en todo el país.</p>
-        </div>
-        <div style="padding:20px;border-right:1px solid rgba(20,20,20,.16)">
-          <h4 style="font-size:20px;margin:0 0 4px">Frente inferior del motor</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">El argumento de venta más fuerte que le podés dar a tu cliente.</p>
-        </div>
-        <div style="padding:20px">
-          <h4 style="font-size:20px;margin:0 0 4px">Producto real</h4>
-          <p style="margin:0;font-size:15px;color:#4a4a4a">Cada pieza calzada por modelo. Nada de universales que no encajan.</p>
+        </sc-if>
+        <div data-pc-compare style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;border-top:1px solid rgba(255,255,255,.18);margin-top:44px;color:#F2F2F3">
+          <div class="pc-slide pc-slide--up" style="padding:22px 22px 22px 0;border-right:1px solid rgba(255,255,255,.18)">
+            <h4 style="font-size:20px;margin:0 0 4px;color:#fff">Cárter</h4>
+            <p style="margin:0;font-size:15px;opacity:.75">Producto core del catálogo mayorista. Rotación probada en todo el país.</p>
+          </div>
+          <div class="pc-slide pc-slide--up" style="padding:22px;border-right:1px solid rgba(255,255,255,.18)">
+            <h4 style="font-size:20px;margin:0 0 4px;color:#fff">Frente inferior del motor</h4>
+            <p style="margin:0;font-size:15px;opacity:.75">El argumento de venta más fuerte que le podés dar a tu cliente.</p>
+          </div>
+          <div class="pc-slide pc-slide--up" style="padding:22px">
+            <h4 style="font-size:20px;margin:0 0 4px;color:#fff">Producto real</h4>
+            <p style="margin:0;font-size:15px;opacity:.75">Cada pieza calzada por modelo. Nada de universales que no encajan.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -182,16 +183,16 @@ select,input,button{font-family:inherit}
     <section style="max-width:1360px;margin:0 auto;padding:56px 24px 88px">
       <h2 data-reveal="1" style="font-size:clamp(30px,4.2vw,58px);line-height:1.02;max-width:16ch;margin:0 0 40px">Producción propia. Precio de fábrica.</h2>
       <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;align-items:stretch;border-top:1px solid rgba(20,20,20,.16)">
-        <div style="display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:28px 28px 28px 0;border-right:1px solid rgba(20,20,20,.16)">
-          <div>
+        <div style="display:flex;flex-direction:column;gap:14px;padding:28px 28px 28px 0;border-right:1px solid rgba(20,20,20,.16)">
+          <div class="pc-icard pc-slide pc-slide--up" style="padding:20px 22px">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Fabricación propia</div>
             <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cortamos, plegamos y pintamos en nuestro taller. Sin intermediarios: precio mayorista de fábrica.</p>
           </div>
-          <div>
+          <div class="pc-icard pc-slide pc-slide--up" style="padding:20px 22px">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Ajuste por modelo</div>
             <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Cada pieza calzada por modelo. Le entregás a tu cliente algo que sí encaja.</p>
           </div>
-          <div>
+          <div class="pc-icard pc-slide pc-slide--up" style="padding:20px 22px">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Terminación</div>
             <p style="margin:6px 0 0;font-size:16px;color:#3d3d3d">Pieza pintada, con el modelo calado. Producto terminado listo para percha.</p>
           </div>
@@ -219,7 +220,7 @@ select,input,button{font-family:inherit}
 
     <section style="background:#141414;color:#F2F2F3">
       <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
-        <div style="min-height:420px;position:relative;overflow:hidden">
+        <div class="pc-slide pc-slide--left" style="min-height:420px;position:relative;overflow:hidden">
           <img data-parallax="300" src="assets/img/z71-elevador.jpg" alt="Camioneta en el elevador con el cubrecárter montado" style="position:absolute;left:0;right:0;top:-26%;width:100%;height:152%;object-fit:cover;will-change:transform">
         </div>
         <div data-reveal="1" style="padding:72px 40px;display:flex;flex-direction:column;justify-content:center">
@@ -229,7 +230,7 @@ select,input,button{font-family:inherit}
           <h2 style="font-size:clamp(28px,3.6vw,48px);line-height:1.04;margin:16px 0 0;color:#fff;max-width:18ch">Un producto que se vende solo en zona de ripio, obra y ruta.</h2>
           <p style="margin:16px 0 28px;font-size:17px;color:rgba(242,242,243,.75);max-width:48ch">La demanda existe en cada taller y casa de repuestos del interior. Nosotros producimos, vos capturás el margen.</p>
           <div>
-            <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:15px 26px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Ver lista mayorista</button>
+            <button onClick="{{ scrollFinder }}" class="pc-btn-grad" style="padding:15px 26px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:3px">Ver lista mayorista</button>
           </div>
         </div>
       </div>
@@ -240,11 +241,18 @@ select,input,button{font-family:inherit}
         <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:14ch">Marcas en catálogo</h2>
         <p style="margin:0;color:#4a4a4a;font-size:16px;max-width:38ch">Cuatro marcas en producción. Todo el stock disponible para pedidos mayoristas.</p>
       </div>
-      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border:1px solid rgba(20,20,20,.16);background:rgba(20,20,20,.16);gap:1px">
+      <div class="pc-cover" data-pc-brand-cards>
         <sc-for list="{{ marcaCards }}" as="m" hint-placeholder-count="4">
-          <button onClick="{{ m.go }}" title="{{ m.nombre }}" style="position:relative;overflow:hidden;cursor:pointer;background:#fff;border:0;padding:40px 28px;display:flex;align-items:center;justify-content:center;min-height:150px;transition:background .3s ease" style-hover="background:#F2F2F3">
-            <span style="position:absolute;left:0;right:0;bottom:0;height:3px;background:#E30613;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scaleX(1)"></span>
-            <img src="{{ m.logo }}" alt="{{ m.alt }}" style="width:100%;max-width:160px;height:auto;object-fit:contain;transition:transform .35s cubic-bezier(.2,.6,.2,1)" style-hover="transform:scale(1.06)">
+          <button class="pc-cover__card" onClick="{{ m.go }}" title="{{ m.nombre }}" style="position:relative;overflow:hidden;cursor:pointer;background:#fff;border:1px solid rgba(20,20,20,.14);padding:0;display:flex;flex-direction:column;align-items:stretch;min-height:320px;border-radius:3px">
+            <div style="height:180px;position:relative;overflow:hidden;background:#0e0e0e">
+              <img src="{{ m.foto }}" alt="{{ m.fotoAlt }}" style="width:100%;height:100%;object-fit:cover;opacity:.9;transition:transform .8s cubic-bezier(.2,.6,.2,1),opacity .3s ease" style-hover="transform:scale(1.06);opacity:1">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,0) 30%,rgba(20,20,20,.55) 100%)"></div>
+            </div>
+            <div style="padding:22px 22px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;flex:1">
+              <img src="{{ m.logo }}" alt="{{ m.alt }}" style="width:auto;max-width:130px;max-height:38px;object-fit:contain">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;color:#141414">{{ m.nombre }}</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#E30613;margin-top:auto">{{ m.conteo }} · Ver piezas</div>
+            </div>
           </button>
         </sc-for>
       </div>
@@ -255,7 +263,7 @@ select,input,button{font-family:inherit}
         <h2 style="font-size:clamp(30px,4.2vw,54px);line-height:1.02;margin:0;max-width:16ch">Piezas más pedidas por revendedores</h2>
         <button onClick="{{ goCat }}" style="border:1px solid rgba(20,20,20,.3);background:transparent;padding:13px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Ver catálogo completo</button>
       </div>
-      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
+      <div data-pc-grid-2 style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
         <sc-for list="{{ destacados }}" as="p" hint-placeholder-count="4">
           <article style="position:relative;background:#141414;color:#F2F2F3;display:flex;flex-direction:column;border:1px solid rgba(20,20,20,.9);transition:transform .35s cubic-bezier(.2,.6,.2,1),box-shadow .35s ease;overflow:hidden" style-hover="transform:translateY(-6px);box-shadow:0 22px 48px rgba(20,20,20,.28)">
             <div style="position:relative;overflow:hidden;background:#0E0E0E">
@@ -319,14 +327,14 @@ select,input,button{font-family:inherit}
       <div data-reveal="1" style="position:relative;max-width:1360px;margin:0 auto;padding:clamp(90px,12vw,160px) 24px;text-align:center">
         <h2 style="font-size:clamp(30px,4.4vw,60px);line-height:1.02;margin:0 auto;max-width:20ch;color:#fff">Cada camioneta que se vende hoy es un cubrecárter que vas a vender mañana.</h2>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px">
-          <button onClick="{{ scrollFinder }}" style="background:#E30613;color:#fff;border:0;padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,transform .2s ease" style-hover="background:#B4040F;transform:translateY(-2px)">Ver catálogo mayorista</button>
+          <button onClick="{{ scrollFinder }}" class="pc-btn-grad" style="padding:16px 28px;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:3px">Ver catálogo mayorista</button>
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:16px 28px;border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px;transition:background .2s ease,border-color .2s ease,transform .2s ease" style-hover="background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)">Abrir cuenta mayorista</a>
         </div>
       </div>
     </section>
 
-    <div style="position:sticky;bottom:20px;height:0;z-index:80;display:flex;justify-content:flex-end;pointer-events:none">
-      <a href="{{ waLink }}" target="_blank" rel="noopener" style="pointer-events:auto;transform:translateY(-100%);margin-right:20px;display:inline-flex;align-items:center;gap:10px;background:#E30613;color:#fff;text-decoration:none;padding:13px 18px;border-radius:2px;box-shadow:0 10px 28px rgba(20,20,20,.34);font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase;transition:background .2s ease,box-shadow .2s ease" style-hover="background:#B4040F;box-shadow:0 14px 34px rgba(20,20,20,.42)">
+    <div class="pc-fab-wrap" style="position:sticky;bottom:20px;height:0;z-index:70;display:flex;justify-content:flex-end;pointer-events:none">
+      <a href="{{ waLink }}" target="_blank" rel="noopener" class="pc-btn-grad" style="pointer-events:auto;transform:translateY(-100%);margin-right:20px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;padding:13px 18px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.07em;text-transform:uppercase">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5Z"></path></svg>
         Pedir precios mayoristas
       </a>
@@ -338,7 +346,7 @@ select,input,button{font-family:inherit}
   <sc-if value="{{ isCat }}" hint-placeholder-val="{{ false }}">
   <main>
     <div style="background:#141414;color:#fff">
-      <div style="max-width:1360px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+      <div data-pc-cat-head style="max-width:1360px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
         <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)">Vehículo objetivo</span>
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px">{{ vehLabelCat }}</span>
@@ -351,7 +359,7 @@ select,input,button{font-family:inherit}
       <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:8px 0 0">Cubrecárteres</h1>
       <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:12px 0 0">Catálogo mayorista de PROT CARD. Filtrá por vehículo para armar tu pedido.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:1px solid rgba(20,20,20,.16);margin:32px 0 0;background:#fff">
+      <div data-pc-cat-filters style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:1px solid rgba(20,20,20,.16);margin:32px 0 0;background:#fff">
         <div style="padding:16px 18px;border-right:1px solid rgba(20,20,20,.16)">
           <label for="pcFMarca" style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:6px">Marca</label>
           <select id="pcFMarca" value="{{ marca }}" onChange="{{ onMarca }}" style="width:100%;background:transparent;border:0;font-family:'Barlow Condensed',sans-serif;font-size:18px;outline:none">
@@ -388,7 +396,7 @@ select,input,button{font-family:inherit}
         <button onClick="{{ limpiar }}" style="border:0;background:transparent;color:#B4040F;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:4px 0">Limpiar filtros</button>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
+      <div data-pc-grid-2 style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
         <sc-for list="{{ filtrados }}" as="p" hint-placeholder-count="8">
           <article style="position:relative;background:#141414;color:#F2F2F3;display:flex;flex-direction:column;border:1px solid rgba(20,20,20,.9);transition:transform .35s cubic-bezier(.2,.6,.2,1),box-shadow .35s ease;overflow:hidden" style-hover="transform:translateY(-6px);box-shadow:0 22px 48px rgba(20,20,20,.28)">
             <div style="position:relative;overflow:hidden;background:#0E0E0E">
@@ -415,7 +423,7 @@ select,input,button{font-family:inherit}
         <div style="border:1px solid rgba(20,20,20,.16);border-top:0;background:#fff;padding:48px 28px;text-align:center">
           <h3 style="margin:0 0 8px;font-size:26px">No tenemos esa pieza en catálogo todavía.</h3>
           <p style="margin:0 0 22px;color:#4a4a4a">Fabricamos a pedido a partir de cierto volumen. Coordinemos con vos.</p>
-          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-block;background:#E30613;color:#fff;text-decoration:none;padding:14px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Coordinar fabricación</a>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" class="pc-btn-grad" style="display:inline-block;text-decoration:none;padding:14px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:3px">Coordinar fabricación</a>
         </div>
       </sc-if>
     </div>
@@ -427,7 +435,7 @@ select,input,button{font-family:inherit}
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:22px">
       <a href="#" onClick="{{ goCat }}" style="color:#6b6b6b;text-decoration:none">Cubrecárteres</a> / Toyota Hilux
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:start">
+    <div data-pc-ficha-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:start">
       <div>
         <div style="background:#fff;border:1px solid rgba(20,20,20,.16)">
           <img src="{{ fichaImg }}" alt="Cubrecárter PROT CARD para Toyota Hilux" style="width:100%;height:clamp(280px,38vw,480px);object-fit:contain;display:block;background:#fff">
@@ -465,7 +473,7 @@ select,input,button{font-family:inherit}
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 0">
-          <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#E30613;color:#fff;text-decoration:none;padding:15px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:#B4040F">Pedir precio mayorista</a>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" class="pc-btn-grad" style="text-decoration:none;padding:15px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:3px">Pedir precio mayorista</a>
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:15px 24px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Pedir lista mayorista</a>
         </div>
         <div style="margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:17px;color:#9a9a9a">Precio mayorista bajo consulta · pedidos por WhatsApp</div>
@@ -501,9 +509,16 @@ select,input,button{font-family:inherit}
   <main style="max-width:1360px;margin:0 auto;padding:56px 24px 88px">
     <h1 style="font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:0;max-width:16ch">Comprar mayorista en tres pasos.</h1>
     <p style="max-width:56ch;color:#4a4a4a;font-size:17px;margin:14px 0 0">Filtrás por vehículo, nos decís cantidades, coordinamos entrega. Sin vueltas.</p>
-    <figure style="margin:32px 0 0;border:1px solid rgba(20,20,20,.16);overflow:hidden;height:clamp(200px,28vw,340px);position:relative">
-      <img data-parallax="150" src="assets/img/underbody-z71.jpg" alt="Vista inferior de una camioneta con el protector montado" style="position:absolute;left:0;right:0;top:-16%;width:100%;height:132%;object-fit:cover;display:block;will-change:transform">
-      <figcaption style="position:absolute;left:0;bottom:0;background:#141414;color:#F2F2F3;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px">Pieza montada bajo el frente del vehículo</figcaption>
+    <figure class="pc-bleed" style="margin:32px 0 0;border:1px solid rgba(20,20,20,.16);overflow:hidden;height:clamp(220px,32vw,380px);position:relative">
+      <div class="pc-bleed__bg pc-slide pc-slide--scale" style="background-image:url('assets/img/produccion-piso.jpg');animation:pcKen 22s ease-in-out infinite alternate"></div>
+      <div class="pc-bleed__scrim" style="background:linear-gradient(90deg,rgba(20,20,20,.75) 0%,rgba(20,20,20,.25) 55%,rgba(20,20,20,.55) 100%)"></div>
+      <div class="pc-bleed__inner" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
+        <div style="display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase">
+          <span style="width:22px;height:2px;background:#E30613"></span>Taller PROT CARD
+        </div>
+        <div class="pc-slide pc-slide--up" style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(20px,2.4vw,28px);color:#fff;max-width:22ch;margin-top:6px">Producción propia. Coordinás cantidades y coordinamos entrega.</div>
+      </div>
+      <style>@keyframes pcKen{0%{transform:scale(1.04) translateY(0)}100%{transform:scale(1.14) translateY(-2%)}}</style>
     </figure>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:44px;border-top:2px solid #141414">
       <div style="padding:28px 28px 28px 0;border-right:1px solid rgba(20,20,20,.16)">
@@ -546,7 +561,7 @@ select,input,button{font-family:inherit}
         <h3 style="margin:0 0 10px;font-size:26px">Coordinamos entrega</h3>
         <p style="margin:0 0 18px;color:#4a4a4a;font-size:15px">Enviamos a todo el país. Fijamos frecuencia según tu movimiento.</p>
         <div style="display:flex;flex-direction:column;gap:12px;margin-top:auto">
-          <button onClick="{{ goCat }}" style="background:#E30613;color:#fff;border:0;padding:15px 22px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:#B4040F">Ver catálogo mayorista</button>
+          <button onClick="{{ goCat }}" class="pc-btn-grad" style="padding:15px 22px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:3px">Ver catálogo mayorista</button>
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="text-align:center;padding:15px 22px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Pedir lista mayorista</a>
         </div>
       </div>
@@ -567,7 +582,7 @@ select,input,button{font-family:inherit}
       </figure>
     </section>
     <section style="max-width:1360px;margin:0 auto;padding:0 24px 88px">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:2px solid #141414">
+      <div data-pc-tiles style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:2px solid #141414">
         <div style="padding:26px 26px 26px 0;border-right:1px solid rgba(20,20,20,.16)">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6b6b6b">Dónde estamos</div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:4px">Colonia Río Verde, Paraguay</div>
@@ -613,7 +628,7 @@ select,input,button{font-family:inherit}
         </div>
       </div>
       <div style="border-top:1px solid rgba(255,255,255,.14)">
-        <div style="max-width:1360px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        <div data-pc-tiles style="max-width:1360px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:24px 26px 24px 0;border-right:1px solid rgba(255,255,255,.14);text-decoration:none;color:#F2F2F3;transition:background .25s ease" style-hover="background:rgba(255,255,255,.05)">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,242,243,.5)">WhatsApp</div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-top:4px">+595 971 813 847</div>
@@ -640,18 +655,16 @@ select,input,button{font-family:inherit}
           <h2 style="font-size:clamp(28px,3.6vw,46px);margin:0;line-height:1.02;max-width:12ch">Preguntas frecuentes</h2>
           <p style="color:#4a4a4a;font-size:16px;margin:14px 0 0;max-width:34ch">Si tu duda no está acá, escribinos por WhatsApp y coordinamos.</p>
         </div>
-        <div style="grid-column:span 2;min-width:0">
+        <div class="pc-faq" style="grid-column:span 2;min-width:0">
           <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
-            <div style="{{ f.rowStyle }}">
-              <button onClick="{{ f.toggle }}" style="width:100%;display:flex;justify-content:space-between;gap:18px;align-items:center;text-align:left;background:transparent;border:0;padding:18px 18px 18px 20px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:21px;color:#141414;transition:color .2s ease" style-hover="color:#B4040F">
+            <div class="pc-faq__row" data-pc-open="{{ f.open }}">
+              <button class="pc-faq__btn" onClick="{{ f.toggle }}">
                 <span>{{ f.q }}</span>
-                <span style="{{ f.iconStyle }}">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                <span class="pc-faq__ico">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
                 </span>
               </button>
-              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
-                <p style="margin:0;padding:0 20px 20px;color:#4a4a4a;font-size:16px;max-width:60ch;animation:pcRise .3s ease both">{{ f.a }}</p>
-              </sc-if>
+              <div class="pc-faq__body"><div><p class="pc-faq__inner">{{ f.a }}</p></div></div>
             </div>
           </sc-for>
         </div>

@@ -1,0 +1,281 @@
+/* PROT CARD — enhancements: mobile fixes, animated buttons, card hover,
+   slide-in, coverflow marca carousel, accordion, sección full-bleed. */
+
+/* ------ Animated gradient (red) button ------------------------------- */
+.pc-btn-grad{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:linear-gradient(120deg,#8E030C 0%,#E30613 45%,#B4040F 60%,#E30613 100%) !important;
+  background-size:200% 100% !important;
+  color:#fff !important;border:0 !important;
+  box-shadow:0 8px 24px -8px rgba(227,6,19,.55),inset 0 -1px 0 rgba(0,0,0,.18);
+  transition:box-shadow .25s ease,transform .2s ease,filter .2s ease;
+}
+.pc-btn-grad::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
+  background-size:250% 100%;background-position:120% 0;
+  transition:background-position .55s ease;
+}
+.pc-btn-grad::after{
+  content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;pointer-events:none;
+  background:conic-gradient(from 0deg,#E30613,#8E030C,#E30613,#B4040F,#E30613);
+  opacity:0;filter:blur(14px);transition:opacity .3s ease;
+}
+.pc-btn-grad:hover:not(:disabled){
+  transform:translateY(-2px);filter:brightness(1.05);
+  box-shadow:0 14px 34px -8px rgba(227,6,19,.7),inset 0 -1px 0 rgba(0,0,0,.18);
+}
+.pc-btn-grad:hover:not(:disabled)::before{background-position:-30% 0}
+.pc-btn-grad:hover:not(:disabled)::after{opacity:.55}
+.pc-btn-grad:active{transform:translateY(0)}
+
+/* Apply gradient look to the custom dropdown button when it has this modifier */
+.pcs.pcs--dark .pcs__btn,
+.pcs.pcs--ghost .pcs__btn{border-radius:2px}
+.pcs.pcs--grad .pcs__btn{
+  background:linear-gradient(120deg,rgba(227,6,19,.14) 0%,rgba(20,20,20,.35) 60%,rgba(227,6,19,.14) 100%) !important;
+  background-size:200% 100% !important;
+  border:1px solid rgba(227,6,19,.55) !important;color:#fff !important;padding:12px 14px !important;
+  box-shadow:0 4px 14px -6px rgba(227,6,19,.4);transition:background-position .5s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.pcs.pcs--grad:hover .pcs__btn:not(:disabled){background-position:-30% 0;border-color:#E30613 !important;box-shadow:0 10px 28px -8px rgba(227,6,19,.6)}
+.pcs.pcs--grad.is-open .pcs__btn{border-color:#E30613 !important;box-shadow:0 0 0 3px rgba(227,6,19,.2)}
+
+/* Hero dark selects get a gradient underline + red glow on hover */
+.pc-hero-bg .pcs--dark .pcs__btn{
+  border-bottom:1px solid transparent !important;
+  background-image:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.35)),
+                   linear-gradient(90deg,#E30613 0%,#8E030C 50%,#E30613 100%) !important;
+  background-size:100% 1px, 100% 2px !important;
+  background-position:left bottom, left calc(100% + 1px) !important;
+  background-repeat:no-repeat, no-repeat !important;
+  transition:background-position .35s ease,color .2s ease !important;
+}
+.pc-hero-bg .pcs--dark:hover .pcs__btn:not(:disabled),
+.pc-hero-bg .pcs--dark.is-open .pcs__btn{
+  background-position:left bottom, left bottom !important;
+  color:#fff !important;
+}
+.pc-hero-bg .pcs--dark.is-open .pcs__btn{filter:drop-shadow(0 4px 12px rgba(227,6,19,.4))}
+
+/* ------ Hero background: red + black texture ------------------------- */
+.pc-hero-bg{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 60% at 20% 20%, rgba(227,6,19,.35), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 80% 80%, rgba(142,3,12,.55), transparent 65%),
+    linear-gradient(135deg,#0d0d0e 0%,#1a0709 40%,#0a0a0b 100%);
+}
+.pc-hero-bg::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:56px 56px, 56px 56px;
+  mask-image:radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  animation:pcHeroGrid 22s linear infinite;
+}
+.pc-hero-bg::after{
+  content:"";position:absolute;inset:-40%;z-index:0;pointer-events:none;
+  background:conic-gradient(from 180deg at 50% 50%,transparent 0deg,rgba(227,6,19,.22) 80deg,transparent 160deg,rgba(227,6,19,.15) 240deg,transparent 340deg);
+  filter:blur(60px);opacity:.7;animation:pcHeroRot 24s linear infinite;
+}
+@keyframes pcHeroGrid{from{background-position:0 0, 0 0}to{background-position:56px 56px, -56px 56px}}
+@keyframes pcHeroRot{to{transform:rotate(1turn)}}
+.pc-hero-bg > *{position:relative;z-index:1}
+@media (prefers-reduced-motion: reduce){.pc-hero-bg::after,.pc-hero-bg::before{animation:none}}
+
+/* ------ Full-bleed section with image bg (Una línea completa) -------- */
+.pc-bleed{position:relative;isolation:isolate;overflow:hidden;color:#F2F2F3;background:#141414}
+.pc-bleed__bg{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  transform:scale(1.06);will-change:transform;
+}
+.pc-bleed__scrim{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,.55) 50%,rgba(10,10,10,.9) 100%);
+}
+.pc-bleed > .pc-bleed__inner{position:relative;z-index:2}
+.pc-bleed h1,.pc-bleed h2,.pc-bleed h3,.pc-bleed h4,.pc-bleed p{color:#F2F2F3}
+.pc-bleed .pc-bleed__eyebrow{color:#F2F2F3;opacity:.75}
+.pc-bleed__title{
+  animation:pcRise .8s cubic-bezier(.2,.7,.2,1) both;
+}
+/* Toggle inside bleed section is always white on top of dark image */
+.pc-bleed .pc-tog-wrap > button{color:#fff !important;opacity:.9;transition:opacity .2s ease,color .2s ease}
+.pc-bleed .pc-tog-wrap > button:hover{opacity:1}
+
+/* ------ "Producción propia" info-card hover (glow + tilt + shine) --- */
+.pc-icard{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:#fff;border:1px solid rgba(20,20,20,.1);
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease,border-color .3s ease;
+  will-change:transform;
+}
+.pc-icard::before{
+  content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(120deg,transparent 40%,rgba(227,6,19,.35) 50%,transparent 60%);
+  background-size:250% 250%;background-position:120% 0;transition:background-position .8s ease,opacity .3s ease;opacity:0;
+}
+.pc-icard::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(200px 200px at var(--pcx,50%) var(--pcy,50%),rgba(227,6,19,.14),transparent 60%);
+  opacity:0;transition:opacity .3s ease;
+}
+.pc-icard:hover{
+  transform:translateY(-6px);
+  border-color:rgba(227,6,19,.4);
+  box-shadow:0 22px 40px -18px rgba(227,6,19,.4),0 8px 20px -8px rgba(20,20,20,.18);
+}
+.pc-icard:hover::before{background-position:-30% 0;opacity:1}
+.pc-icard:hover::after{opacity:1}
+.pc-icard > *{position:relative;z-index:1}
+
+/* ------ Slide-in on scroll (IntersectionObserver toggles .pc-in) ----- */
+.pc-slide{opacity:0;transform:translateX(-64px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.pc-slide.pc-in{opacity:1;transform:none}
+.pc-slide--right{transform:translateX(64px)}
+.pc-slide--up{transform:translateY(46px)}
+.pc-slide--scale{transform:scale(1.08);transform-origin:center}
+.pc-slide--scale.pc-in{transform:scale(1)}
+
+/* ------ Marcas coverflow-lite carousel ------------------------------- */
+.pc-cover{
+  display:flex;gap:22px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:36px 8vw 44px;margin:0 -24px;
+  perspective:1400px;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.pc-cover::-webkit-scrollbar{display:none}
+.pc-cover__card{
+  flex:0 0 min(78vw, 340px);
+  scroll-snap-align:center;
+  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,filter .4s ease;
+  transform:scale(.9) rotateY(0deg);filter:brightness(.75) saturate(.9);
+  will-change:transform;
+}
+.pc-cover__card:hover{transform:scale(.94);filter:brightness(.85)}
+.pc-cover__card.is-focus{transform:scale(1) rotateY(0deg);filter:brightness(1) saturate(1);box-shadow:0 30px 60px -30px rgba(20,20,20,.5)}
+.pc-cover__card.is-left{transform:translateX(20px) scale(.9) rotateY(18deg);filter:brightness(.7) saturate(.9)}
+.pc-cover__card.is-right{transform:translateX(-20px) scale(.9) rotateY(-18deg);filter:brightness(.7) saturate(.9)}
+
+/* ------ FAQ accordion smooth ----------------------------------------- */
+.pc-faq{border-top:1px solid rgba(20,20,20,.14)}
+.pc-faq__row{border-bottom:1px solid rgba(20,20,20,.14);transition:background .25s ease}
+.pc-faq__row:hover{background:rgba(20,20,20,.02)}
+.pc-faq__btn{
+  width:100%;display:flex;justify-content:space-between;align-items:center;gap:18px;
+  background:transparent;border:0;padding:22px 22px;cursor:pointer;text-align:left;
+  font-family:'Barlow Condensed',system-ui,sans-serif;font-size:22px;color:#141414;line-height:1.15;
+  transition:color .2s ease;
+}
+.pc-faq__btn:hover{color:#B4040F}
+.pc-faq__ico{
+  flex:none;width:34px;height:34px;border-radius:50%;
+  background:#F2F2F3;border:1px solid rgba(20,20,20,.15);
+  display:inline-flex;align-items:center;justify-content:center;color:#141414;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),background .25s ease,color .2s ease,border-color .25s ease;
+}
+.pc-faq__row.is-open .pc-faq__ico{transform:rotate(45deg);background:#E30613;color:#fff;border-color:#E30613}
+.pc-faq__body{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1);
+}
+.pc-faq__row.is-open .pc-faq__body{grid-template-rows:1fr}
+.pc-faq__body > div{overflow:hidden}
+.pc-faq__inner{padding:0 22px 22px;color:#4a4a4a;font-size:16px;max-width:60ch}
+
+/* ------ Sticky WA floating pill — safer bottom position -------------- */
+.pc-fab-wrap{
+  position:fixed !important;bottom:20px;right:20px;
+  z-index:70;pointer-events:none;
+}
+.pc-fab-wrap > *{pointer-events:auto}
+
+/* ------ MOBILE (< 900px) --------------------------------------------- */
+.pc-menu-btn{
+  display:none;flex:none;background:transparent;border:1px solid rgba(20,20,20,.2);
+  width:42px;height:42px;border-radius:2px;cursor:pointer;padding:0;
+  align-items:center;justify-content:center;color:#141414;
+}
+.pc-menu-btn svg{width:22px;height:22px}
+.pc-menu-btn:hover{border-color:#E30613;color:#E30613}
+
+@media (max-width: 900px){
+  /* Header collapses to logo + hamburger + WA */
+  header nav[data-pc-nav]{
+    display:none !important;
+  }
+  header nav[data-pc-nav].is-open{
+    display:flex !important;
+    position:absolute !important;
+    top:100% !important;left:0 !important;right:0 !important;
+    flex-direction:column !important;
+    background:#141414 !important;color:#fff !important;
+    padding:14px 20px 20px !important;
+    z-index:65 !important;gap:0 !important;
+    box-shadow:0 20px 34px -16px rgba(0,0,0,.4);
+    animation:pcRise .25s ease both;
+  }
+  header nav[data-pc-nav].is-open a{
+    color:#F2F2F3 !important;padding:14px 4px !important;
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+    -webkit-text-stroke:0 !important;
+    font-size:16px !important;
+  }
+  header nav[data-pc-nav].is-open a:last-child{border-bottom:0 !important}
+  .pc-menu-btn{display:inline-flex}
+  /* Hide the WhatsApp desktop button in header on mobile — the floating fab covers it */
+  [data-pc-wa-header]{display:none !important}
+  /* Hero column → stack */
+  [data-pc-hero-flex]{flex-direction:column !important}
+  [data-pc-hero-img]{
+    min-height:260px !important;order:-1 !important;
+    animation:none !important;clip-path:none !important;
+  }
+  [data-pc-hero-img] img{
+    top:-15% !important;height:130% !important;
+  }
+  /* Hero H1 sits inside dark scrim, keep readable size */
+  [data-pc-hero-h1]{font-size:clamp(30px, 8vw, 44px) !important}
+  /* Finder grid: 1 column, full width buttons */
+  [data-pc-finder-grid]{grid-template-columns:1fr !important}
+  [data-pc-finder-grid] > *{border-right:0 !important;border-bottom:1px solid rgba(255,255,255,.18) !important}
+  [data-pc-finder-grid] > button:last-child{border-bottom:0 !important;padding:18px 14px !important}
+  /* Catálogo header stack */
+  [data-pc-cat-head]{flex-direction:column !important;align-items:flex-start !important;gap:10px !important}
+  /* Filters grid */
+  [data-pc-cat-filters]{grid-template-columns:1fr !important}
+  [data-pc-cat-filters] > *{border-right:0 !important;border-bottom:1px solid rgba(20,20,20,.16) !important}
+  [data-pc-cat-filters] > *:last-child{border-bottom:0 !important}
+  /* Product grids single col */
+  [data-pc-grid-2]{grid-template-columns:1fr !important}
+  /* Ficha layout stack */
+  [data-pc-ficha-grid]{grid-template-columns:1fr !important}
+  /* Sticky WA pill smaller so it doesn't fill the width */
+  .pc-fab-wrap > a{padding:10px 14px !important;font-size:12px !important;letter-spacing:.05em !important}
+  .pc-fab-wrap > a svg{width:16px !important;height:16px !important}
+  /* Coverflow: keep working */
+  .pc-cover{padding:24px 20px 30px}
+  .pc-cover__card{flex-basis:88vw}
+  /* Comparador con protector — vertical */
+  [data-pc-compare]{grid-template-columns:1fr !important}
+  /* Nosotros y contacto tiles */
+  [data-pc-tiles]{grid-template-columns:1fr !important}
+  [data-pc-tiles] > *{border-right:0 !important;border-bottom:1px solid rgba(20,20,20,.16);padding-left:0 !important;padding-right:0 !important}
+  [data-pc-tiles] > *:last-child{border-bottom:0}
+  /* Footer stack columns */
+  footer > div:first-child{grid-template-columns:1fr 1fr !important}
+}
+@media (max-width: 520px){
+  footer > div:first-child{grid-template-columns:1fr !important}
+  [data-pc-brand-cards]{grid-template-columns:1fr !important}
+}
+
+/* ------ Utility: hero content wrapper needs contrast on mobile ------- */
+@media (max-width: 900px){
+  .pc-hero-bg [data-pc-hero-text]{padding:44px 22px 36px !important}
+}
