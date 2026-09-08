@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="./pc-dropdown.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -25,40 +26,6 @@ h1,h2,h3,h4{font-family:"Barlow Condensed",system-ui,sans-serif;letter-spacing:-
 a{color:#B4040F;text-underline-offset:3px}
 a:hover{color:#E30613}
 select,input,button{font-family:inherit}
-/* --- PROT CARD select styling --------------------------------------- */
-html body select{
-  -webkit-appearance:none !important;-moz-appearance:none !important;appearance:none !important;
-  background-repeat:no-repeat !important;
-  background-position:right 12px center !important;
-  background-size:14px 14px !important;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%23E30613' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
-  padding-right:34px !important;cursor:pointer;
-  transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
-}
-html body select:hover:not(:disabled){border-color:#E30613 !important}
-html body select:focus-visible{outline:none;border-color:#E30613 !important;box-shadow:0 0 0 3px rgba(227,6,19,.18)}
-html body select:disabled{cursor:not-allowed;opacity:.55}
-/* Dark selects (hero over dark bg) use a white chevron */
-html body select#pcMarcaA,html body select#pcModeloA,html body select#pcAnioA{
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
-  background-position:right 4px center !important;
-}
-select[id^="pcMarcaA"]:hover:not(:disabled),
-select[id^="pcModeloA"]:hover:not(:disabled),
-select[id^="pcAnioA"]:hover:not(:disabled){border-bottom-color:#E30613 !important}
-/* Native option list — as far as browsers allow (Chromium honors these,
-   Safari/Firefox partially). Fallback keeps default OS chrome. */
-select option{
-  background:#F2F2F3;color:#141414;
-  font-family:'Barlow Condensed',system-ui,sans-serif;font-size:16px;
-  padding:10px 12px;
-}
-select option:checked,select option:hover{
-  background:#E30613 !important;color:#fff !important;
-  box-shadow:inset 0 0 0 20px #E30613;
-}
-select option:disabled{color:#9a9a9a}
-/* -------------------------------------------------------------------- */
 @keyframes pcRise{from{transform:translateY(26px);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes pcFade{from{opacity:0}to{opacity:1}}
 @keyframes pcZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
@@ -782,10 +749,26 @@ const FAQS = [
 ];
 const FICHA_KEYS = ["Material","Espesor","Peso","Terminación","Puntos de montaje","Compatibilidad","Código de producto","Observaciones"];
 
+const PC_ROUTES = {
+  inicio: "/", catalogo: "/cubrecartes", ficha: "/cubrecartes/ficha",
+  elegir: "/como-elegir", nosotros: "/nosotros", contacto: "/contacto"
+};
+const PC_ROUTES_INV = Object.fromEntries(Object.entries(PC_ROUTES).map(([k,v])=>[v,k]));
+function pcPageFromPath(){
+  const raw = (location.pathname || "/").toLowerCase();
+  const p = raw.replace(/\/+$/,"") || "/";
+  return PC_ROUTES_INV[p] || "inicio";
+}
+
 class Component extends DCLogic {
-  state = { page:"inicio", hero:"a", marca:"", modelo:"", anio:"", res:"", conProt:true, tipo:"Todos", fichaImg:"assets/img/p-gr-rojo.jpg", faqOpen:-1, egg:false, scrolled:false };
+  state = { page: pcPageFromPath(), hero:"a", marca:"", modelo:"", anio:"", res:"", conProt:true, tipo:"Todos", fichaImg:"assets/img/p-gr-rojo.jpg", faqOpen:-1, egg:false, scrolled:false };
 
   componentDidMount(){
+    this._onPop = () => {
+      const p = pcPageFromPath();
+      if (p !== this.state.page) this.setState({page:p});
+    };
+    window.addEventListener("popstate", this._onPop);
     this._reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     this._tick = () => {
       const vh = window.innerHeight || 800;
@@ -823,9 +806,9 @@ class Component extends DCLogic {
     raf();
     this._loop = window.setInterval(this._tick, 60);
   }
-  componentWillUnmount(){ window.cancelAnimationFrame(this._raf); window.clearInterval(this._loop); }
+  componentWillUnmount(){ window.cancelAnimationFrame(this._raf); window.clearInterval(this._loop); if(this._onPop) window.removeEventListener("popstate", this._onPop); }
 
-  go(p){ return (e)=>{ if(e && e.preventDefault) e.preventDefault(); this.setState({page:p}); window.scrollTo(0,0); }; }
+  go(p){ return (e)=>{ if(e && e.preventDefault) e.preventDefault(); const path = PC_ROUTES[p] || "/"; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({page:p}); window.scrollTo(0,0); }; }
 
   wa(){
     const v = this.state.marca ? `mi ${this.state.marca} ${this.state.modelo||""} ${this.state.anio||""}`.trim() : "mi vehículo";
@@ -881,7 +864,7 @@ class Component extends DCLogic {
       resMatch: s.res==="match", resNoMatch: s.res==="nomatch",
       vehLabel: vehLabel || "Tu vehículo",
       vehLabelCat: vehLabel || "Sin seleccionar",
-      cambiarVehiculo: () => { this.setState({marca:"", modelo:"", anio:"", res:"", page:"inicio"}); window.scrollTo(0,0); },
+      cambiarVehiculo: () => { if(location.pathname !== "/") history.pushState(null,"","/"+location.search); this.setState({marca:"", modelo:"", anio:"", res:"", page:"inicio"}); window.scrollTo(0,0); },
       scrollFinder: () => { const el = document.getElementById("pc-finder"); if(el) el.scrollIntoView ? window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 90) : null; },
       conProt: s.conProt, setSin: () => this.setState({conProt:false}), setCon: () => this.setState({conProt:true}),
       togIndicator: "position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:#E30613;transition:transform .34s cubic-bezier(.2,.75,.2,1);transform:translateX(" + (s.conProt ? "100%" : "0%") + ")",
@@ -900,7 +883,7 @@ class Component extends DCLogic {
           nombre: mk,
           modelos: [...new Set(items.map(p => p.modelo))].join(" · "),
           conteo: items.length === 1 ? "1 pieza" : items.length + " piezas",
-          go: () => { this.setState({marca: mk, modelo:"", anio:"", tipo:"Todos", page:"catalogo"}); window.scrollTo(0,0); }
+          go: () => { const path = PC_ROUTES.catalogo; if(location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({marca: mk, modelo:"", anio:"", tipo:"Todos", page:"catalogo"}); window.scrollTo(0,0); }
         };
       }),
       tipos, filtrados,

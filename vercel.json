@@ -1,6 +1,13 @@
 {
   "cleanUrls": false,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/cubrecartes", "destination": "/index.html" },
+    { "source": "/cubrecartes/ficha", "destination": "/index.html" },
+    { "source": "/como-elegir", "destination": "/index.html" },
+    { "source": "/nosotros", "destination": "/index.html" },
+    { "source": "/contacto", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -12,6 +19,10 @@
     },
     {
       "source": "/support.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    },
+    {
+      "source": "/pc-dropdown.js",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
     }
   ]
