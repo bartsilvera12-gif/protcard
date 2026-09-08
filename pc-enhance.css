@@ -102,6 +102,17 @@
 }
 /* grid pattern removed per request */
 
+/* ------ Hero fills the viewport above the finder -------------------- */
+@media (min-width: 901px){
+  [data-pc-hero-flex]{min-height:calc(100vh - 74px)}
+  [data-pc-hero-flex] > [data-pc-hero-text]{
+    justify-content:center !important;
+    padding-top:clamp(24px,4vw,64px) !important;
+    padding-bottom:clamp(24px,4vw,64px) !important;
+  }
+  [data-pc-hero-img]{min-height:calc(100vh - 74px) !important}
+}
+
 /* ------ Hero slideshow ---------------------------------------------- */
 .pc-hero-slides{isolation:isolate}
 .pc-hero-slide{
