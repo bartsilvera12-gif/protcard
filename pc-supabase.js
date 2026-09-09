@@ -26,10 +26,10 @@
   async function loadAll() {
     const sb = window.supabase.createClient(cfg.url, cfg.key);
     const [prod, marcas, modelos, settings] = await Promise.all([
-      sb.from('pc_productos').select('*').order('orden', { ascending: true }).order('created_at', { ascending: true }),
-      sb.from('pc_marcas').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
-      sb.from('pc_modelos').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
-      sb.from('pc_settings').select('*'),
+      sb.schema('protcard').from('productos').select('*').order('orden', { ascending: true }).order('created_at', { ascending: true }),
+      sb.schema('protcard').from('marcas').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
+      sb.schema('protcard').from('modelos').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
+      sb.schema('protcard').from('settings').select('*'),
     ]);
     if (prod.error) throw prod.error;
     if (marcas.error) throw marcas.error;

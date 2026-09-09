@@ -56,10 +56,10 @@
   /* ------------- Data ------------------------------------------------- */
   async function loadAll() {
     const [marcas, modelos, productos, settings] = await Promise.all([
-      sb.from('pc_marcas').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
-      sb.from('pc_modelos').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
-      sb.from('pc_productos').select('*').order('orden', { ascending: true }).order('created_at', { ascending: false }),
-      sb.from('pc_settings').select('*'),
+      sb.schema('protcard').from('marcas').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
+      sb.schema('protcard').from('modelos').select('*').order('orden', { ascending: true }).order('nombre', { ascending: true }),
+      sb.schema('protcard').from('productos').select('*').order('orden', { ascending: true }).order('created_at', { ascending: false }),
+      sb.schema('protcard').from('settings').select('*'),
     ]);
     state.marcas = marcas.data || [];
     state.modelos = modelos.data || [];
@@ -167,7 +167,7 @@
         updated_at: new Date().toISOString(),
       };
       const id = fd.get('id');
-      const q = id ? sb.from('pc_productos').update(row).eq('id', id) : sb.from('pc_productos').insert(row);
+      const q = id ? sb.schema('protcard').from('productos').update(row).eq('id', id) : sb.schema('protcard').from('productos').insert(row);
       const { error } = await q;
       if (error) throw error;
       await loadAll(); renderProductos();
@@ -190,7 +190,7 @@
   });
   async function deleteProducto(id) {
     if (!confirm('¿Eliminar este producto?')) return;
-    const { error } = await sb.from('pc_productos').delete().eq('id', id);
+    const { error } = await sb.schema('protcard').from('productos').delete().eq('id', id);
     if (error) { alert(error.message); return; }
     await loadAll(); renderProductos();
   }
@@ -227,7 +227,7 @@
       e.preventDefault();
       const nombre = f.nombre.value.trim(); if (!nombre) return;
       const marca_id = f.dataset.marca;
-      const { error } = await sb.from('pc_modelos').insert({ marca_id, nombre });
+      const { error } = await sb.schema('protcard').from('modelos').insert({ marca_id, nombre });
       if (error) { alert(error.message); return; }
       f.reset();
       await loadAll(); renderMarcas();
@@ -236,19 +236,19 @@
   $('#pcAddMarca').addEventListener('click', async () => {
     const nombre = prompt('Nombre de la marca (ej. Toyota):');
     if (!nombre) return;
-    const { error } = await sb.from('pc_marcas').insert({ nombre: nombre.trim() });
+    const { error } = await sb.schema('protcard').from('marcas').insert({ nombre: nombre.trim() });
     if (error) { alert(error.message); return; }
     await loadAll(); renderMarcas();
   });
   async function deleteMarca(id) {
     if (!confirm('¿Eliminar esta marca y todos sus modelos?')) return;
-    const { error } = await sb.from('pc_marcas').delete().eq('id', id);
+    const { error } = await sb.schema('protcard').from('marcas').delete().eq('id', id);
     if (error) { alert(error.message); return; }
     await loadAll(); renderMarcas();
   }
   async function deleteModelo(id) {
     if (!confirm('¿Eliminar este modelo?')) return;
-    const { error } = await sb.from('pc_modelos').delete().eq('id', id);
+    const { error } = await sb.schema('protcard').from('modelos').delete().eq('id', id);
     if (error) { alert(error.message); return; }
     await loadAll(); renderMarcas();
   }
@@ -266,7 +266,7 @@
     const fd = new FormData(e.target);
     const rows = [];
     for (const [k, v] of fd.entries()) rows.push({ key: k, value: v, updated_at: new Date().toISOString() });
-    const { error } = await sb.from('pc_settings').upsert(rows, { onConflict: 'key' });
+    const { error } = await sb.schema('protcard').from('settings').upsert(rows, { onConflict: 'key' });
     if (error) { alert(error.message); return; }
     await loadAll();
     ok.hidden = false;
