@@ -9,8 +9,21 @@
 
   if (!cfg.url || !cfg.key) { $('#pcNoCfg').hidden = false; return; }
   const sb = window.supabase.createClient(cfg.url, cfg.key, {
-    auth: { persistSession: true, autoRefreshToken: true, storageKey: 'pc-admin-auth' }
+    auth: {
+      persistSession: false,   // no guarda sesión: cada visita a /admin pide login
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+    },
   });
+  // Extra: si accidentalmente quedó un token viejo de una versión anterior
+  // que sí persistía, lo borramos al arrancar.
+  try {
+    for (const k of Object.keys(localStorage)) {
+      if (k.startsWith('sb-') || k === 'pc-admin-auth' || k.startsWith('supabase.auth')) {
+        localStorage.removeItem(k);
+      }
+    }
+  } catch (_) {}
 
   const BUCKET = 'pc-images';
   let state = { marcas: [], modelos: [], productos: [], settings: {} };
