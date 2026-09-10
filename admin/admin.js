@@ -352,26 +352,56 @@
       await loadAll(); renderMarcas();
     }));
   }
-  $('#pcAddMarca').addEventListener('click', async () => {
-    const nombre = prompt('Nombre de la marca (ej. Toyota):');
-    if (!nombre) return;
-    const { error } = await sb.schema('protcard').from('marcas').insert({ nombre: nombre.trim() });
-    if (error) { alert(error.message); return; }
-    await loadAll(); renderMarcas();
+  function openMarcaModal(existing) {
+    const modal = $('#pcMarcaModal');
+    const form = $('#pcMarcaForm');
+    form.reset();
+    $('#pcMarcaErr').hidden = true;
+    if (existing) {
+      $('#pcMarcaModalTitle').textContent = 'Renombrar marca';
+      form.id.value = existing.id;
+      form.nombre.value = existing.nombre;
+    } else {
+      $('#pcMarcaModalTitle').textContent = 'Nueva marca';
+      form.id.value = '';
+      form.nombre.value = '';
+    }
+    modal.hidden = false;
+    window.setTimeout(() => form.nombre.focus(), 60);
+  }
+  $('#pcAddMarca').addEventListener('click', () => openMarcaModal(null));
+  $('#pcMarcaForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const err = $('#pcMarcaErr'); err.hidden = true;
+    const btn = $('#pcMarcaSave'); btn.disabled = true; btn.textContent = 'Guardando…';
+    try {
+      const id = form.id.value;
+      const nombre = form.nombre.value.trim();
+      if (!nombre) throw new Error('El nombre es obligatorio');
+      if (id) {
+        const prev = state.marcas.find((x) => x.id === id);
+        if (!prev || prev.nombre === nombre) { $('#pcMarcaModal').hidden = true; return; }
+        const upM = await sb.schema('protcard').from('marcas').update({ nombre }).eq('id', id);
+        if (upM.error) throw upM.error;
+        const upP = await sb.schema('protcard').from('productos').update({ marca: nombre, updated_at: new Date().toISOString() }).eq('marca', prev.nombre);
+        if (upP.error) throw new Error('Marca renombrada pero fallé actualizando productos: ' + upP.error.message);
+      } else {
+        const insM = await sb.schema('protcard').from('marcas').insert({ nombre });
+        if (insM.error) throw insM.error;
+      }
+      await loadAll(); renderMarcas(); renderProductos();
+      $('#pcMarcaModal').hidden = true;
+    } catch (ex) {
+      err.textContent = ex.message || String(ex); err.hidden = false;
+    } finally {
+      btn.disabled = false; btn.textContent = 'Guardar';
+    }
   });
-  async function renameMarca(id) {
+  function renameMarca(id) {
     const m = state.marcas.find((x) => x.id === id);
     if (!m) return;
-    const nuevo = prompt('Nuevo nombre para la marca:', m.nombre);
-    if (!nuevo || nuevo.trim() === m.nombre) return;
-    const trimmed = nuevo.trim();
-    // Update marca
-    const upM = await sb.schema('protcard').from('marcas').update({ nombre: trimmed }).eq('id', id);
-    if (upM.error) { alert(upM.error.message); return; }
-    // Cascade: update productos.marca text field to keep them consistent
-    const upP = await sb.schema('protcard').from('productos').update({ marca: trimmed, updated_at: new Date().toISOString() }).eq('marca', m.nombre);
-    if (upP.error) { alert('Marca renombrada pero fallé actualizando productos: ' + upP.error.message); }
-    await loadAll(); renderMarcas(); renderProductos();
+    openMarcaModal(m);
   }
   async function deleteMarca(id) {
     if (!confirm('¿Eliminar esta marca y todos sus modelos?')) return;

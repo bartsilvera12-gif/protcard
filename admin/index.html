@@ -6,7 +6,7 @@
 <title>PROT CARD · Admin</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="theme-color" content="#E30613">
-<link rel="stylesheet" href="/admin/admin.css?v=5">
+<link rel="stylesheet" href="/admin/admin.css?v=6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -84,6 +84,22 @@
   </main>
 </div>
 
+<!-- Marca modal (crear / renombrar) -->
+<div id="pcMarcaModal" class="modal" hidden>
+  <div class="modal__card" style="max-width:420px">
+    <header class="modal__head"><h3 id="pcMarcaModalTitle">Nueva marca</h3><button class="close" data-close>×</button></header>
+    <form id="pcMarcaForm" class="modal__body">
+      <input type="hidden" name="id">
+      <label>Nombre de la marca<input name="nombre" required placeholder="Toyota" autocomplete="off"></label>
+      <footer class="modal__foot">
+        <button type="button" class="btn btn--ghost" data-close>Cancelar</button>
+        <button type="submit" class="btn btn--primary" id="pcMarcaSave">Guardar</button>
+      </footer>
+      <p class="err" id="pcMarcaErr" hidden></p>
+    </form>
+  </div>
+</div>
+
 <!-- Product editor modal -->
 <div id="pcProdModal" class="modal" hidden>
   <div class="modal__card">
@@ -155,6 +171,6 @@
   </div>
 </div>
 
-<script src="/admin/admin.js?v=5" defer></script>
+<script src="/admin/admin.js?v=6" defer></script>
 </body>
 </html>
