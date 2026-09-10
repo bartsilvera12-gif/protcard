@@ -28,7 +28,7 @@
   const BUCKET = 'pc-images';
   let state = { marcas: [], modelos: [], productos: [], settings: {} };
 
-  const LINEAS = { cubrecartes: 'Cubrecárteres', estriberas: 'Estriberas', punteras: 'Punteras de escape' };
+  const LINEAS = { cubrecartes: 'Cubrecárteres', estriberas: 'Estriberas', punteras: 'Punteras de escape', varios: 'Varios' };
 
   /* ------------- Auto-logout por inactividad (30 min) ---------------- */
   const INACTIVITY_MS = 30 * 60 * 1000;

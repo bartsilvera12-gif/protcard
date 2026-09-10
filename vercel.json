@@ -7,6 +7,7 @@
     { "source": "/cubrecartes/ficha/(.*)", "destination": "/index.html" },
     { "source": "/estriberas", "destination": "/index.html" },
     { "source": "/punteras-de-escape", "destination": "/index.html" },
+    { "source": "/varios", "destination": "/index.html" },
     { "source": "/como-elegir", "destination": "/index.html" },
     { "source": "/nosotros", "destination": "/index.html" },
     { "source": "/contacto", "destination": "/index.html" },

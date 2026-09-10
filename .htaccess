@@ -18,6 +18,7 @@ DirectoryIndex index.html
   RewriteRule ^cubrecartes/ficha/[^/]+/?$ /index.html [L]
   RewriteRule ^estriberas/?$           /index.html [L]
   RewriteRule ^punteras-de-escape/?$   /index.html [L]
+  RewriteRule ^varios/?$               /index.html [L]
   RewriteRule ^como-elegir/?$          /index.html [L]
   RewriteRule ^nosotros/?$             /index.html [L]
   RewriteRule ^contacto/?$             /index.html [L]
