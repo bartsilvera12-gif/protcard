@@ -961,12 +961,23 @@ class Component extends DCLogic {
 
   openFicha(prod){ return () => { const path = PC_ROUTES.ficha; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({ fichaProduct: prod, fichaActiveImg: null, page: "ficha" }); window.scrollTo(0,0); }; }
 
-  wa(){
+  wa(prod){
     const settings = (window.PC_DATA && window.PC_DATA.settings) || {};
     const number = settings.wa_number || "595971813847";
-    const tpl = settings.wa_default_msg || "Hola PROT CARD, necesito un cubrecárter para {vehiculo}.";
-    const v = this.state.marca ? `mi ${this.state.marca} ${this.state.modelo||""} ${this.state.anio||""}`.trim() : "mi vehículo";
-    return "https://wa.me/" + number + "?text=" + encodeURIComponent(tpl.replace("{vehiculo}", v));
+    const s = this.state;
+    const p = prod || (s.page === "ficha" ? s.fichaProduct : null);
+    let text;
+    if (p) {
+      const veh = [p.marca, p.modelo].filter(Boolean).join(" ");
+      const codigo = p.codigo ? ` (código ${p.codigo})` : "";
+      const url = (location.origin + PC_ROUTES.ficha);
+      text = `Hola PROT CARD, quiero cotizar el ${p.nombre}${veh ? " para " + veh : ""}${codigo}. ¿Cuál es el precio mayorista?\n\n${url}`;
+    } else {
+      const tpl = settings.wa_default_msg || "Hola PROT CARD, necesito un cubrecárter para {vehiculo}.";
+      const v = s.marca ? `mi ${s.marca} ${s.modelo||""} ${s.anio||""}`.trim() : "mi vehículo";
+      text = tpl.replace("{vehiculo}", v);
+    }
+    return "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
   }
 
   renderVals(){
