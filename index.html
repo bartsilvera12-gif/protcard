@@ -30,11 +30,8 @@
   --color-accent:#E30613; --color-accent-600:#B4040F; --color-accent-700:#8E030C;
   --color-text:#141414; --color-bg:#F2F2F3;
 }
-/* Ocultar el template en crudo hasta que el DC runtime lo hidrate.
-   Sin scrim: si React tarda hay un flash beige mínimo, pero nunca
-   queda la pantalla bloqueada. */
-x-dc{display:none !important}
-#dc-root{display:block}
+/* Nada de ocultar el template — si algo falla la página muestra al
+   menos el HTML crudo, pero nunca queda en blanco. */
 body{margin:0;background:#F2F2F3;color:#141414;font-family:"Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:"Barlow Condensed",system-ui,sans-serif;letter-spacing:-.01em}
 a{color:#B4040F;text-underline-offset:3px}
@@ -918,9 +915,9 @@ function pcFichaIdFromPath(){
   return m ? decodeURIComponent(m[1]) : null;
 }
 function pcSlugify(s){
-  return String(s||"").toLowerCase()
-    .normalize("NFD").replace(/[̀-ͯ]/g,"")
-    .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "producto";
+  var t = String(s||"").toLowerCase();
+  try { t = t.normalize("NFD").replace(/[\u0300-\u036f]/g,""); } catch(_){}
+  return t.replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "producto";
 }
 
 class Component extends DCLogic {
