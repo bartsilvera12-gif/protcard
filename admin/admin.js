@@ -180,22 +180,45 @@
     };
     selMarca.onchange = refreshModelos;
 
-    // Reset extras
-    let currentExtras = [];
+    // Extras: mix of already-uploaded URLs and pending File objects.
+    let currentExtras = [];   // strings (URLs)
+    let pendingFiles = [];    // File[]
     const extrasEl = $('#pcProdExtras');
+    const extraInput = form.querySelector('input[name="extra_files"]');
     const renderExtras = () => {
       extrasEl.innerHTML = '';
       currentExtras.forEach((url, idx) => {
         const wrap = document.createElement('div');
         wrap.className = 'extra';
-        wrap.innerHTML = `<img src="${escapeAttr(url)}" alt=""><button type="button" data-idx="${idx}" title="Quitar">×</button>`;
+        wrap.innerHTML = `<img src="${escapeAttr(url)}" alt=""><button type="button" title="Quitar">×</button>`;
         wrap.querySelector('button').addEventListener('click', () => {
-          currentExtras.splice(idx, 1);
-          renderExtras();
+          currentExtras.splice(idx, 1); renderExtras();
+        });
+        extrasEl.appendChild(wrap);
+      });
+      pendingFiles.forEach((f, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'extra';
+        const objUrl = URL.createObjectURL(f);
+        wrap.innerHTML = `<img src="${escapeAttr(objUrl)}" alt=""><button type="button" title="Quitar">×</button><span class="pending">Nueva</span>`;
+        wrap.querySelector('button').addEventListener('click', () => {
+          pendingFiles.splice(idx, 1); renderExtras();
         });
         extrasEl.appendChild(wrap);
       });
     };
+    // Rebind change listener freshly (captures the current arrays)
+    const newInput = extraInput.cloneNode(true);
+    extraInput.parentNode.replaceChild(newInput, extraInput);
+    newInput.addEventListener('change', (e) => {
+      for (const f of e.target.files) {
+        if (f instanceof File && f.size) pendingFiles.push(f);
+      }
+      e.target.value = ''; // reset so user can pick otra tanda
+      renderExtras();
+    });
+    // Stash accessors so the submit handler can read them
+    form.__pcPending = () => pendingFiles;
 
     const fichaKeys = ['material','espesor','peso','terminacion','puntos_montaje','observaciones','codigo'];
     if (p) {
@@ -245,19 +268,17 @@
         const { data: pub } = sb.storage.from(BUCKET).getPublicUrl(path);
         img_url = pub.publicUrl;
       }
-      // Upload any new extra files, keep already-uploaded ones
+      // Upload any pending extras, merge with the URLs already kept.
       const kept = form.__pcExtras ? form.__pcExtras().slice() : [];
-      const extraInput = form.querySelector('input[name="extra_files"]');
-      if (extraInput && extraInput.files && extraInput.files.length) {
-        for (const f of extraInput.files) {
-          if (!(f instanceof File) || !f.size) continue;
-          const ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
-          const path = `products/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-          const up = await sb.storage.from(BUCKET).upload(path, f, { cacheControl: '31536000', upsert: false, contentType: f.type });
-          if (up.error) throw up.error;
-          const { data: pub } = sb.storage.from(BUCKET).getPublicUrl(path);
-          kept.push(pub.publicUrl);
-        }
+      const pending = form.__pcPending ? form.__pcPending() : [];
+      for (const f of pending) {
+        if (!(f instanceof File) || !f.size) continue;
+        const ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
+        const path = `products/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+        const up = await sb.storage.from(BUCKET).upload(path, f, { cacheControl: '31536000', upsert: false, contentType: f.type });
+        if (up.error) throw up.error;
+        const { data: pub } = sb.storage.from(BUCKET).getPublicUrl(path);
+        kept.push(pub.publicUrl);
       }
       const row = {
         nombre: fd.get('nombre'),
