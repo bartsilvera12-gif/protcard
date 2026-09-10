@@ -409,6 +409,11 @@
   .pc-cover__card{flex-basis:88vw}
   /* Comparador con protector — vertical */
   [data-pc-compare]{grid-template-columns:1fr !important}
+  /* iOS/Safari mobile ignora background-attachment:fixed -> fallback */
+  [role="img"][style*="background-attachment:fixed"]{
+    background-attachment:scroll !important;
+    background-position:center center !important;
+  }
   /* Nosotros y contacto tiles */
   [data-pc-tiles]{grid-template-columns:1fr !important}
   [data-pc-tiles] > *{border-right:0 !important;border-bottom:1px solid rgba(20,20,20,.16);padding-left:0 !important;padding-right:0 !important}
