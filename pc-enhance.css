@@ -344,7 +344,8 @@
   [data-pc-hero-flex]{
     flex-direction:column !important;
     position:relative !important;
-    min-height:82vh !important;
+    min-height:calc(100vh - 60px) !important;
+    height:calc(100dvh - 60px) !important;
     justify-content:flex-end !important;
   }
   [data-pc-hero-img]{
