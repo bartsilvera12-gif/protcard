@@ -361,8 +361,19 @@
   [data-pc-cat-filters]{grid-template-columns:1fr !important}
   [data-pc-cat-filters] > *{border-right:0 !important;border-bottom:1px solid rgba(20,20,20,.16) !important}
   [data-pc-cat-filters] > *:last-child{border-bottom:0 !important}
-  /* Product grids single col */
-  [data-pc-grid-2]{grid-template-columns:1fr !important}
+  /* Zona cubierta por la pieza — label más chica que no se salga en mobile */
+  .pc-zone-label{
+    font-size:9px !important;letter-spacing:.08em !important;padding:3px 6px !important;
+    max-width:90% !important;
+  }
+  /* Product grids: 2 columnas en mobile, más denso */
+  [data-pc-grid-2]{grid-template-columns:repeat(2,1fr) !important;gap:10px !important}
+  [data-pc-grid-2] article > div:first-child img{height:130px !important}
+  [data-pc-grid-2] article h3{font-size:17px !important;line-height:1.1 !important}
+  [data-pc-grid-2] article > div:last-child{padding:12px 12px 14px !important;gap:4px !important}
+  [data-pc-grid-2] article > div:last-child > div:last-child{padding-top:10px !important;flex-direction:column !important;align-items:stretch !important;gap:8px !important}
+  [data-pc-grid-2] article > div:last-child > div:last-child > span{font-size:13px !important}
+  [data-pc-grid-2] article > div:last-child > div:last-child > button{font-size:11px !important;padding:8px 10px !important;letter-spacing:.05em !important;justify-content:center}
   /* Ficha layout stack */
   [data-pc-ficha-grid]{grid-template-columns:1fr !important}
   /* Sticky WA pill smaller so it doesn't fill the width */
