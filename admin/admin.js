@@ -207,16 +207,18 @@
         extrasEl.appendChild(wrap);
       });
     };
-    // Rebind change listener freshly (captures the current arrays)
-    const newInput = extraInput.cloneNode(true);
-    extraInput.parentNode.replaceChild(newInput, extraInput);
-    newInput.addEventListener('change', (e) => {
-      for (const f of e.target.files) {
-        if (f instanceof File && f.size) pendingFiles.push(f);
-      }
-      e.target.value = ''; // reset so user can pick otra tanda
-      renderExtras();
-    });
+    // Rebind change listener freshly (captures the current arrays).
+    if (extraInput && extraInput.parentNode) {
+      const newInput = extraInput.cloneNode(true);
+      extraInput.parentNode.replaceChild(newInput, extraInput);
+      newInput.addEventListener('change', (e) => {
+        for (const f of e.target.files) {
+          if (f instanceof File && f.size) pendingFiles.push(f);
+        }
+        e.target.value = ''; // reset so user can pick otra tanda
+        renderExtras();
+      });
+    }
     // Stash accessors so the submit handler can read them
     form.__pcPending = () => pendingFiles;
 
