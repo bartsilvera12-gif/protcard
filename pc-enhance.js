@@ -286,7 +286,29 @@
   }
 
   /* ---------- Boot ---------------------------------------------------- */
+  /* ---------- Reveal body once DC has hydrated -------------------------
+     Hides the raw <x-dc> template with CSS until we can prove that DC
+     has replaced it with #dc-root. Then we mark <body> as dc-ready so
+     the loading scrim fades out. -------------------------------------- */
+  function watchDcReady() {
+    if (document.body.classList.contains('dc-ready')) return;
+    const mark = () => {
+      const root = document.getElementById('dc-root');
+      if (root && root.querySelector('*')) {
+        document.body.classList.add('dc-ready');
+        return true;
+      }
+      return false;
+    };
+    if (mark()) return;
+    const obs = new MutationObserver(() => { if (mark()) obs.disconnect(); });
+    obs.observe(document.body, { childList: true, subtree: true });
+    // Safety: never leave the scrim up more than 6s
+    window.setTimeout(() => { document.body.classList.add('dc-ready'); try { obs.disconnect(); } catch (_) {} }, 6000);
+  }
+
   function boot() {
+    watchDcReady();
     ensureMenuBtn();
     watchReveal();
     bindCardGlow();

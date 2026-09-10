@@ -30,6 +30,13 @@
   --color-accent:#E30613; --color-accent-600:#B4040F; --color-accent-700:#8E030C;
   --color-text:#141414; --color-bg:#F2F2F3;
 }
+/* Hide the raw dc-html template until the DC runtime hydrates it.
+   Prevents the ugly unstyled flash if React/CDN is slow to boot. */
+x-dc{display:none !important}
+#dc-root{display:block}
+/* Loading placeholder shown while React boots */
+body::before{content:"";position:fixed;inset:0;background:#F2F2F3;z-index:9998;pointer-events:none;transition:opacity .3s ease}
+body.dc-ready::before{opacity:0}
 body{margin:0;background:#F2F2F3;color:#141414;font-family:"Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:"Barlow Condensed",system-ui,sans-serif;letter-spacing:-.01em}
 a{color:#B4040F;text-underline-offset:3px}
