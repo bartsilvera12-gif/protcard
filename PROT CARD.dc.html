@@ -30,19 +30,11 @@
   --color-accent:#E30613; --color-accent-600:#B4040F; --color-accent-700:#8E030C;
   --color-text:#141414; --color-bg:#F2F2F3;
 }
-/* Hide the raw dc-html template until the DC runtime hydrates it.
-   Prevents the ugly unstyled flash if React/CDN is slow to boot. */
+/* Ocultar el template en crudo hasta que el DC runtime lo hidrate.
+   Sin scrim: si React tarda hay un flash beige mínimo, pero nunca
+   queda la pantalla bloqueada. */
 x-dc{display:none !important}
 #dc-root{display:block}
-/* Loading scrim. CSS-only auto-fade: even if JS never runs, la pantalla
-   se destapa sola. Si dc-ready se setea antes, se destapa al instante. */
-body::before{
-  content:"";position:fixed;inset:0;background:#F2F2F3;
-  z-index:9998;pointer-events:none;
-  animation:pcScrimOff .4s ease 2.2s forwards;
-}
-body.dc-ready::before{animation:none;opacity:0;transition:opacity .25s ease}
-@keyframes pcScrimOff{to{opacity:0}}
 body{margin:0;background:#F2F2F3;color:#141414;font-family:"Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:"Barlow Condensed",system-ui,sans-serif;letter-spacing:-.01em}
 a{color:#B4040F;text-underline-offset:3px}
@@ -892,7 +884,20 @@ window.__pcRefreshData = function () {
   if (Array.isArray(d.PROD)) PROD = d.PROD;
   if (Array.isArray(d.ANIOS) && d.ANIOS.length) ANIOS = d.ANIOS;
   const c = window.__pcComponent;
-  if (c && c.setState) c.setState({ _liveVer: (c.state && c.state._liveVer || 0) + 1 });
+  if (c && c.setState) {
+    const patch = { _liveVer: (c.state && c.state._liveVer || 0) + 1 };
+    // If we landed on a ficha URL but have no fichaProduct yet, resolve it from PROD via slug
+    if (c.state && c.state.page === "ficha" && !c.state.fichaProduct) {
+      const slug = pcFichaIdFromPath();
+      if (slug && Array.isArray(PROD)) {
+        const match = PROD.find(p => pcSlugify((p.marca||"") + "-" + (p.modelo||"") + "-" + (p.nombre||"") + "-" + String(p.id||"").slice(0,6)) === slug)
+          || PROD.find(p => String(p.id||"").startsWith(slug.split("-").pop()))
+          || null;
+        if (match) patch.fichaProduct = match;
+      }
+    }
+    c.setState(patch);
+  }
 };
 
 const PC_ROUTES = {
@@ -904,7 +909,18 @@ const PC_ROUTES_INV = Object.fromEntries(Object.entries(PC_ROUTES).map(([k,v])=>
 function pcPageFromPath(){
   const raw = (location.pathname || "/").toLowerCase();
   const p = raw.replace(/\/+$/,"") || "/";
+  // Ficha with slug/id: /cubrecartes/ficha/<algo>
+  if (/^\/cubrecartes\/ficha\/[^\/]+/.test(p)) return "ficha";
   return PC_ROUTES_INV[p] || "inicio";
+}
+function pcFichaIdFromPath(){
+  const m = (location.pathname || "").match(/^\/cubrecartes\/ficha\/([^\/?#]+)/i);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function pcSlugify(s){
+  return String(s||"").toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "producto";
 }
 
 class Component extends DCLogic {
@@ -959,7 +975,7 @@ class Component extends DCLogic {
 
   go(p){ return (e)=>{ if(e && e.preventDefault) e.preventDefault(); const path = PC_ROUTES[p] || "/"; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({page:p}); window.scrollTo(0,0); }; }
 
-  openFicha(prod){ return () => { const path = PC_ROUTES.ficha; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({ fichaProduct: prod, fichaActiveImg: null, page: "ficha" }); window.scrollTo(0,0); }; }
+  openFicha(prod){ return () => { const slug = pcSlugify((prod.marca||"") + "-" + (prod.modelo||"") + "-" + (prod.nombre||"") + "-" + String(prod.id||"").slice(0,6)); const path = PC_ROUTES.ficha + "/" + slug; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({ fichaProduct: prod, fichaActiveImg: null, page: "ficha" }); window.scrollTo(0,0); }; }
 
   wa(prod){
     const settings = (window.PC_DATA && window.PC_DATA.settings) || {};

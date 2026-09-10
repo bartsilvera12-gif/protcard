@@ -15,6 +15,7 @@ DirectoryIndex index.html
   # Pretty routes -> /index.html (para que hidrate el DC en el path correcto)
   RewriteRule ^cubrecartes/?$          /index.html [L]
   RewriteRule ^cubrecartes/ficha/?$    /index.html [L]
+  RewriteRule ^cubrecartes/ficha/[^/]+/?$ /index.html [L]
   RewriteRule ^estriberas/?$           /index.html [L]
   RewriteRule ^punteras-de-escape/?$   /index.html [L]
   RewriteRule ^como-elegir/?$          /index.html [L]
