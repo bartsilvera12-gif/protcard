@@ -1,0 +1,51 @@
+# PROT CARD — Apache config (Hostinger / cPanel / shared hosting).
+# Mirrors vercel.json: SPA-style rewrites for pretty URLs plus long
+# cache for immutable assets.
+
+Options -MultiViews
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # /admin  ->  /admin/index.html (con o sin slash final)
+  RewriteRule ^admin/?$ /admin/index.html [L]
+
+  # Pretty routes -> /index.html (para que hidrate el DC en el path correcto)
+  RewriteRule ^cubrecartes/?$          /index.html [L]
+  RewriteRule ^cubrecartes/ficha/?$    /index.html [L]
+  RewriteRule ^estriberas/?$           /index.html [L]
+  RewriteRule ^punteras-de-escape/?$   /index.html [L]
+  RewriteRule ^como-elegir/?$          /index.html [L]
+  RewriteRule ^nosotros/?$             /index.html [L]
+  RewriteRule ^contacto/?$             /index.html [L]
+</IfModule>
+
+# Cache largo para assets versionados / inmutables
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg  "access plus 1 year"
+  ExpiresByType image/png   "access plus 1 year"
+  ExpiresByType image/webp  "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css    "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+  ExpiresByType text/html   "access plus 5 minutes"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|png|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Comprimir texto/JS/CSS si el módulo está disponible
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
