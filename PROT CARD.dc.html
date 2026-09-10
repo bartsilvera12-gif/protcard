@@ -300,7 +300,7 @@ select,input,button{font-family:inherit}
               <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio mayorista bajo consulta</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.7)">{{ p.precioDisplay }}</span>
                 <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
                 </button>
@@ -434,7 +434,7 @@ select,input,button{font-family:inherit}
               <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio mayorista bajo consulta</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.7)">{{ p.precioDisplay }}</span>
                 <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
                 </button>
@@ -565,7 +565,7 @@ select,input,button{font-family:inherit}
               <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio mayorista bajo consulta</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.7)">{{ p.precioDisplay }}</span>
               </div>
             </div>
           </article>
@@ -610,7 +610,7 @@ select,input,button{font-family:inherit}
               <h3 style="margin:0;font-size:25px;line-height:1.05;color:#fff">{{ p.nombre }}</h3>
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.5)">Precio mayorista bajo consulta</span>
+                <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.7)">{{ p.precioDisplay }}</span>
               </div>
             </div>
           </article>
@@ -970,15 +970,25 @@ class Component extends DCLogic {
       set: () => this.setState({tipo:t}),
       style: `border:1px solid ${s.tipo===t?"#E30613":"rgba(20,20,20,.25)"};background:${s.tipo===t?"#E30613":"transparent"};color:${s.tipo===t?"#fff":"#141414"};padding:7px 13px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px`
     }));
+    const fmtPrecio = (raw) => {
+      if (raw == null || raw === "") return "Precio mayorista bajo consulta";
+      const t = String(raw).trim();
+      if (/^\d[\d.,\s]*$/.test(t)) {
+        const n = parseInt(t.replace(/[.,\s]/g, ""), 10);
+        if (!isNaN(n)) return "Gs. " + n.toLocaleString("es-PY");
+      }
+      return t;
+    };
+    const decorate = (p) => ({ ...p, precioDisplay: p.precioDisplay || fmtPrecio(p.precio) });
     const byVehiculo = (p) => (
       (!s.marca || s.marca === "Otra marca" || p.marca === s.marca) &&
       (!s.modelo || s.modelo === "No está en la lista" || p.modelo === s.modelo) &&
       (s.tipo === "Todos" || p.tipo === s.tipo)
     );
     const byLinea = (ln) => (p) => (p.linea || "cubrecartes") === ln;
-    const filtrados = PROD.filter(p => byLinea("cubrecartes")(p) && byVehiculo(p));
-    const filtradosEstr = PROD.filter(p => byLinea("estriberas")(p) && byVehiculo(p));
-    const filtradosPunt = PROD.filter(p => byLinea("punteras")(p) && byVehiculo(p));
+    const filtrados = PROD.filter(p => byLinea("cubrecartes")(p) && byVehiculo(p)).map(decorate);
+    const filtradosEstr = PROD.filter(p => byLinea("estriberas")(p) && byVehiculo(p)).map(decorate);
+    const filtradosPunt = PROD.filter(p => byLinea("punteras")(p) && byVehiculo(p)).map(decorate);
     const galeria = [
       {img:"assets/img/p-gr-rojo.jpg", alt:"Cubrecárter GR pintado en rojo"},
       {img:"assets/img/p-hilux-negro.jpg", alt:"Cubrecárter Hilux pintado en negro"},
@@ -1026,7 +1036,9 @@ class Component extends DCLogic {
       togIndicator: "position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:#E30613;transition:transform .34s cubic-bezier(.2,.75,.2,1);transform:translateX(" + (s.conProt ? "100%" : "0%") + ")",
       togSin: "position:relative;z-index:1;border:0;background:transparent;padding:13px 26px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.11em;text-transform:uppercase;cursor:pointer;transition:color .28s ease;color:" + (s.conProt ? "#141414" : "#fff"),
       togCon: "position:relative;z-index:1;border:0;background:transparent;padding:13px 26px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.11em;text-transform:uppercase;cursor:pointer;transition:color .28s ease;color:" + (s.conProt ? "#fff" : "#141414"),
-      destacados: PROD.slice(0,4),
+      destacados: PROD.filter(p => p.destacado).slice(0,4).map(decorate).concat(
+        PROD.filter(p => !p.destacado).slice(0, Math.max(0, 4 - PROD.filter(p => p.destacado).length)).map(decorate)
+      ).slice(0,4),
       marcaCards: ["Toyota","Ford","Chevrolet","Nissan"].map(mk => {
         const items = PROD.filter(p => p.marca === mk);
         const logos = {Toyota:"assets/marcas/n2-toyota.png", Ford:"assets/marcas/n-ford.png", Chevrolet:"assets/marcas/n-chevrolet.png", Nissan:"assets/marcas/n-nissan.png"};

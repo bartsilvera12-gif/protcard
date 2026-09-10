@@ -48,6 +48,16 @@
       CAT[mk].push(mo.nombre);
     }
 
+    const fmtPrecio = (raw) => {
+      if (raw == null || raw === '') return 'Precio mayorista bajo consulta';
+      const s = String(raw).trim();
+      // If it's just digits (with optional separators), format as Gs.
+      if (/^\d[\d.,\s]*$/.test(s)) {
+        const n = parseInt(s.replace(/[.,\s]/g, ''), 10);
+        if (!isNaN(n)) return 'Gs. ' + n.toLocaleString('es-PY');
+      }
+      return s;
+    };
     // Products in the shape the DC template expects
     const PROD = (prod.data || []).map((p) => ({
       id: p.id,
@@ -59,6 +69,7 @@
       compat: p.compat || '',
       alt: p.img_alt || p.nombre,
       precio: p.precio || '',
+      precioDisplay: fmtPrecio(p.precio),
       destacado: !!p.destacado,
       linea: p.linea || 'cubrecartes',
     }));
