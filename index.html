@@ -469,7 +469,7 @@ select,input,button{font-family:inherit}
     </sc-if>
     <sc-if value="{{ fichaHasProduct }}" hint-placeholder-val="{{ true }}">
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:22px">
-      <a href="#" onClick="{{ goCat }}" style="color:#6b6b6b;text-decoration:none">Cubrecárteres</a> / {{ fichaBreadcrumb }}
+      <a href="#" onClick="{{ fichaLineaGo }}" style="color:#6b6b6b;text-decoration:none">{{ fichaLineaLabel }}</a> / {{ fichaBreadcrumb }}
     </div>
     <div data-pc-ficha-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:start">
       <div>
@@ -506,6 +506,7 @@ select,input,button{font-family:inherit}
         </div>
         <div style="margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;color:#9a9a9a">Pedidos y coordinación por WhatsApp</div>
 
+        <sc-if value="{{ fichaShowSpecs }}" hint-placeholder-val="{{ true }}">
         <div style="margin:34px 0 0;border-top:2px solid #141414">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#373736;padding:14px 0">Ficha técnica</div>
           <sc-for list="{{ ficha }}" as="f" hint-placeholder-count="8">
@@ -515,6 +516,7 @@ select,input,button{font-family:inherit}
             </div>
           </sc-for>
         </div>
+        </sc-if>
       </div>
     </div>
 
@@ -1168,6 +1170,16 @@ class Component extends DCLogic {
           fichaAlt: fp ? (fp.alt || fp.nombre) : "Cubrecárter PROT CARD",
           fichaPrecioTxt: fp ? fmtPrecio(fp.precio) : "Precio mayorista bajo consulta",
           fichaBreadcrumb: fp ? (fp.marca + (fp.modelo ? " " + fp.modelo : "")) : "Producto",
+          fichaShowSpecs: !!fp && (fp.linea || "cubrecartes") !== "varios",
+          fichaLineaLabel: (() => {
+            const l = fp ? (fp.linea || "cubrecartes") : "cubrecartes";
+            return { cubrecartes:"Cubrecárteres", estriberas:"Estriberas", punteras:"Punteras de escape", varios:"Varios" }[l] || "Catálogo";
+          })(),
+          fichaLineaGo: (() => {
+            const l = fp ? (fp.linea || "cubrecartes") : "cubrecartes";
+            const map = { cubrecartes:"catalogo", estriberas:"estriberas", punteras:"punteras", varios:"varios" };
+            return this.go(map[l] || "catalogo");
+          })(),
           galeria: imgs.map(img => ({
             img,
             alt: fp ? (fp.alt || fp.nombre) : "",
