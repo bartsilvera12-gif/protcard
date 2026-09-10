@@ -222,6 +222,23 @@
     // Stash accessors so the submit handler can read them
     form.__pcPending = () => pendingFiles;
 
+    // Toggle entre selects de vehículo y campos libres cuando línea = "varios"
+    const lineaSel = form.linea;
+    const vehRows  = form.querySelectorAll('[data-pc-vehiculo]');
+    const varRows  = form.querySelectorAll('[data-pc-varios]');
+    const setLineaMode = () => {
+      const isVarios = lineaSel.value === 'varios';
+      vehRows.forEach((r) => { r.hidden = isVarios; });
+      varRows.forEach((r) => { r.hidden = !isVarios; });
+      // Required toggle
+      form.marca.required   = !isVarios;
+      form.modelo.required  = !isVarios;
+      form.tipo.required    = !isVarios;
+      if (form.marca_text)  form.marca_text.required  = isVarios;
+      if (form.modelo_text) form.modelo_text.required = isVarios;
+    };
+    lineaSel.onchange = setLineaMode;
+
     const fichaKeys = ['material','espesor','peso','terminacion','puntos_montaje','observaciones','codigo'];
     if (p) {
       form.id.value = p.id;
@@ -241,13 +258,23 @@
       if (p.img_url) { preview.src = p.img_url; preview.hidden = false; } else preview.hidden = true;
       currentExtras = Array.isArray(p.imgs_extra) ? p.imgs_extra.filter(Boolean) : [];
       fichaKeys.forEach((k) => { if (form[k]) form[k].value = p[k] || ''; });
+      // Pre-fill los campos "text" de Varios con lo mismo, así se puede alternar
+      if (form.marca_text)   form.marca_text.value   = p.marca || '';
+      if (form.modelo_text)  form.modelo_text.value  = p.modelo || '';
+      if (form.tipo_text)    form.tipo_text.value    = p.tipo || '';
+      if (form.precio_varios) form.precio_varios.value = p.precio || '';
     } else {
       form.linea.value = 'cubrecartes';
       refreshModelos();
       $('#pcProdPreview').hidden = true;
       currentExtras = [];
       fichaKeys.forEach((k) => { if (form[k]) form[k].value = ''; });
+      if (form.marca_text)   form.marca_text.value   = '';
+      if (form.modelo_text)  form.modelo_text.value  = '';
+      if (form.tipo_text)    form.tipo_text.value    = '';
+      if (form.precio_varios) form.precio_varios.value = '';
     }
+    setLineaMode();
     renderExtras();
     // Stash on form for the submit handler
     form.__pcExtras = () => currentExtras;
@@ -282,13 +309,15 @@
         const { data: pub } = sb.storage.from(BUCKET).getPublicUrl(path);
         kept.push(pub.publicUrl);
       }
+      const linea = fd.get('linea') || 'cubrecartes';
+      const isVarios = linea === 'varios';
       const row = {
         nombre: fd.get('nombre'),
-        linea: fd.get('linea') || 'cubrecartes',
-        marca: fd.get('marca'),
-        modelo: fd.get('modelo'),
-        tipo: fd.get('tipo'),
-        precio: fd.get('precio') || null,
+        linea,
+        marca:  isVarios ? (fd.get('marca_text')  || '') : (fd.get('marca')  || ''),
+        modelo: isVarios ? (fd.get('modelo_text') || '') : (fd.get('modelo') || ''),
+        tipo:   isVarios ? (fd.get('tipo_text')   || '') : (fd.get('tipo')   || ''),
+        precio: (isVarios ? fd.get('precio_varios') : fd.get('precio')) || null,
         compat: fd.get('compat') || null,
         img_url,
         img_alt: fd.get('img_alt') || null,
