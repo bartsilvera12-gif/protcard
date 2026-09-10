@@ -15,6 +15,23 @@
   const BUCKET = 'pc-images';
   let state = { marcas: [], modelos: [], productos: [], settings: {} };
 
+  const LINEAS = { cubrecartes: 'Cubrecárteres', estriberas: 'Estriberas', punteras: 'Punteras de escape' };
+
+  /* ------------- Auto-logout por inactividad (30 min) ---------------- */
+  const INACTIVITY_MS = 30 * 60 * 1000;
+  let inactivityTimer = null;
+  function resetInactivity() {
+    if (inactivityTimer) window.clearTimeout(inactivityTimer);
+    inactivityTimer = window.setTimeout(async () => {
+      await sb.auth.signOut();
+      alert('Sesión cerrada por inactividad (30 min). Volvé a ingresar.');
+      location.reload();
+    }, INACTIVITY_MS);
+  }
+  ['mousemove','mousedown','keydown','touchstart','scroll'].forEach((ev) =>
+    document.addEventListener(ev, () => { if (!$('#pcApp').hidden) resetInactivity(); }, { passive: true })
+  );
+
   /* ------------- Auth ------------------------------------------------- */
   async function checkSession() {
     const { data } = await sb.auth.getSession();
@@ -39,6 +56,7 @@
     renderProductos();
     renderMarcas();
     renderSettingsForm();
+    resetInactivity();
   }
   function setBanner(text, kind) {
     let el = $('#pcBanner');
@@ -104,6 +122,7 @@
       tr.innerHTML = `
         <td>${p.img_url ? `<img class="thumb" src="${escapeAttr(p.img_url)}" alt="">` : '<div class="thumb"></div>'}</td>
         <td>${escapeHtml(p.nombre)}</td>
+        <td>${escapeHtml(LINEAS[p.linea] || p.linea || 'Cubrecárteres')}</td>
         <td>${escapeHtml(p.marca || '')}</td>
         <td>${escapeHtml(p.modelo || '')}</td>
         <td>${escapeHtml(p.tipo || '')}</td>
@@ -151,6 +170,7 @@
     if (p) {
       form.id.value = p.id;
       form.nombre.value = p.nombre || '';
+      form.linea.value = p.linea || 'cubrecartes';
       selMarca.value = p.marca || '';
       refreshModelos();
       selModelo.value = p.modelo || '';
@@ -164,6 +184,7 @@
       const preview = $('#pcProdPreview');
       if (p.img_url) { preview.src = p.img_url; preview.hidden = false; } else preview.hidden = true;
     } else {
+      form.linea.value = 'cubrecartes';
       refreshModelos();
       $('#pcProdPreview').hidden = true;
     }
@@ -188,6 +209,7 @@
       }
       const row = {
         nombre: fd.get('nombre'),
+        linea: fd.get('linea') || 'cubrecartes',
         marca: fd.get('marca'),
         modelo: fd.get('modelo'),
         tipo: fd.get('tipo'),
@@ -243,7 +265,10 @@
       block.innerHTML = `
         <div class="marca-block__head">
           <h3>${escapeHtml(m.nombre)}</h3>
-          <button class="btn btn--danger" data-delmarca="${m.id}">Eliminar</button>
+          <div style="display:flex;gap:6px">
+            <button class="btn" data-renmarca="${m.id}">Renombrar</button>
+            <button class="btn btn--danger" data-delmarca="${m.id}">Eliminar</button>
+          </div>
         </div>
         <div class="marca-block__modelos">
           ${modelos.map((mo) => `<span class="chip">${escapeHtml(mo.nombre)}<button data-delmod="${mo.id}" title="Eliminar">×</button></span>`).join('') || '<span style="color:#9a9a9a;font-size:14px">Sin modelos</span>'}
@@ -254,6 +279,7 @@
         </form>`;
       wrap.appendChild(block);
     }
+    wrap.querySelectorAll('[data-renmarca]').forEach((b) => b.addEventListener('click', () => renameMarca(b.dataset.renmarca)));
     wrap.querySelectorAll('[data-delmarca]').forEach((b) => b.addEventListener('click', () => deleteMarca(b.dataset.delmarca)));
     wrap.querySelectorAll('[data-delmod]').forEach((b) => b.addEventListener('click', () => deleteModelo(b.dataset.delmod)));
     wrap.querySelectorAll('form[data-marca]').forEach((f) => f.addEventListener('submit', async (e) => {
@@ -273,6 +299,20 @@
     if (error) { alert(error.message); return; }
     await loadAll(); renderMarcas();
   });
+  async function renameMarca(id) {
+    const m = state.marcas.find((x) => x.id === id);
+    if (!m) return;
+    const nuevo = prompt('Nuevo nombre para la marca:', m.nombre);
+    if (!nuevo || nuevo.trim() === m.nombre) return;
+    const trimmed = nuevo.trim();
+    // Update marca
+    const upM = await sb.schema('protcard').from('marcas').update({ nombre: trimmed }).eq('id', id);
+    if (upM.error) { alert(upM.error.message); return; }
+    // Cascade: update productos.marca text field to keep them consistent
+    const upP = await sb.schema('protcard').from('productos').update({ marca: trimmed, updated_at: new Date().toISOString() }).eq('marca', m.nombre);
+    if (upP.error) { alert('Marca renombrada pero fallé actualizando productos: ' + upP.error.message); }
+    await loadAll(); renderMarcas(); renderProductos();
+  }
   async function deleteMarca(id) {
     if (!confirm('¿Eliminar esta marca y todos sus modelos?')) return;
     const { error } = await sb.schema('protcard').from('marcas').delete().eq('id', id);

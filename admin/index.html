@@ -53,7 +53,7 @@
       </div>
       <div class="table-wrap">
         <table class="pc-table" id="pcProdTable">
-          <thead><tr><th></th><th>Nombre</th><th>Marca</th><th>Modelo</th><th>Tipo</th><th>Precio</th><th>Destacado</th><th></th></tr></thead>
+          <thead><tr><th></th><th>Nombre</th><th>Línea</th><th>Marca</th><th>Modelo</th><th>Tipo</th><th>Precio</th><th>Destacado</th><th></th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -89,6 +89,13 @@
     <form id="pcProdForm" class="modal__body">
       <input type="hidden" name="id">
       <label>Nombre<input name="nombre" required></label>
+      <label>Línea (¿en qué página aparece?)
+        <select name="linea" required>
+          <option value="cubrecartes">Cubrecárteres</option>
+          <option value="estriberas">Estriberas</option>
+          <option value="punteras">Punteras de escape</option>
+        </select>
+      </label>
       <div class="row2">
         <label>Marca<select name="marca" id="pcSelMarca" required></select></label>
         <label>Modelo<select name="modelo" id="pcSelModelo" required></select></label>

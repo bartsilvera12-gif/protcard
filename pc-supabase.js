@@ -60,6 +60,7 @@
       alt: p.img_alt || p.nombre,
       precio: p.precio || '',
       destacado: !!p.destacado,
+      linea: p.linea || 'cubrecartes',
     }));
 
     // Settings as a flat object
