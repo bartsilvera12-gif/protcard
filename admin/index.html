@@ -6,7 +6,7 @@
 <title>PROT CARD · Admin</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="theme-color" content="#E30613">
-<link rel="stylesheet" href="/admin/admin.css?v=4">
+<link rel="stylesheet" href="/admin/admin.css?v=5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -125,6 +125,20 @@
           <small class="hint">La foto grande de la ficha. JPG o PNG.</small>
         </div>
       </label>
+      <details class="ficha-details">
+        <summary>Ficha técnica (opcional)</summary>
+        <div class="row2">
+          <label>Material<input name="material" placeholder="Acero 2 mm"></label>
+          <label>Espesor<input name="espesor" placeholder="2 mm"></label>
+        </div>
+        <div class="row2">
+          <label>Peso<input name="peso" placeholder="4.2 kg"></label>
+          <label>Puntos de montaje<input name="puntos_montaje" placeholder="6"></label>
+        </div>
+        <label>Terminación<input name="terminacion" placeholder="Pintura horneada roja"></label>
+        <label>Código de producto<input name="codigo" placeholder="PC-HLX-GR-01"></label>
+        <label>Observaciones<textarea name="observaciones" rows="2" placeholder="Nombre del modelo calado en la chapa"></textarea></label>
+      </details>
       <label>Fotos adicionales (galería)
         <div class="upload">
           <div id="pcProdExtras" class="extras"></div>
@@ -141,6 +155,6 @@
   </div>
 </div>
 
-<script src="/admin/admin.js?v=4" defer></script>
+<script src="/admin/admin.js?v=5" defer></script>
 </body>
 </html>

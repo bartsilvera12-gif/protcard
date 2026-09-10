@@ -1096,10 +1096,18 @@ class Component extends DCLogic {
       })(),
       ficha: FICHA_KEYS.map(k => {
         const fp = s.fichaProduct;
-        const v = fp && k === "Compatibilidad" ? (fp.compat || "A confirmar")
-                : fp && k === "Código de producto" ? (fp.id ? fp.id.slice(0,8) : "A confirmar")
-                : fp && k === "Observaciones" ? "Nombre del modelo calado en la chapa"
-                : "A confirmar";
+        const map = fp ? {
+          "Material": fp.material,
+          "Espesor": fp.espesor,
+          "Peso": fp.peso,
+          "Terminación": fp.terminacion,
+          "Puntos de montaje": fp.puntos_montaje,
+          "Compatibilidad": fp.compat,
+          "Código de producto": fp.codigo || (fp.id ? fp.id.slice(0,8) : ""),
+          "Observaciones": fp.observaciones,
+        } : {};
+        const raw = map[k];
+        const v = (raw && String(raw).trim()) ? raw : "A confirmar";
         return {
           k, v,
           style: (v !== "A confirmar") ? "color:#141414;text-align:right" : "color:#9a9a9a;text-align:right"

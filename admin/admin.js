@@ -197,6 +197,7 @@
       });
     };
 
+    const fichaKeys = ['material','espesor','peso','terminacion','puntos_montaje','observaciones','codigo'];
     if (p) {
       form.id.value = p.id;
       form.nombre.value = p.nombre || '';
@@ -214,11 +215,13 @@
       const preview = $('#pcProdPreview');
       if (p.img_url) { preview.src = p.img_url; preview.hidden = false; } else preview.hidden = true;
       currentExtras = Array.isArray(p.imgs_extra) ? p.imgs_extra.filter(Boolean) : [];
+      fichaKeys.forEach((k) => { if (form[k]) form[k].value = p[k] || ''; });
     } else {
       form.linea.value = 'cubrecartes';
       refreshModelos();
       $('#pcProdPreview').hidden = true;
       currentExtras = [];
+      fichaKeys.forEach((k) => { if (form[k]) form[k].value = ''; });
     }
     renderExtras();
     // Stash on form for the submit handler
@@ -269,6 +272,13 @@
         destacado: !!form.destacado.checked,
         orden: parseInt(fd.get('orden') || '0', 10) || 0,
         imgs_extra: kept,
+        material: fd.get('material') || null,
+        espesor: fd.get('espesor') || null,
+        peso: fd.get('peso') || null,
+        terminacion: fd.get('terminacion') || null,
+        puntos_montaje: fd.get('puntos_montaje') || null,
+        observaciones: fd.get('observaciones') || null,
+        codigo: fd.get('codigo') || null,
         updated_at: new Date().toISOString(),
       };
       const id = fd.get('id');

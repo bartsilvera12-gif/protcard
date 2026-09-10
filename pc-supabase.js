@@ -73,6 +73,13 @@
       destacado: !!p.destacado,
       linea: p.linea || 'cubrecartes',
       imgs: Array.isArray(p.imgs_extra) ? p.imgs_extra.filter(Boolean) : [],
+      material: p.material || '',
+      espesor: p.espesor || '',
+      peso: p.peso || '',
+      terminacion: p.terminacion || '',
+      puntos_montaje: p.puntos_montaje || '',
+      observaciones: p.observaciones || '',
+      codigo: p.codigo || '',
     }));
 
     // Settings as a flat object
