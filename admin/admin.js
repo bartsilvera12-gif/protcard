@@ -180,6 +180,23 @@
     };
     selMarca.onchange = refreshModelos;
 
+    // Reset extras
+    let currentExtras = [];
+    const extrasEl = $('#pcProdExtras');
+    const renderExtras = () => {
+      extrasEl.innerHTML = '';
+      currentExtras.forEach((url, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'extra';
+        wrap.innerHTML = `<img src="${escapeAttr(url)}" alt=""><button type="button" data-idx="${idx}" title="Quitar">×</button>`;
+        wrap.querySelector('button').addEventListener('click', () => {
+          currentExtras.splice(idx, 1);
+          renderExtras();
+        });
+        extrasEl.appendChild(wrap);
+      });
+    };
+
     if (p) {
       form.id.value = p.id;
       form.nombre.value = p.nombre || '';
@@ -196,11 +213,16 @@
       form.img_url.value = p.img_url || '';
       const preview = $('#pcProdPreview');
       if (p.img_url) { preview.src = p.img_url; preview.hidden = false; } else preview.hidden = true;
+      currentExtras = Array.isArray(p.imgs_extra) ? p.imgs_extra.filter(Boolean) : [];
     } else {
       form.linea.value = 'cubrecartes';
       refreshModelos();
       $('#pcProdPreview').hidden = true;
+      currentExtras = [];
     }
+    renderExtras();
+    // Stash on form for the submit handler
+    form.__pcExtras = () => currentExtras;
     modal.hidden = false;
   }
   $('#pcProdForm').addEventListener('submit', async (e) => {
@@ -220,6 +242,20 @@
         const { data: pub } = sb.storage.from(BUCKET).getPublicUrl(path);
         img_url = pub.publicUrl;
       }
+      // Upload any new extra files, keep already-uploaded ones
+      const kept = form.__pcExtras ? form.__pcExtras().slice() : [];
+      const extraInput = form.querySelector('input[name="extra_files"]');
+      if (extraInput && extraInput.files && extraInput.files.length) {
+        for (const f of extraInput.files) {
+          if (!(f instanceof File) || !f.size) continue;
+          const ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
+          const path = `products/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+          const up = await sb.storage.from(BUCKET).upload(path, f, { cacheControl: '31536000', upsert: false, contentType: f.type });
+          if (up.error) throw up.error;
+          const { data: pub } = sb.storage.from(BUCKET).getPublicUrl(path);
+          kept.push(pub.publicUrl);
+        }
+      }
       const row = {
         nombre: fd.get('nombre'),
         linea: fd.get('linea') || 'cubrecartes',
@@ -232,6 +268,7 @@
         img_alt: fd.get('img_alt') || null,
         destacado: !!form.destacado.checked,
         orden: parseInt(fd.get('orden') || '0', 10) || 0,
+        imgs_extra: kept,
         updated_at: new Date().toISOString(),
       };
       const id = fd.get('id');

@@ -301,7 +301,7 @@ select,input,button{font-family:inherit}
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
                 <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.7)">{{ p.precioDisplay }}</span>
-                <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
+                <button onClick="{{ p.verDetalle }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
                 </button>
               </div>
@@ -435,7 +435,7 @@ select,input,button{font-family:inherit}
               <div style="font-size:14px;color:rgba(242,242,243,.55)">{{ p.compat }}</div>
               <div style="margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.14)">
                 <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:rgba(242,242,243,.7)">{{ p.precioDisplay }}</span>
-                <button onClick="{{ goFicha }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
+                <button onClick="{{ p.verDetalle }}" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s ease,border-color .2s ease" style-hover="background:#E30613;border-color:#E30613">Ver detalle
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
                 </button>
               </div>
@@ -457,43 +457,44 @@ select,input,button{font-family:inherit}
 
   <sc-if value="{{ isFicha }}" hint-placeholder-val="{{ false }}">
   <main style="max-width:1360px;margin:0 auto;padding:40px 24px 88px">
+    <sc-if value="{{ fichaNoProduct }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:80px 20px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a">Sin producto seleccionado</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;margin-top:10px">Volvé al catálogo</div>
+        <button onClick="{{ goCat }}" class="pc-btn-grad" style="margin-top:24px;padding:14px 26px;font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:3px">Ver catálogo mayorista</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ fichaHasProduct }}" hint-placeholder-val="{{ true }}">
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6b6b6b;margin-bottom:22px">
-      <a href="#" onClick="{{ goCat }}" style="color:#6b6b6b;text-decoration:none">Cubrecárteres</a> / Toyota Hilux
+      <a href="#" onClick="{{ goCat }}" style="color:#6b6b6b;text-decoration:none">Cubrecárteres</a> / {{ fichaBreadcrumb }}
     </div>
     <div data-pc-ficha-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:start">
       <div>
         <div style="background:#fff;border:1px solid rgba(20,20,20,.16)">
-          <img src="{{ fichaImg }}" alt="Cubrecárter PROT CARD para Toyota Hilux" style="width:100%;height:clamp(280px,38vw,480px);object-fit:contain;display:block;background:#fff">
+          <img src="{{ fichaImg }}" alt="{{ fichaAlt }}" style="width:100%;height:clamp(280px,38vw,480px);object-fit:contain;display:block;background:#fff">
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">
-          <sc-for list="{{ galeria }}" as="g" hint-placeholder-count="4">
-            <button onClick="{{ g.set }}" style="{{ g.style }}"><img src="{{ g.img }}" alt="{{ g.alt }}" style="width:100%;height:78px;object-fit:cover;display:block"></button>
-          </sc-for>
-        </div>
+        <sc-if value="{{ galeriaMulti }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">
+            <sc-for list="{{ galeria }}" as="g" hint-placeholder-count="4">
+              <button onClick="{{ g.set }}" style="{{ g.style }}"><img src="{{ g.img }}" alt="{{ g.alt }}" style="width:100%;height:78px;object-fit:cover;display:block"></button>
+            </sc-for>
+          </div>
+        </sc-if>
       </div>
       <div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">Toyota</div>
-        <h1 style="font-size:clamp(30px,3.8vw,50px);line-height:1.03;margin:6px 0 0">Cubrecárter Toyota Hilux</h1>
-        <p style="margin:12px 0 0;color:#4a4a4a;font-size:17px;max-width:48ch">Cubrecárter Toyota Hilux fabricado por PROT CARD. Disponible en la línea mayorista, con pintura y calado del modelo listos para percha.</p>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#E30613">{{ fichaMarca }}</div>
+        <h1 style="font-size:clamp(30px,3.8vw,50px);line-height:1.03;margin:6px 0 0">{{ fichaNombre }}</h1>
+        <sc-if value="{{ fichaHasCompat }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:12px 0 0;color:#4a4a4a;font-size:17px;max-width:48ch">{{ fichaCompatText }}</p>
+        </sc-if>
 
         <div style="margin:26px 0 0;border:1px solid rgba(20,20,20,.16);background:#fff">
           <div style="padding:18px 20px;border-bottom:1px solid rgba(20,20,20,.14)">
-            <h3 style="margin:0;font-size:22px">¿Necesitás cotizar esta pieza?</h3>
+            <h3 style="margin:0;font-size:22px">Precio mayorista</h3>
           </div>
           <div style="padding:18px 20px">
-            <sc-if value="{{ fichaCompat }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;align-items:center;gap:10px;color:#B4040F;font-family:'Barlow Condensed',sans-serif;font-size:20px">
-                <span style="display:inline-flex;width:22px;height:22px;background:#E30613;color:#fff;align-items:center;justify-content:center">✓</span>
-                Compatible con {{ vehLabel }}
-              </div>
-              <div style="font-size:14px;color:#6b6b6b;margin-top:6px">Precio unitario mayorista según cantidad. Se confirma con PROT CARD.</div>
-            </sc-if>
-            <sc-if value="{{ fichaSinVeh }}" hint-placeholder-val="{{ true }}">
-              <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-                <span style="font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#141414">Elegí un vehículo del catálogo</span>
-                <button onClick="{{ goInicio }}" style="border:1px solid rgba(20,20,20,.3);background:transparent;padding:9px 16px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Elegir vehículo</button>
-              </div>
-            </sc-if>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;color:#141414">{{ fichaPrecioTxt }}</div>
+            <div style="font-size:14px;color:#6b6b6b;margin-top:6px">El precio unitario ajusta según la cantidad. Se confirma por WhatsApp al armar tu pedido.</div>
           </div>
         </div>
 
@@ -501,7 +502,7 @@ select,input,button{font-family:inherit}
           <a href="{{ waLink }}" target="_blank" rel="noopener" class="pc-btn-grad" style="text-decoration:none;padding:15px 24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:3px">Pedir precio mayorista</a>
           <a href="{{ waLink }}" target="_blank" rel="noopener" style="padding:15px 24px;border:1px solid rgba(20,20,20,.3);color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:2px" style-hover="background:rgba(20,20,20,.06)">Pedir lista mayorista</a>
         </div>
-        <div style="margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:17px;color:#9a9a9a">Precio mayorista bajo consulta · pedidos por WhatsApp</div>
+        <div style="margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:14px;color:#9a9a9a">Pedidos y coordinación por WhatsApp</div>
 
         <div style="margin:34px 0 0;border-top:2px solid #141414">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#373736;padding:14px 0">Ficha técnica</div>
@@ -527,6 +528,7 @@ select,input,button{font-family:inherit}
         </div>
       </div>
     </section>
+    </sc-if>
   </main>
   </sc-if>
 
@@ -900,7 +902,7 @@ function pcPageFromPath(){
 }
 
 class Component extends DCLogic {
-  state = { page: pcPageFromPath(), hero:"a", marca:"", modelo:"", anio:"", res:"", conProt:true, tipo:"Todos", fichaImg:"assets/img/p-gr-rojo.jpg", faqOpen:-1, egg:false, scrolled:false };
+  state = { page: pcPageFromPath(), hero:"a", marca:"", modelo:"", anio:"", res:"", conProt:true, tipo:"Todos", fichaProduct:null, faqOpen:-1, egg:false, scrolled:false };
 
   componentDidMount(){
     this._onPop = () => {
@@ -951,6 +953,8 @@ class Component extends DCLogic {
 
   go(p){ return (e)=>{ if(e && e.preventDefault) e.preventDefault(); const path = PC_ROUTES[p] || "/"; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({page:p}); window.scrollTo(0,0); }; }
 
+  openFicha(prod){ return () => { const path = PC_ROUTES.ficha; if (location.pathname !== path) history.pushState(null,"",path+location.search); this.setState({ fichaProduct: prod, fichaActiveImg: null, page: "ficha" }); window.scrollTo(0,0); }; }
+
   wa(){
     const settings = (window.PC_DATA && window.PC_DATA.settings) || {};
     const number = settings.wa_number || "595971813847";
@@ -979,7 +983,7 @@ class Component extends DCLogic {
       }
       return t;
     };
-    const decorate = (p) => ({ ...p, precioDisplay: p.precioDisplay || fmtPrecio(p.precio) });
+    const decorate = (p) => ({ ...p, precioDisplay: p.precioDisplay || fmtPrecio(p.precio), verDetalle: this.openFicha(p) });
     const byVehiculo = (p) => (
       (!s.marca || s.marca === "Otra marca" || p.marca === s.marca) &&
       (!s.modelo || s.modelo === "No está en la lista" || p.modelo === s.modelo) &&
@@ -1064,13 +1068,43 @@ class Component extends DCLogic {
       conteoPunt: filtradosPunt.length === 1 ? "1 pieza" : filtradosPunt.length + " piezas",
       sinPunt: filtradosPunt.length === 0,
       limpiar: () => this.setState({marca:"", modelo:"", anio:"", tipo:"Todos", res:""}),
-      fichaImg: s.fichaImg, galeria,
-      fichaCompat: hayPieza && !!s.modelo, fichaSinVeh: !(hayPieza && !!s.modelo),
-      ficha: FICHA_KEYS.map(k => ({
-        k,
-        v: k === "Compatibilidad" ? "Toyota Hilux · años a confirmar" : (k === "Observaciones" ? "Nombre del modelo calado en la chapa" : "A confirmar"),
-        style: (k === "Compatibilidad" || k === "Observaciones") ? "color:#141414;text-align:right" : "color:#9a9a9a;text-align:right"
-      })),
+      ...(() => {
+        const fp = s.fichaProduct;
+        const imgs = fp ? [fp.img, ...(fp.imgs || [])].filter(Boolean) : ["assets/img/p-gr-rojo.jpg"];
+        const activeImg = s.fichaActiveImg && imgs.includes(s.fichaActiveImg) ? s.fichaActiveImg : imgs[0];
+        return {
+          fichaImg: activeImg,
+          fichaHasProduct: !!fp,
+          fichaNoProduct: !fp,
+          fichaNombre: fp ? fp.nombre : "Producto",
+          fichaMarca: fp ? (fp.marca || "") : "",
+          fichaModelo: fp ? (fp.modelo || "") : "",
+          fichaTipo: fp ? (fp.tipo || "") : "",
+          fichaCompatText: fp ? (fp.compat || "") : "",
+          fichaHasCompat: !!(fp && fp.compat),
+          fichaAlt: fp ? (fp.alt || fp.nombre) : "Cubrecárter PROT CARD",
+          fichaPrecioTxt: fp ? fmtPrecio(fp.precio) : "Precio mayorista bajo consulta",
+          fichaBreadcrumb: fp ? (fp.marca + (fp.modelo ? " " + fp.modelo : "")) : "Producto",
+          galeria: imgs.map(img => ({
+            img,
+            alt: fp ? (fp.alt || fp.nombre) : "",
+            set: () => this.setState({fichaActiveImg: img}),
+            style: `padding:0;border:1px solid ${activeImg === img ? "#E30613" : "rgba(20,20,20,.18)"};background:#fff;cursor:pointer;display:block`
+          })),
+          galeriaMulti: imgs.length > 1,
+        };
+      })(),
+      ficha: FICHA_KEYS.map(k => {
+        const fp = s.fichaProduct;
+        const v = fp && k === "Compatibilidad" ? (fp.compat || "A confirmar")
+                : fp && k === "Código de producto" ? (fp.id ? fp.id.slice(0,8) : "A confirmar")
+                : fp && k === "Observaciones" ? "Nombre del modelo calado en la chapa"
+                : "A confirmar";
+        return {
+          k, v,
+          style: (v !== "A confirmar") ? "color:#141414;text-align:right" : "color:#9a9a9a;text-align:right"
+        };
+      }),
       elegirVacio: !s.modelo, elegirOk: !!s.modelo && hayPieza, elegirNo: !!s.modelo && !hayPieza,
       faqs: FAQS.map((f,i) => ({
         ...f,

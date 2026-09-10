@@ -72,6 +72,7 @@
       precioDisplay: fmtPrecio(p.precio),
       destacado: !!p.destacado,
       linea: p.linea || 'cubrecartes',
+      imgs: Array.isArray(p.imgs_extra) ? p.imgs_extra.filter(Boolean) : [],
     }));
 
     // Settings as a flat object
