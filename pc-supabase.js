@@ -73,6 +73,9 @@
   ensureSdk()
     .then(loadAll)
     .catch((err) => {
-      console.warn('[pc-supabase] using hardcoded fallback:', err && err.message);
+      const msg = err && (err.message || err.hint || String(err));
+      console.warn('[pc-supabase] hardcoded fallback in use:', msg);
+      // Common causes: schema "protcard" not exposed in PostgREST, or
+      // RLS policies missing. The DC keeps its hardcoded PROD/CAT.
     });
 })();

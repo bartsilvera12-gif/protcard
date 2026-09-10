@@ -28,10 +28,33 @@
     $('#pcLogin').hidden = true;
     $('#pcApp').hidden = false;
     $('#pcMeEmail').textContent = session.user.email || '';
-    await loadAll();
+    setBanner('Cargando datos…', 'info');
+    try {
+      await loadAll();
+      clearBanner();
+    } catch (err) {
+      const msg = err && (err.message || err.error_description || String(err));
+      setBanner('Error al cargar datos: ' + msg + '. Verificá que expusiste el schema "protcard" en PostgREST y que las policies RLS están aplicadas.', 'error');
+    }
     renderProductos();
     renderMarcas();
     renderSettingsForm();
+  }
+  function setBanner(text, kind) {
+    let el = $('#pcBanner');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'pcBanner';
+      el.className = 'pc-banner';
+      document.querySelector('.pc-main').prepend(el);
+    }
+    el.textContent = text;
+    el.dataset.kind = kind || 'info';
+    el.hidden = false;
+  }
+  function clearBanner() {
+    const el = $('#pcBanner');
+    if (el) el.hidden = true;
   }
   $('#pcLoginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -95,7 +118,17 @@
     tb.querySelectorAll('[data-edit]').forEach((b) => b.addEventListener('click', () => openProdModal(state.productos.find((x) => x.id === b.dataset.edit))));
     tb.querySelectorAll('[data-del]').forEach((b) => b.addEventListener('click', () => deleteProducto(b.dataset.del)));
   }
-  $('#pcAddProd').addEventListener('click', () => openProdModal(null));
+  $('#pcAddProd').addEventListener('click', () => {
+    if (!state.marcas.length) {
+      alert('Antes de agregar productos tenés que crear al menos una marca en el tab "Marcas y modelos".');
+      $$('.tab').forEach((x) => x.classList.remove('is-active'));
+      $$('.pane').forEach((p) => p.classList.remove('is-active'));
+      document.querySelector('.tab[data-tab="marcas"]').classList.add('is-active');
+      $('#tab-marcas').classList.add('is-active');
+      return;
+    }
+    openProdModal(null);
+  });
 
   function openProdModal(p) {
     const modal = $('#pcProdModal');
