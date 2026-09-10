@@ -8,8 +8,9 @@ DirectoryIndex index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # /admin  ->  /admin/index.html (con o sin slash final)
-  RewriteRule ^admin/?$ /admin/index.html [L]
+  # /admin, /admin/, /admin.html  ->  /admin/index.html
+  RewriteRule ^admin/?$        /admin/index.html [L]
+  RewriteRule ^admin\.html?$   /admin/index.html [L]
 
   # Pretty routes -> /index.html (para que hidrate el DC en el path correcto)
   RewriteRule ^cubrecartes/?$          /index.html [L]
