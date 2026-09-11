@@ -340,41 +340,43 @@
   .pc-menu-btn{display:inline-flex;margin-left:auto !important}
   /* Hide the WhatsApp desktop button in header on mobile — the floating fab covers it */
   [data-pc-wa-header]{display:none !important}
-  /* HERO MOBILE — imagen fondo, texto abajo con scrim ------------------ */
+  /* HERO MOBILE — imagen fondo, texto absoluto al pie con scrim -------- */
   [data-pc-hero-flex]{
-    flex-direction:column !important;
+    display:block !important;
     position:relative !important;
     min-height:calc(100vh - 60px) !important;
     height:calc(100dvh - 60px) !important;
-    justify-content:flex-end !important;
+    overflow:hidden;
   }
   [data-pc-hero-img]{
     position:absolute !important;inset:0 !important;
-    min-height:0 !important;order:0 !important;
+    min-height:0 !important;width:auto !important;flex:none !important;
     animation:none !important;clip-path:none !important;z-index:0;
   }
   [data-pc-hero-img] img{
-    top:0 !important;height:100% !important;left:0 !important;right:0 !important;
-    object-position:center !important;
+    position:absolute !important;top:0 !important;left:0 !important;right:0 !important;
+    width:100% !important;height:100% !important;
+    object-fit:cover !important;object-position:center !important;
   }
   /* Scrim más fuerte para leer texto encima */
   [data-pc-hero-img] > div{
-    background:linear-gradient(180deg,rgba(15,10,10,.15) 0%,rgba(15,10,10,.55) 45%,rgba(10,5,7,.96) 100%) !important;
+    background:linear-gradient(180deg,rgba(15,10,10,.15) 0%,rgba(15,10,10,.6) 45%,rgba(10,5,7,.96) 100%) !important;
   }
   [data-pc-hero-text]{
-    position:relative !important;z-index:2;
-    padding:44px 22px 40px !important;
-    margin-top:auto !important;
-    display:flex !important;flex-direction:column !important;justify-content:flex-end !important;
+    position:absolute !important;left:0 !important;right:0 !important;bottom:0 !important;
+    z-index:2;padding:44px 22px 36px !important;
+    display:block !important;flex:none !important;min-height:0 !important;
+    background:transparent !important;
   }
   [data-pc-hero-text] > div{width:100%}
-  [data-pc-hero-h1]{font-size:clamp(34px, 9vw, 52px) !important;line-height:1.02 !important}
-  [data-pc-hero-text] p{font-size:15px !important;line-height:1.5 !important}
-  [data-pc-hero-text] .pc-hero-road{width:min(200px, 55%) !important;margin:18px 0 !important}
-  [data-pc-hero-text] > div > div:last-child{gap:10px !important}
+  [data-pc-hero-h1]{font-size:clamp(30px, 8.5vw, 44px) !important;line-height:1.02 !important;color:#fff !important;max-width:none !important}
+  [data-pc-hero-text] p{font-size:14.5px !important;line-height:1.5 !important;color:rgba(255,255,255,.85) !important;margin:0 0 20px !important}
+  [data-pc-hero-text] .pc-hero-road{width:min(180px, 50%) !important;margin:12px 0 18px !important}
+  [data-pc-hero-text] > div > div:last-child{gap:10px !important;flex-direction:column !important;align-items:stretch !important}
   [data-pc-hero-text] > div > div:last-child a,
   [data-pc-hero-text] > div > div:last-child button{
-    padding:13px 20px !important;font-size:14px !important;
+    padding:13px 18px !important;font-size:14px !important;
+    justify-content:center !important;text-align:center !important;width:100% !important;
   }
   /* Finder grid: 1 column, full width buttons */
   [data-pc-finder-grid]{grid-template-columns:1fr !important}
